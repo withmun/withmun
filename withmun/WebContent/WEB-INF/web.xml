@@ -8,7 +8,7 @@
 	http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
 
-	<!--   *do-->
+	<!--  페이지처리 *do-->
 	<servlet>
 		<servlet-name>page</servlet-name>
 		<servlet-class>servlet.PageServlet</servlet-class>
@@ -18,5 +18,19 @@
 		<servlet-name>page</servlet-name>
 		<url-pattern>*.do</url-pattern>		
 	</servlet-mapping>
+		
+		
+	
+	
+	<!-- 이력서 관련 처리*do-->
+	<servlet>
+		<servlet-name>apply</servlet-name>
+		<servlet-class>servlet.ApplyServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>apply</servlet-name>
+		<url-pattern>*.ap</url-pattern>		
+	</servlet-mapping>	
 		
 </web-app>

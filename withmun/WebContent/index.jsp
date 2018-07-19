@@ -15,6 +15,3 @@ if(request.getParameter("content") !=null){
 
 <%@ include file = "./include/new_tail.jsp" %>
     
-
-
-
