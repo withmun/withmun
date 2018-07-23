@@ -1,11 +1,83 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>apply_privacy</title>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<div id="wrapper">
+	<div class="container">
+		<div class ="top">
+			<a href="/" >HOME</a>
+			> <a href="./service_procedure.do">Other</a>
+			> <a href="./apply_enter.ap">입사지원</a>
+			> <a href="./apply_privacy.ap" class='on'>개인정보 동의</a>
+			
+		</div>
+		
+		<div class="toptit">
+		    <h2><a href="./apply_enter.ap">개인정보 동의</a></h2>
+			<p>능력있는 인재들의 지원을 기다립니다.</p>
+		</div>	
+	</div>
+</div>
+<!------------------------------------------------------------------->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$(".jtoggle_up").click(function(){
+		$(".toggle_menu").slideDown();
+		$(".jtoggle_down").css("display","block");
+		$(".jtoggle_up").css("display","none");	
+	});
+	$(".jtoggle_down").click(function(){
+		$(".toggle_menu").slideUp();
+		$(".jtoggle_down").css("display","none");
+		$(".jtoggle_up").css("display","block");	
+	});
 
+	$(".jtoggle_up2").click(function(){
+		$(".toggle_menu2").slideDown();
+		$(".jtoggle_down2").css("display","block");
+		$(".jtoggle_up2").css("display","none");
+	});
+	$(".jtoggle_down2").click(function(){
+		$(".toggle_menu2").slideUp();
+		$(".jtoggle_down2").css("display","none");
+		$(".jtoggle_up2").css("display","block");	
+	});
+});
+
+function check() {
+	var f = document.frm_privacy;
+	
+	f.onsubmit = function () {
+		if (!f.chk_item.checked) {
+			alert('[수집하는 개인정보 항목]에 동의해주세요');
+			return false;
+			
+		}else if (!f.chk_collect.checked) {
+			alert('[개인정보 수집 및 이용목적]에 동의해주세요');
+			return false;
+		}else if (!f.chk_save.checked) {
+			alert('[개전정보 보유, 정정, 삭제 및 반환]에 동의해주세요');
+			return false;
+			
+		}else if (!f.chk_right.checked) {
+			alert('[개인정보 수집 시 동의 거부 권리]에 동의해주세요');
+			return false;
+		}
+	}
+	
+}
+
+</script>
+<!------------------------------------------------------------------->
 <style>
+
+
+
+div {
+	float:none;
+}
+
+
+
 #wrap_privacy {
 	padding: 10px;
 	border: 1px solid gray;
@@ -19,10 +91,12 @@
 }
 
 .content_title {
-	margin-bottom: -6px;
-	
+	margin_top: 20px;
+	margin-bottom: 0px;
+	display: block;	
 }
 .content{
+	width: 100%;
 	padding: 3px;
 	background-color: lightgray;
 	margin-bottom: 3px;
@@ -33,33 +107,11 @@
 	margin-bottom: 20px;
 	text-align: center;
 }
-</style>
-<script>
-function check() {
-	var f = document.frm_privacy;
-	
-	f.onsubmit = function () {
-		if (!f.chk_item.checked) {
-			alert('[수집하는 개인정보 항목]에 동의해주세요');
-			
-		}else if (!f.chk_collect.checked) {
-			alert('[개인정보 수집 및 이용목적]에 동의해주세요');
-			
-		}else if (!f.chk_save.checked) {
-			alert('[개전정보 보유, 정정, 삭제 및 반환]에 동의해주세요');
-			
-		}else if (!f.chk_right.checked) {
-			alert('[개인정보 수집 시 동의 거부 권리]에 동의해주세요');
-		}
-	}
-	
-}
-</script>
 
-</head>
-<body>
+</style>
+
 <div id='wrap_privacy'>
-	<form name='frm_privacy' method='post'>
+	<form name='frm_privacy' method='post' action='./apply_profile.ap'>
 		<h3 id='title'>개인정보 수집 및 이용에 대한 동의 안내</h3>
 		<div id='div_info'>
 			<p class='content'>
@@ -112,16 +164,13 @@ function check() {
 		
 		
 		<div id='buttons'>		
+		<a href='./apply_enter.ap'><input type='button' name='btnBack' value='이전페이지' /></a>
 		<input type='submit' name='btnSubmit' value='동의 및 이력서 작성' />
-		<input type='button' name='btnBack' value='돌아가기' />
 		</div>
 	</form>
 </div>
-
 <script>
 check();
-
-
 </script>
-</body>
-</html>
+
+

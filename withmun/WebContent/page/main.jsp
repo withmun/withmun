@@ -129,7 +129,7 @@ function visAct(){
 
 
 
-     <div id="idx_container" style="z-index: 2; width: 1101px;">
+     <div id="idx_container">
 
 
         <a href="./licensing.do">
@@ -140,6 +140,9 @@ function visAct(){
 				</div>
 				<div id ="idx_container_first_up_img">
 					<img src="./images/newmain_img1.jpg" alt="">
+				</div>
+				<div id ="idx_container_first_up_color_mini">
+					<p>사업 인허가</p>
 				</div>
 			</div>
 			<div id = "idx_container_first_down">
@@ -160,7 +163,7 @@ function visAct(){
 				외국인투자기업(D-8)
 			</div>
 			<div id="idx_container_second_down_text">
-				「외국인투자촉진법」에 따른 외국인투자기업<br> 대한민국 법인의 경영 관리 또는 생산 기술 분야에 종사하려는 필수 전문인...
+				<span>「외국인투자촉진법」에 따른 외국인투자기업<br> 대한민국 법인의 경영 관리 또는 생산 기술 분야에 종사하려는 필수 전문인...</span>
 			</div>
 	
 		</div>
@@ -214,7 +217,7 @@ function visAct(){
 				번역공증대행
 			</div>
 			<div id = "idx_container_fourth_down_text">
-			    &nbsp;&nbsp;번역문서의 진실성과 관련하여 일정한 자격이 있는 자(공인외국어번역행정사 등)가 본 번역문이 원문과 상위 없음을 진술 및 확약하고 이에 공증인이 인증하...				
+			    <span>&nbsp;&nbsp;번역문서의 진실성과 관련하여 일정한 자격이 있는 자(공인외국어번역행정사 등)가 본 번역문이 원문과 상위 없음을 진술 및 확약하고 이에 공증인이 인증하...</span>				
 			</div>
 		</div>
         </a>
@@ -227,6 +230,9 @@ function visAct(){
 				</div>
 				<div id="idx_container_fifth_up_img">
 					<img src="./images/newmain_img4.jpg"" alt="">
+				</div>
+				<div id ="idx_container_fifth_up_color_mini">
+					<p>사업 인허가</p>
 				</div>
 			</div>
 			<div id="idx_container_fifth_down">
