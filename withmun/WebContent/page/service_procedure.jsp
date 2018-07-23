@@ -40,7 +40,7 @@ $(document).ready(function(){
 	<%@ include file = "../include/left_other.jsp" %>
 		<div class = "content" style="margin-top:0;text-align:center">			
 			<div class ="content_second" style="margin-top:0;text-align:center">							
-					<img src="./images/process_img.jpg" alt="" />			
+					<img src="./images/process_img.jpg" style="width:100%;height:100%;" alt="" />			
 			</div>	
 		</div>
 	</div>

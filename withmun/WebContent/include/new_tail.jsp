@@ -29,18 +29,18 @@
 <div id ="gray_bar"></div>
 <div id="ft_mini">
 	<div>
-	    <div class ="ft_blog col-xs-6">Blog</div>
-	    <div class ="ft_about col-xs-6">aboutWithMun</div>
+	    <a href="https://blog.naver.com/withmun78"><div class ="ft_blog col-xs-6">Blog</div></a>
+	    <a href="./about.do"><div class ="ft_about col-xs-6">aboutWithMun</div></a>
     </div>
    
     <div>
-	    <div class ="ft_qa col-xs-6">QA</div>
-	    <div class ="ft_contact  col-xs-6">ContactUs</div>
+	    <a href="list.do"><div class ="ft_qa col-xs-6">QA</div></a>
+	    <a href="./location.do"><div class ="ft_contact  col-xs-6">ContactUs</div></a>
     </div>
    
     <div>
-	    <div class ="ft_other col-xs-6">Other</div>
-	    <div class ="ft_sitemap col-xs-6">SiteMap</div>
+	    <a href="./service_procedure.do"><div class ="ft_other col-xs-6">Other</div></a>
+	    <a href="./site_map.do"><div class ="ft_sitemap col-xs-6">SiteMap</div></a>
     </div>
      <div>
 	    <div class ="ft_footer col-xs-12">

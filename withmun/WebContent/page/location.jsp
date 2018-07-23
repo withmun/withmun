@@ -1,21 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<style type="text/css">
-/*
-.main{min-width:1100px; background-color:#d8d8d8;width:100%;margin-top:-15px;}
-.left{margin-top:20px;float:left;width:22%;background-color:#FFFFFF;margin-right:20px;}
-.content{margin-top:20px;float:left;width:76%;margin-bottom:20px;}
-*/
-.lo_first{height:285px;float:left;margin-right:18px;background-color:#FFFFFF;width:30%;}
-.lo_second{height:285px;float:left;background-color:#FFFFFF;width:67%; padding:10px;}
-.lo_third{height:170px;margin-top: 10px;float:left;background-color:#FFFFFF;width:99.4%;}
-.lo_fourth{height:520px;margin-top: 10px;float:left;background-color:#FFFFFF;width:99.4%;}
-#map{margin-top:10px;margin-left:10px;width:97.5%; height:87%;}
-/*
-.line2{width:80%;height:1px;background-color:#7f7f7f;margin-top:5px;width:93%;}
-*/
 
-</style>
 
 <!------------------------------------------------------------------->
 <div id ="mask">
@@ -24,6 +9,10 @@
       <h2 id = 'title' style ="text-align:center;">Contact Us</h2>
 
    </div>
+   
+
+
+   
    <form name="conFrm" id="conFrm" method="post">
       <table class="table" id = 'table'>
       <tr>
@@ -38,15 +27,15 @@
       </tr>
       <tr>
          <th>성명</th>
-         <td><input type="text" id="conName" name="conName" size = '30px' value=""></td>
+         <td><input type="text" id="conName" name="conName" size = '25px' value=""></td>
       </tr>
       <tr>
          <th>E Mail</th>
-         <td><input type="text" id="conEmail" name="conEmail" size = '30px' value=""></td>
+         <td><input type="text" id="conEmail" name="conEmail" size = '25px' value=""></td>
       </tr>
       <tr>
          <th>제목</th>
-         <td><input type="text" id="conSubject" name="conSubject"  size = '55px' value="" maxlength="48"></td>
+         <td><input type="text" id="conSubject" name="conSubject"  size = '30px' value=""></td>
       </tr>
       <tr>
          <th>내용</th>
@@ -97,6 +86,7 @@ $(document).ready(function(){
 </script>
 
 
+
 <div class ="main">
    <div class="main_wrap">
    <%@ include file = "../include/left_about.jsp" %>
@@ -104,61 +94,55 @@ $(document).ready(function(){
       <div class = "content">
          
          <div class ="lo_first">
-            <div style ="margin-top:15px;margin-left:15px;">
-               <div style="color:#8f8f8d;font-weight:bold;font-size:13px;">
+            <div id = "lo_first_div">
+               <div id ="lo_first_head">
                   WithMUN INTERNATIONAL
                </div>
 
-               <div style="margin-top:20px;font-weight:bold;color:#404040;line-height:1.8;">
-                  <h1 style="color:#1f497d;font-size:14px;margin-bottom: -2px;">사무소주소</h1>
-                  서울시 서초구 서초중앙로 26길 8,  <br>
-                  건복빌딩 501호(서초동 1694-34)<br>
-                  (우편번호 06605)
+               <div id ="lo_first_kor" >
+                  <h1 style="">사무소주소</h1>
+			                  서울시 서초구 서초중앙로 26길 8,  <br>
+			                  건복빌딩 501호(서초동 1694-34)<br>
+			                  (우편번호 06605)
 
                </div>
 
-               <div style="margin-top:16px;font-weight:bold;color:#404040;line-height:1.8;">
-                  <h1 style="color:#1f497d;font-size:14px;margin-bottom: -2px;">Office address</h1>
+               <div id="lo_first_eng" style="">
+                  <h1 style="">Office address</h1>
                   #501, 8, Seochojungang-ro, 26-gil, Seocho-gu, Seoul, Republic of Korea (Zip code 06605)
+		      </div>
 
-
-               </div>
-
-               <div style="margin-top:15px;font-weight:bold;color:#404040;line-height:1.8;">
-                  <div style="display:inline-block">
-                     <img src="./images/email3.png" style="width: 20px;    margin-top: -3px;" alt=""">
-                  </div>
-                  <div style="display:inline-block">
-                        <a href='#' style="color:#0076bf;font-size:12px;" onclick = "go_email(1)">withmun@withmun.com</a>
-                  </div>
-               
-                  
+               <div id="lo_first_foot">
+                  <span>
+                     <img src="./images/email3.png" style="" alt=""">
+                     <a href='#' style="" onclick = "go_email(1)">withmun@withmun.com</a>
+                  </span>
                </div>
             </div>
          </div>
 
-
          <div class ="lo_second">
-            <img src="./images/location_topimg.jpg" alt="" style="width:100%;height:100%;">
+            <img src="./images/location_topimg.jpg" alt="" style="">
          </div>
          
          <div class ="lo_third">
-            <div style="margin-top:20px;margin-left:10px;">
-               <span style="color:#8f8f8d;font-weight:bold;font-size:13px;">WithMUN INTERNATIONAL</span>
+            <div id="lo_third_head">
+               <span style="">WithMUN INTERNATIONAL</span>
             </div>
-            <div style="margin-top:20px;margin-left:10px;line-height:2;">
-               <div style="display:inline-block;width:40%;">
+            <div id="lo_third_content" style="">
+            
+               <div id="lo_third_content_left" style="">
                       <h3>일반행정사업부</h3>               
                      Tel.  02-525-6201<br>               
                      Fax. 02-525-6202   <br>               
-                     <a href='#' style="color:#0076bf;font-size:12px;" onclick = "go_email(2)">didi_attorney@withmun.com</a>            
+                     <a href='#' style="" onclick = "go_email(2)">didi_attorney@withmun.com</a>            
                </div>
                
-               <div style="display:inline-block;width:40%;">
+               <div id="lo_third_content_right" style="">
                   <h3>외국어번역행정사업부</h3>
                   Tel.  02-525-6209<br>
                   fax.  02-525-6202<br>
-                  <a href='#' style="color:#0076bf;font-size:12px;" onclick = "go_email(3)">jbk521@withmun.com</a>
+                  <a href='#' style="" onclick = "go_email(3)">jbk521@withmun.com</a>
                </div>
                
             </div>
@@ -166,10 +150,11 @@ $(document).ready(function(){
          </div>
 
          <div class ="lo_fourth">
-            <div style="margin-top:20px;margin-left:10px;">
-               <span style="color:#8f8f8d;font-weight:bold;font-size:13px;">Location</span>
+            <div id ="lo_fourth_head" style="">
+               <span>Location</span>
             </div>
             <div id="map" style=""></div>
+            
             
             <script>
                var map;

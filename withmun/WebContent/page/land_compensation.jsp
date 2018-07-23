@@ -62,7 +62,7 @@ $(document).ready(function(){
 					공익사업을 위한 토지 등의 취득 및 보상에 관한 법률과 개별사업법 <br><br>
 
 
-					<img src="./images/land_compensation.jpg" alt="토지보상 절차도" /><br><br>
+					<img src="./images/land_compensation.jpg" style="width:100%;height:100%;" alt="토지보상 절차도" /><br><br>
 
 
 					토지보상의 법적근거를 토대로 국민의 재산권행사를 위한 의견서 제출, 수용재결 신청(이의재결신청), 잔여지보상(가치하락보상 등), 지장물 보상, 생활 보상 등의 다양한 방법으로 고객의 권리를 지켜드립니다.<br> 

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -62,23 +62,17 @@ body{margin:0;}
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <body>
-<!-- 상단 시작 { -->
-<div id="hd">
-<style>
-
-</style>
 <!-- head 로그인 시작  -------------------------------------------------------------------------------------------------------->
 <form name = 'frmLogin'>
    <input type = 'button' name = 'btnLogout' value = '로그아웃' style="display:none"/>
          <c:choose>
       <c:when test = "${empty id}">
-
       </c:when>
       <c:otherwise>
          <input type='button' value='로그아웃' id='btnlogout' />
       </c:otherwise>
       </c:choose>
-   
+  
 </form>
 <script>
 var ff = document.frmLogin;
@@ -86,9 +80,10 @@ var ff = document.frmLogin;
       ff.action = 'logoutR.login';
       ff.submit();
 }
-
 </script>
-<!-- 로그인 끝 
+<!-- 로그인 끝 ---------------------------------------------------------------------------------------------------------------->
+<!-- 상단 시작 { -->
+<div id="hd">
 	<div id="hd_wrapper">
         <div id="logo">	
             <a href="./index.jsp" class="le"><img src="./images/new_logo5.png" alt="국가공인 외국어번역행정사무소"></a> 			
@@ -97,18 +92,6 @@ var ff = document.frmLogin;
 		<div id = "mini_menu_btn">
 			  <span class="glyphicon glyphicon-align-justify btn_menu" aria-hidden="true"></span>
 		</div>
-		
-		<script>
-		$( '.btn_menu' ).click(function() {
-			if($("#mini_menu_div").css("display") == "none"){
-				 $("#mini_menu_div").slideToggle("slow");
-				 
-			} else {
-			    $("#mini_menu_div").slideToggle("slow");
-			}
-		});
-		</script>	
-
 		
 		
 		<div id = "mini_menu_div" style='display:none;'>
@@ -125,24 +108,15 @@ var ff = document.frmLogin;
 				</div>	
 			</div>
 
-			<div id = "mini_generl_menu">			
-				<li>
-					일반행정
-				</li>
-				<li>
-					토지보상
-				</li>
-				<li>
-					사업 인허가
-				</li>
-				<li>
-					출입국관리업무
-				</li>
-				<li>
-					행정심판
-				</li>
-				
+			<div id = "mini_generl_menu" style='display:none;'>			
+				<a href="./incorporate.do"><li>법인설립</li></a>
+				<a href="./land_compensation.do"><li>토지보상</li></a>
+				<a href="./licensing.do"><li>사업 인허가</li></a>
+				<a href="./immigration.do"><li>출입국관리업무</li></a>
+				<a href="./suspension.do"><li>행정심판</li></a>
 			</div>
+	
+	
 			<div id="mini_foreign">
 				<div class ="col-xs-10 mini_menu_foreign">
 					외국어번역행정
@@ -152,58 +126,40 @@ var ff = document.frmLogin;
 				</div>
 			</div>
 			
-			<div id = "mini_foreign_1">
-				<div class ="col-xs-10 mini_foreign_1_text">
-					개인
+			<div id = "mini_foreign_menu" style="display:none;">
+				<div id = "mini_foreign_1">
+					<div class ="col-xs-10 mini_foreign_1_text">
+						기업
+					</div>
+					<div class ="col-xs-2 mini_foreign_1_icon">
+						<span class="glyphicon glyphicon-chevron-down btn_foreign_1"></span>	
+					</div>
 				</div>
-				<div class ="col-xs-2 mini_foreign_1_icon">
-					<span class="glyphicon glyphicon-chevron-down btn_foreign_1"></span>	
+							
+				<div id = "mini_foreign_menu1" style="display:none;">			
+					<a href="./english_contract.do"><li>영문계약서 작성</li></a>
+					<a href="./professional_translation.do"><li>전문번역</li></a>
+					<a href="./acting_translation.do"><li>번역공증대행</li></a>
+					<a href="./aposcertification.do"><li>아스티유 및 대사관 인증</li></a>
+					<a href="./overseas.do"><li>해외법인(지사/투자)설립</li></a>
 				</div>
-			</div>
-						
-			<div id = "mini_foreign_menu1">			
-				<li>
-					영문계약서 작성
-				</li>
-				<li>
-					전문번역
-				</li>
-				<li>
-					번역공증대행
-				</li>
-				<li>
-					아스티유 및 대사관 인증
-				</li>
-				<li>
-					해외법인(지사/투자)설립
-				</li>
-			</div>
-			
-			<div id = "mini_foreign_2">
-				<div class ="col-xs-10 mini_foreign_2_text">
-					개인
+				
+				<div id = "mini_foreign_2">
+					<div class ="col-xs-10 mini_foreign_2_text">
+						개인
+					</div>
+					<div class ="col-xs-2 mini_foreign_2_icon">
+						<span class="glyphicon glyphicon-chevron-down btn_foreign_2"></span>	
+					</div>
 				</div>
-				<div class ="col-xs-2 mini_foreign_2_icon">
-					<span class="glyphicon glyphicon-chevron-down btn_foreign_2"></span>	
+							
+				<div id = "mini_foreign_menu2" style="display:none;";>			
+					<a href="./certificate.do"><li>번역확인증명서</li></a>
+					<a href="./general_translation.do"><li>일반번역</li></a>
+					<a href="./acting_translation_personal.do"><li>번역공증대행</li></a>
+					<a href="./aposcertification_genenal.do"><li>아스티유 및 대사관 인증</li></a>
+					<a href="./studying_abroad.do"><li>유학 & 이민서류 관련</li></a>
 				</div>
-			</div>
-						
-			<div id = "mini_foreign_menu2">			
-				<li>
-					영문계약서 작성
-				</li>
-				<li>
-					전문번역
-				</li>
-				<li>
-					번역공증대행
-				</li>
-				<li>
-					아스티유 및 대사관 인증
-				</li>
-				<li>
-					해외법인(지사/투자)설립
-				</li>
 			</div>
 		</div>
 			
@@ -220,13 +176,16 @@ var ff = document.frmLogin;
 			    </a>				
 		</div>
 
+<style>
+
+</style>
 		<nav id="gnb">	
 			<ul id="gnb_1dul" style="">
 				<li class="gnb_1dli" >
 					<a href="./about.do" target="_self" class="gnb_1da" style="">About WithMUN</a>			
 				</li>
 				<li class="gnb_1dli">
-					<a href="./list.bo" target="_self" class="gnb_1da ">Q & A</a>
+					<a href="./list.do" target="_self" class="gnb_1da ">Q & A</a>
 				</li>				
 				<li class="gnb_1dli">
 					<a href="./location.do" target="_self" class="gnb_1da ">Contact Us (Location)</a>
@@ -237,8 +196,12 @@ var ff = document.frmLogin;
 				<li class="gnb_1dli">
 					<a href="" target="_self" class="gnb_1da ">Language ▼</a>	
 				</li>
-				<li class="gnb_1dli">
-					<img src="./images/search.jpg.png">
+				<li class="gnb_1dli form-inline">
+				<span>
+  				<input type="text" class="form-control header_input_text" id="exampleInputName2" placeholder="검색">
+  				</span>
+  				<span class="glyphicon glyphicon-search header_search"> </span>
+  
 				</li>
 			</ul>
 		</nav>
@@ -250,6 +213,7 @@ var ff = document.frmLogin;
 
 
 </style>
+
 	<div id="kmenu" >       
 			<div class="k1">
 				<div class="normal">
@@ -266,70 +230,7 @@ var ff = document.frmLogin;
 <script type="text/javascript" src="/pc_html/js/jquery.lettering.js"></script>
 <script type="text/javascript" src="/pc_html/js/jquery.textillate.js"></script>
 
-<script type="text/javascript">
 
-$(document).ready(function (e) {
-	
-	$(".k1").mouseenter(function() {
-		$(".menu_normal").show();
-		$(".menu_foreign").hide();
-        $(".normal").addClass('on');
-	
-	});
-	$(".k1").mouseleave(function() {
-		$(".menu_normal").hide();
-		$(".menu_foreign").hide();
-        $(".normal").removeClass('on');
-	
-	});
-
-    $(".menu_normal").mouseenter(function() {
-		$(".menu_normal").show();
-        $(".normal").addClass('on');
-	});
-
-	$(".menu_normal").mouseleave(function() {
-		$(".menu_normal").hide();
-        $(".normal").removeClass('on');
-	});
-
-// 두번째
-
-	$(".k2").mouseenter(function() {
-		$(".menu_normal").hide();
-		$(".menu_foreign").show();
-        $(".foreign").addClass('on');
-	
-	});
-	$(".k2").mouseleave(function() {
-		$(".menu_normal").hide();
-		$(".menu_foreign").hide();
-        $(".foreign").removeClass('on');
-	
-	});
-
-    $(".menu_foreign").mouseenter(function() {
-		$(".menu_foreign").show();
-        $(".foreign").addClass('on');
-	});
-
-	$(".menu_foreign").mouseleave(function() {
-		$(".menu_foreign").hide();
-        $(".foreign").removeClass('on');
-	});
-
-
-	$( ".develop" ).click(function() {
-		alert("진행중입니다");
-	});
-});
-
-</script>
-<!-------------------------------------------->
-<style type="text/css">
-
-</style>
-<!-------------------------------------------->
 
 	<div class="menu_normal"  style="display:none;">
 		<div id = "normal_sub1">
@@ -443,5 +344,113 @@ $(document).ready(function (e) {
 </div>
 <!-- } 상단 끝 -->
 <hr>
+<script type="text/javascript">
 
+
+
+
+$(function(){
+	$( '.btn_menu' ).click(function() {
+		if($("#mini_menu_div").css("display") == "none"){
+			 $("#mini_menu_div").slideToggle("slow");
+		} else {
+		    $("#mini_menu_div").slideToggle("slow");
+		}
+	});
+	
+	
+	$('.mini_menu_icon1' ).click(function() {
+		if($("#mini_generl_menu").css("display") == "none"){
+			 $("#mini_generl_menu").slideToggle("slow");
+		} else {
+		    $("#mini_generl_menu").slideToggle("slow");
+		}
+	});
+	
+	$('.mini_menu_icon2' ).click(function() {
+		if($("#mini_foreign_menu").css("display") == "none"){
+			 $("#mini_foreign_menu").slideToggle("slow");
+		} else {
+		    $("#mini_foreign_menu").slideToggle("slow");
+		}
+	});
+	
+	$('.mini_foreign_1_icon' ).click(function() {
+		if($("#mini_foreign_menu1").css("display") == "none"){
+			 $("#mini_foreign_menu1").slideToggle("slow");
+		} else {
+		    $("#mini_foreign_menu1").slideToggle("slow");
+		}
+	});
+	
+	
+	$('.mini_foreign_2_icon' ).click(function() {
+		if($("#mini_foreign_menu2").css("display") == "none"){
+			 $("#mini_foreign_menu2").slideToggle("slow");
+		} else {
+		    $("#mini_foreign_menu2").slideToggle("slow");
+		}
+	});
+	
+});
+
+
+
+$(document).ready(function (e) {
+	
+	$(".k1").mouseenter(function() {
+		$(".menu_normal").show();
+		$(".menu_foreign").hide();
+        $(".normal").addClass('on');
+	
+	});
+	$(".k1").mouseleave(function() {
+		$(".menu_normal").hide();
+		$(".menu_foreign").hide();
+        $(".normal").removeClass('on');
+	
+	});
+
+    $(".menu_normal").mouseenter(function() {
+		$(".menu_normal").show();
+        $(".normal").addClass('on');
+	});
+
+	$(".menu_normal").mouseleave(function() {
+		$(".menu_normal").hide();
+        $(".normal").removeClass('on');
+	});
+
+// 두번째
+
+	$(".k2").mouseenter(function() {
+		$(".menu_normal").hide();
+		$(".menu_foreign").show();
+        $(".foreign").addClass('on');
+	
+	});
+	$(".k2").mouseleave(function() {
+		$(".menu_normal").hide();
+		$(".menu_foreign").hide();
+        $(".foreign").removeClass('on');
+	
+	});
+
+    $(".menu_foreign").mouseenter(function() {
+		$(".menu_foreign").show();
+        $(".foreign").addClass('on');
+	});
+
+	$(".menu_foreign").mouseleave(function() {
+		$(".menu_foreign").hide();
+        $(".foreign").removeClass('on');
+	});
+
+
+	$( ".develop" ).click(function() {
+		alert("진행중입니다");
+	});
+});
+
+</script>
 <div id ="div_line"></div>

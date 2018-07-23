@@ -63,7 +63,7 @@ $(document).ready(function(){
 					<br><br>
 
 
-                    <img src="./images/immigration.jpg" alt="" /><br><br>
+                    <img src="./images/immigration.jpg" alt="" style="width:100%;height:100%;" /><br><br>
 
 
 
