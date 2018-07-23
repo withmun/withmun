@@ -21,6 +21,16 @@
 				</a>
 				<div class="line2"></div>
 			</div>
+			
+			<!-- 입사지원 -->
+			<div  style="margin-top:20px;">
+				<a style="color:#404040;" href="./apply_enter.ap">
+				입사지원
+				</a>
+				<div class="line2"></div>
+			</div>
+			
+			
 	
 			<div  style="margin-top:20px;">
 				<a style="color:#404040;" href="./site_map.do">
