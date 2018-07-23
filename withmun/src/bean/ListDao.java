@@ -1,3 +1,10 @@
+/*
+ * 
+ * vjvjvjvjvj
+ */
+
+
+
 package bean;
 
 import java.sql.Connection;
@@ -54,7 +61,7 @@ public class ListDao {
 	}
 	public void setNowPage(int nowPage) {
 		this.nowPage = nowPage;
-	}
+	} 
 	public int getTotSize() {
 		return totSize;
 	}
