@@ -642,7 +642,7 @@ div.paging strong, div.paging a:hover {
 							onclick = 'movePage(${dao.totPage})' id='btnLast' class = 'buttonP'/>
 		</c:if>
 	</div>
-	
+	<!-- 페이징 script -->
 	<script>
 	document.frontBoardVo.onsubmit = function(){
 		var ff = document.frmList;
@@ -656,6 +656,7 @@ div.paging strong, div.paging a:hover {
 		ff.submit();
 	}
 	</script>
+	<!-- 삭제script -->
 	<script>
 	var ff = document.list_frm;
 	function list_delete(serial){
@@ -678,7 +679,7 @@ div.paging strong, div.paging a:hover {
 				</select> 
 				<input type="text" size='35' class="text" name="findStr" value="" title="검색어 입력" onkeydown="if(event.keyCode==13){return false;}" />
 				<!-- <input type="image" class="btn"	src="./images/list/btn_search.gif" alt="검색" style="border: 0px;" onclick="return submitForm(this,'list',1)" />-->
-				<input type="submit" class="qna_submit" value='검색' />
+				<input type="button" class="qna_submit" value='검색' />
 			</fieldset>
 
 
