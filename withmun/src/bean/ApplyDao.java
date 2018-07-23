@@ -182,25 +182,16 @@ public class ApplyDao {
 		}
 	}
 	
-	
-	public boolean insert(ApplyVo aVo) {
+	// 새로 입사지원(apply_new.ap)
+	public boolean insert(ApplyVo nVo) {
 		boolean b = true;
-		String sql = "insert into apply "
-				   + " (ANO, 					EMAIL,PWD,FIELD,NAME, PHOTOC, PHOTOS, JUMIN1, JUMIN2, ADDR, ZIPCODE) "
-				   + " VALUES(SEQ_APPLY.NEXTVAL, ?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into apply 	  (ANO, EMAIL, PWD, NAME) "
+				   + " VALUES(SEQ_APPLY.NEXTVAL,     ?,     ?,   ?)   ";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			
-			ps.setString(1, aVo.getEmail());
-			ps.setString(2, aVo.getPwd());
-			ps.setString(3, aVo.getField());
-			ps.setString(4, aVo.getName());
-			ps.setString(5, aVo.getPhotoC());
-			ps.setString(6, aVo.getPhotoS());
-			ps.setString(7, aVo.getJumin1());
-			ps.setString(8, aVo.getJumin2());
-			ps.setString(9, aVo.getAddr());
-			ps.setString(10, aVo.getZipCode());
+			ps.setString(1, nVo.getEmail());
+			ps.setString(2, nVo.getPwd());
+			ps.setString(3, nVo.getName());
 			
 			int cnt = ps.executeUpdate();
 			if (cnt <=0) b=false;

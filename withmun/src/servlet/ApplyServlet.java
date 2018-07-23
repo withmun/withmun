@@ -56,6 +56,63 @@ public class ApplyServlet extends HttpServlet {
 		else if (jobs.indexOf("apply_profile.ap") >= 0) {
 			content="./page/apply/apply_profile.jsp";
 		}
+		else if (jobs.indexOf("apply_write.ap") >= 0) {
+			content="./page/apply/apply_write.jsp";
+		}
+		else if (jobs.indexOf("apply_preview.ap") >= 0) {
+			content="./page/apply/apply_preview.jsp";
+		}
+		else if (jobs.indexOf("apply_submit.ap") >= 0) {
+			content="./page/apply/apply_submit.jsp";
+		}
+		else if (jobs.indexOf("apply_manage.ap") >= 0) {
+			content="./page/apply/apply_manage.jsp";
+		}
+		else if (jobs.indexOf("apply_pool.ap") >= 0) {
+			content="./page/apply/apply_pool.jsp";
+		}
+		else if (jobs.indexOf("apply_review.ap") >= 0) {
+			content="./page/apply/apply_review.jsp";
+		}
+		else if (jobs.indexOf("apply_reviewY.ap") >= 0) {
+			content="./page/apply/apply_reviewY.jsp";
+		}
+		
+		// 입사지원서 새로 작성(insert)
+		else if (jobs.indexOf("apply_new.ap") >= 0) {
+			content="./page/apply/apply_profile.jsp";
+			
+			ApplyDao newDao = new ApplyDao();
+			ApplyVo newVo = newSetVo(req);
+			
+			if (newDao.insert(newVo)) {
+				msg = "정상적으로 데이터가 저장되었습니다";
+			}else {
+				msg = "데이터 저장중 오류 발생";
+			}
+		
+			req.setAttribute("newVo", newVo);
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		else if (jobs.indexOf("profileSave.ap") >=0) {
 			content="./page/apply/apply_profile.jsp";
 			
@@ -94,7 +151,7 @@ public class ApplyServlet extends HttpServlet {
 			
 			
 		}
-
+		
 		RequestDispatcher disp = req.getRequestDispatcher("index.jsp?content="+content);
 		disp.forward(req, resp);
 		
@@ -106,6 +163,18 @@ public class ApplyServlet extends HttpServlet {
 	/*
 	 * 사용자 정의 메소드
 	 */
+	
+	// 입사지원서 작성(insert)용 메소드
+	public ApplyVo newSetVo(HttpServletRequest req) {
+		ApplyVo nVo = new ApplyVo();
+		
+		nVo.setName(req.getParameter("name"));
+		nVo.setEmail(req.getParameter("email"));
+		nVo.setPwd(req.getParameter("pwd"));
+		
+		return nVo;
+	}
+	
 	
 	// 일반 setVo()
 	public ApplyVo setVo(HttpServletRequest req) {
