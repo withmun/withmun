@@ -18,9 +18,6 @@
 		<servlet-name>page</servlet-name>
 		<url-pattern>*.do</url-pattern>		
 	</servlet-mapping>
-		
-		
-	
 	
 	<!-- 이력서 관련 처리*do-->
 	<servlet>
@@ -33,4 +30,15 @@
 		<url-pattern>*.ap</url-pattern>		
 	</servlet-mapping>	
 		
+	<!-- 게시판 관련 -->
+	<servlet>
+		<servlet-name>board</servlet-name>
+		<servlet-class>servlet.BoardServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>board</servlet-name>
+		<url-pattern>*.bo</url-pattern>
+	</servlet-mapping>	
+	
 </web-app>
