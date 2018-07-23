@@ -209,7 +209,7 @@ a:hover, a:focus, a:active {color:#000;text-decoration:none}
 
 /* 메인메뉴*/
 
-#gnb {position:relative;float:right;margin-top: -20px;}
+#gnb {position:relative;float:right;margin-top: 55px;}
 #gnb:after {display:block;visibility:hidden;clear:both;content:""}
 #gnb h2 {position:absolute;font-size:0;line-height:0;overflow:hidden}
 #gnb_1dul {padding:0;zoom:1;margin-top: 40px;}
@@ -519,16 +519,14 @@ a:hover #idx_container_fifth{background-color:#ddd;}
 
 
 
-
-
-
-
-
-
-
-
-
-
+/***********************반응형***************************/
+#mini_menu_btn{display:none;}
+#mini_menu_btn{display:none;}
+#mini_menu_div{display:none;}
+#idx_container_first_up_color_mini{display:none;}
+#idx_container_fifth_up_color_mini{display:none;}
+#idx_container{z-index: 2; width: 1101px;}
+#ft_mini {display:none;}
 
 
 

@@ -25,6 +25,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:description" content="비영리사단/재단설립, 토지보상, 행정심판, 번역공증대행전문, 아포스티유/각국대사관인증" />
 <meta name="description" content="비영리사단/재단설립, 토지보상, 행정심판, 번역공증대행전문, 아포스티유/각국대사관인증" />
 <!--부트스트렙-->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<!--  -->
 <link rel="shortcut icon" type="image/x-icon" href="./images/favicon.ico" sizes="16x16 32x32">
 <link rel="icon" type="image/x-icon" href="./images/favicon.ico" sizes="16x16 32x32">
 <!----->
@@ -32,13 +37,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!--
 body{margin:0;}
 #center { width:100%; height:1356px; background:url(./images/sian2.jpg) top center; }
+@media (max-width: @screen-xs-max) { ... }
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { ... }
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) { ... }
+@media (min-width: @screen-lg-min) { ... }
 -->
 </style>
-<link rel="stylesheet" href="./css/new_default.css?ver=1">
-<!--[if lte IE 8]>
-<script src="http://theme.sir.kr/gnuboard5/js/html5.js"></script>
-<![endif]-->
-
+<link rel='stylesheet' type='text/css' href=./css/new_default.css?ver=1
+			media="screen and (min-width:631px)" />
+<link rel='stylesheet' type='text/css' href='./css/new_default_min.css?ver=1'
+			media="screen and (max-width:630px)" />
 <script src="./js/jquery-1.8.3.min.js"></script>
 <!--{{ 메뉴 및 롤오버 버튼 }}-->
 <script src="./js/jquery.menu.js"></script>
@@ -55,11 +63,132 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <body>
 <!-- 상단 시작 { -->
 <div id="hd">
+<style>
+
+</style>
 
 	<div id="hd_wrapper">
         <div id="logo">	
             <a href="./index.jsp" class="le"><img src="./images/new_logo5.png" alt="국가공인 외국어번역행정사무소"></a> 			
 		</div>
+		
+		<div id = "mini_menu_btn">
+			  <span class="glyphicon glyphicon-align-justify btn_menu" aria-hidden="true"></span>
+		</div>
+		
+		<script>
+		$( '.btn_menu' ).click(function() {
+			if($("#mini_menu_div").css("display") == "none"){
+				 $("#mini_menu_div").slideToggle("slow");
+				 
+			} else {
+			    $("#mini_menu_div").slideToggle("slow");
+			}
+		});
+		</script>	
+
+		
+		
+		<div id = "mini_menu_div" style='display:none;'>
+			<div class = "mini_search">
+				<span class="glyphicon glyphicon-search"></span>
+			</div>
+			
+			<div id = "mini_generl">			
+				<div class ="col-xs-10 mini_menu_general">
+					일반행정
+				</div>
+				<div class ="col-xs-2 mini_menu_icon1">
+					<span class="glyphicon glyphicon-chevron-down btn_general"></span>
+				</div>	
+			</div>
+
+			<div id = "mini_generl_menu">			
+				<li>
+					일반행정
+				</li>
+				<li>
+					토지보상
+				</li>
+				<li>
+					사업 인허가
+				</li>
+				<li>
+					출입국관리업무
+				</li>
+				<li>
+					행정심판
+				</li>
+				
+			</div>
+			<div id="mini_foreign">
+				<div class ="col-xs-10 mini_menu_foreign">
+					외국어번역행정
+				</div>
+				<div class ="col-xs-2 mini_menu_icon2">
+					<span class="glyphicon glyphicon-chevron-down btn_foreign"></span>	
+				</div>
+			</div>
+			
+			<div id = "mini_foreign_1">
+				<div class ="col-xs-10 mini_foreign_1_text">
+					개인
+				</div>
+				<div class ="col-xs-2 mini_foreign_1_icon">
+					<span class="glyphicon glyphicon-chevron-down btn_foreign_1"></span>	
+				</div>
+			</div>
+						
+			<div id = "mini_foreign_menu1">			
+				<li>
+					영문계약서 작성
+				</li>
+				<li>
+					전문번역
+				</li>
+				<li>
+					번역공증대행
+				</li>
+				<li>
+					아스티유 및 대사관 인증
+				</li>
+				<li>
+					해외법인(지사/투자)설립
+				</li>
+			</div>
+			
+			<div id = "mini_foreign_2">
+				<div class ="col-xs-10 mini_foreign_2_text">
+					개인
+				</div>
+				<div class ="col-xs-2 mini_foreign_2_icon">
+					<span class="glyphicon glyphicon-chevron-down btn_foreign_2"></span>	
+				</div>
+			</div>
+						
+			<div id = "mini_foreign_menu2">			
+				<li>
+					영문계약서 작성
+				</li>
+				<li>
+					전문번역
+				</li>
+				<li>
+					번역공증대행
+				</li>
+				<li>
+					아스티유 및 대사관 인증
+				</li>
+				<li>
+					해외법인(지사/투자)설립
+				</li>
+			</div>
+		</div>
+			
+	
+		
+		
+		
 
 		<div class="logo2">
 			    <a href="./index.do">
@@ -67,10 +196,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="lo_right"><img src="./images/admin_logo2.png" alt="국가공인 외국어번역행정사무소"><span class="sp3">행정안전부 인가</span>
 					</div>				
 			    </a>				
-		</div>	
+		</div>
 
-
-	
 		<nav id="gnb">	
 			<ul id="gnb_1dul" style="">
 				<li class="gnb_1dli" >
@@ -101,7 +228,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 </style>
-
 	<div id="kmenu" >       
 			<div class="k1">
 				<div class="normal">
@@ -183,7 +309,7 @@ $(document).ready(function (e) {
 </style>
 <!-------------------------------------------->
 
-	<div class="menu_normal">
+	<div class="menu_normal"  style="display:none;">
 		<div id = "normal_sub1">
 			<div>
 				<a href="./licensing.do">사업 인허가</a>
@@ -230,7 +356,7 @@ $(document).ready(function (e) {
 
 
 
-	<div class="menu_foreign">
+	<div class="menu_foreign"  style="display:none;">
 		<div id = "foreign_sub1">
 		
 			<div href="english_contract.do">
