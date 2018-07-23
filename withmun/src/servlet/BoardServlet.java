@@ -26,17 +26,7 @@ public class BoardServlet extends HttpServlet{
 		
 		String jobs = req.getRequestURI();
 		
-		if(jobs.indexOf("delete.bo")>=0) {
-			String msg = "";
-			ListDao dao = new ListDao();
-			ListVo vo = setVo(req);
-			
-			if(dao.delete(vo)) {
-				msg = "삭제 되었습니다.";
-				RequestDispatcher disp = req.getRequestDispatcher("list.do");
-				disp.forward(req,resp);
-			}
-		}
+		
 		
 		if(jobs.indexOf("insert.bo")>=0){
 			ListDao dao = new ListDao();
@@ -51,26 +41,43 @@ public class BoardServlet extends HttpServlet{
 				msg ="dsdasd";
 				System.out.println(msg);
 				
-				RequestDispatcher disp = req.getRequestDispatcher("list.do");
-				disp.forward(req,resp);
 			}
+			RequestDispatcher disp = req.getRequestDispatcher("list.bo");
+			disp.forward(req,resp);
 			
 		}
 		else if(jobs.indexOf("list.bo") >= 0) {
+			String findStr = "";
 			ListDao dao = new ListDao();
 			ListVo vo = setVo(req);
-			String findStr = "";
+			int nowPage = 1;
+			if(req.getParameter("nowPage") != null) {
+				nowPage = Integer.parseInt(req.getParameter("nowPage"));
+			}
 			
-		if (req.getParameter("findStr") != null) {
-				findStr = req.getParameter("findStr");
+			if (req.getParameter("findStr") != null) {
+					findStr = req.getParameter("findStr");
+			}
+				dao.setNowPage(nowPage);
+				List<ListVo> list = dao.select(findStr);
+				req.setAttribute("list", list);
+				req.setAttribute("dao", dao);
+				RequestDispatcher disp = req.getRequestDispatcher("index.jsp?content=./page/board/list.jsp");
+				disp.forward(req,resp);
+				
 		}
-			List<ListVo> list = dao.select(findStr);
+		else if(jobs.indexOf("delete.bo")>=0) {
+			String msg = "";
+			ListDao dao = new ListDao();
+			ListVo vo = setVo2(req);
 			
-			req.setAttribute("list", list);
-			
-			RequestDispatcher disp = req.getRequestDispatcher("list.do");
-			disp.forward(req,resp);
-			
+			if(dao.delete(vo)) {
+				msg = "삭제 되었습니다.";
+				
+			}
+
+				RequestDispatcher disp = req.getRequestDispatcher("list.bo");
+				disp.forward(req,resp);
 		}
 		else if(jobs.indexOf("reply.bo") >= 0) {
 			
@@ -90,6 +97,17 @@ public class BoardServlet extends HttpServlet{
 		return vo;	
 	}
 	
+	public ListVo setVo2(HttpServletRequest req) {
+		
+		ListVo vo = new ListVo();
+		
+		vo.setSerial(Integer.parseInt(req.getParameter("hidden_serial")));
+		vo.setPwd(req.getParameter("hidden_prompt"));
+
+		return vo;	
+	}
+	
+
 	
 	
 	

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -66,7 +67,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <style>
 
 </style>
+<!-- head 로그인 시작  -------------------------------------------------------------------------------------------------------->
+<form name = 'frmLogin'>
+   <input type = 'button' name = 'btnLogout' value = '로그아웃' style="display:none"/>
+         <c:choose>
+      <c:when test = "${empty id}">
 
+      </c:when>
+      <c:otherwise>
+         <input type='button' value='로그아웃' id='btnlogout' />
+      </c:otherwise>
+      </c:choose>
+   
+</form>
+<script>
+var ff = document.frmLogin;
+   ff.btnlogout.onclick = function(){
+      ff.action = 'logoutR.login';
+      ff.submit();
+}
+
+</script>
+<!-- 로그인 끝 
 	<div id="hd_wrapper">
         <div id="logo">	
             <a href="./index.jsp" class="le"><img src="./images/new_logo5.png" alt="국가공인 외국어번역행정사무소"></a> 			
@@ -204,7 +226,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<a href="./about.do" target="_self" class="gnb_1da" style="">About WithMUN</a>			
 				</li>
 				<li class="gnb_1dli">
-					<a href="./list.do" target="_self" class="gnb_1da ">Q & A</a>
+					<a href="./list.bo" target="_self" class="gnb_1da ">Q & A</a>
 				</li>				
 				<li class="gnb_1dli">
 					<a href="./location.do" target="_self" class="gnb_1da ">Contact Us (Location)</a>

@@ -1,10 +1,3 @@
-/*
- * ggjghjghjgjghjhhhhj
- * svjvjvjvjvj1aassas
- */
-
-
-
 package bean;
 
 import java.sql.Connection;
@@ -24,9 +17,8 @@ public class ListDao {
 	}
 	
 	int listSize = 10;
-	int blockSize = 2;
+	int blockSize = 3;
 	int nowPage = 1; //getter/setter
-
 	int totSize = 0;
 	int totPage  = 0; //getter
 	int totBlock = 0; //getter
@@ -37,13 +29,7 @@ public class ListDao {
 
 	int endNo   = 0; //getter
 	int startNo = 0; //getter
-	
-	public Connection getConn() {
-		return conn;
-	}
-	public void setConn(Connection conn) {
-		this.conn = conn;
-	}
+
 	public int getListSize() {
 		return listSize;
 	}
@@ -131,13 +117,23 @@ public class ListDao {
 			totBlock = (int)Math.ceil(totPage/(double)blockSize);
 			nowBlock = (int)Math.ceil(nowPage/(double)blockSize);
 
-			endPage   = nowBlock * blockSize;
+	/*		endPage   = nowBlock * blockSize;
 			startPage = endPage - blockSize + 1;
 			if(endPage > totPage) endPage = totPage;
 
 			endNo   = nowPage * listSize;
 			startNo = endNo - listSize + 1;
 			if(endNo > totSize) endNo = totSize;
+			*/
+			endPage = nowBlock * blockSize;
+			if(endPage >totPage)endPage = totPage;
+			startPage = endPage - blockSize + 1;
+			if(startPage < 1)startPage = 1;
+			
+			endNo = nowPage * listSize;
+			if(endPage > totSize) endNo = totSize;
+			startNo = endNo - listSize + 1;
+			if(startNo < 1)startNo = 1;
 			
 		}catch(Exception ex) {
 			ex.printStackTrace();
@@ -166,6 +162,7 @@ public class ListDao {
 				ListVo vo = new ListVo();
 					vo.setSerial(Integer.parseInt(rs.getString("serial")));
 					vo.setName(rs.getString("name"));
+					vo.setPwd(rs.getString("pwd"));
 					vo.setDoc(rs.getString("doc"));
 					vo.setBdate(rs.getDate("bdate").toString());
 					
