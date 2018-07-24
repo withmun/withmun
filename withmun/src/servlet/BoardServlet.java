@@ -80,7 +80,15 @@ public class BoardServlet extends HttpServlet{
 				disp.forward(req,resp);
 		}
 		else if(jobs.indexOf("reply.bo") >= 0) {
+			ListDao dao = new ListDao();
+			ListVo vo = setVo3(req);
+			dao.rep(vo);
+			dao.repUpdate(vo);
+			if(dao.repCheck(vo)) {
+			}
 			
+			RequestDispatcher disp = req.getRequestDispatcher("list.bo");
+			disp.forward(req,resp);
 		}
 
 
@@ -106,6 +114,14 @@ public class BoardServlet extends HttpServlet{
 
 		return vo;	
 	}
+	public ListVo setVo3(HttpServletRequest req) {
+		
+		ListVo vo = new ListVo();
+		vo.setSerial(Integer.parseInt(req.getParameter("hidden_serial")));
+		vo.setDoc(req.getParameter("hidden_reply"));
+		return vo;	
+	}
+	
 	
 
 	

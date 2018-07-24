@@ -584,41 +584,51 @@ div.paging strong, div.paging a:hover {
 				<span>ㆍ</span> <strong>588</strong>개의 게시물이 있습니다.
 			</p>
 
-	<c:forEach var="list" items="${list }">
-			<ul class="simplecomment">
-				<li>
-					<div>
-						<strong>${list.name }</strong> <span class="bar">|</span> <span class="date">${list.bdate }</span>
-					</div>
-					
-					<p style="width: 88%;">
-						${list.doc }
-						<!-- </a> -->
-					</p>
+			<c:forEach var="list" items="${list }"> 
+			
+				<ul class="simplecomment">
+					<li>
+						<div>
+						<h4>게시물 번호 ${list.serial }</h4>
+							<strong>${list.name }</strong> <span class="bar">|</span> <span
+								class="date">${list.bdate }</span>
+						</div>
 
-					<div class="btn">
-						<a href="#reply" class="reply" > 답변</a> 
-						<input type = 'text' value = '${list.pwd }'/>
-						<input type = 'button' class="delete" onclick='list_delete(${list.serial})' value = '삭제'>
-					</div>
-					<input type = 'text' name = 'hidden_serial' value = '${list.serial }'/>
-
-					<div class="replyform" style="display: none;" id="7743148">
-						<textarea rows="2" cols="50" id="bbsconts7743148"
-							name="bbsconts7743148"></textarea>
-						<p>
-							<a href="reply.bo">등록</a>
-							|
+						<p style="width: 88%;">
+							${list.doc }
+							<!-- </a> -->
 						</p>
-					</div>
-				</li>
-			</ul>
-	</c:forEach>
-	<form name = 'list_frm'>
-		
-		<input type = 'text' name = 'hidden_serial'/>
-		<input type = 'text' name = 'hidden_prompt'/>
-	</form>
+						
+						<div class="btn">
+							<c:choose>
+								<c:when test="${empty id}">
+								</c:when>
+								<c:otherwise>
+									<input type='button' class="reply" onclick='reply_show(${list.serial})'
+										value='답변'>
+								</c:otherwise>
+							</c:choose>
+							<input type='button' class="delete"
+								onclick='list_delete(${list.serial})' value='삭제'>
+						</div> <input type='hidden' name='hidden_serial' value='${list.serial }' />
+
+						<div class="hidden_reply" id="hidden_reply${list.serial }" style="display: none">
+							<textarea rows="2" cols="50" id="reply_ta" name="reply_ta"></textarea>
+							<p>
+								<input type='button' onclick='list_reply(${list.serial})'
+									value='등 록'> <input type='button'
+									onclick='list_reply_close(${list.serial})' value='닫 기'>
+							</p>
+						</div>
+					</li>
+				</ul>
+				
+			</c:forEach>
+			<form name='list_frm'>
+				<input type='hidden' name='hidden_serial' /> 
+				<input type='hidden' name='hidden_prompt' /> 
+				<input type='hidden' name='hidden_reply' />
+			</form>
 
 	<div id='buttons'>
 		<c:if test='${dao.nowBlock>1}'>
@@ -683,6 +693,41 @@ div.paging strong, div.paging a:hover {
 		ff.action = 'delete.bo';
 		ff.submit();
 	}	
+	</script>
+	
+	<!-- 답글 script -->
+	<script>
+	var ff = document.list_frm;
+	function reply_show(serial){
+		document.getElementById("hidden_reply"+serial).style.display='block';
+	}
+	
+	function list_reply_close(serial){
+		document.getElementById("hidden_reply"+serial).style.display='none';
+	}
+	
+	
+	function list_delete(serial){
+		ff.hidden_serial.value = serial;
+		var prom = prompt('비밀번호를 입력해주세요.','PassWord');
+		ff.hidden_prompt.value = prom;
+		
+		ff.action = 'delete.bo';
+		ff.submit();
+	}
+	function list_reply(serial){
+		ff.hidden_serial.value = serial;
+		var text = $("textarea#reply_ta").val();
+		ff.hidden_reply.value = text;
+		
+		ff.action = 'reply.bo';
+		ff.submit();
+	}
+	
+	function find_list(){
+		ff.action = 'list.bo';
+		ff.submit();
+	}
 	</script>
 
 			</section>
