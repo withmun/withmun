@@ -7,6 +7,7 @@ public class ListVo {
 	String doc;
 	String bdate;
 	int reply;
+	int grp;
 	
 	
 	public String getName() {
@@ -44,6 +45,12 @@ public class ListVo {
 	}
 	public void setReply(int reply) {
 		this.reply = reply;
+	}
+	public int getGrp() {
+		return grp;
+	}
+	public void setGrp(int grp) {
+		this.grp = grp;
 	}
 	
 	
