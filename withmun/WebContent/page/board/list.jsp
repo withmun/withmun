@@ -586,6 +586,7 @@ div.paging strong, div.paging a:hover {
 			</p>
 
 			<c:forEach var="list" items="${list }">
+			<c:if test = "${list.reply eq 1 or list.reply eq 2 }">
 
 				<ul class="simplecomment">
 					<li>
@@ -623,41 +624,38 @@ div.paging strong, div.paging a:hover {
 						</div> <input type='hidden' name='hidden_serial' value='${list.serial }' />
 						<input type='hidden' name='hidden_reply' value='${list.reply }' />
 						<!-- 답변 내용 -->
-						<div class="hidden_reply" id="hidden_reply${list.serial }" style="display: none">
-							<textarea rows="2" cols="50" id="reply_ta" name="reply_ta"></textarea>
+						<div class="hidden_reply" id="hidden_reply${list.serial }" style="display: none;">
+							<textarea rows="2" cols="50" id="reply_ta${list.serial }" name="reply_ta${list.serial }"></textarea>
 							<p>
 								<input type='button' onclick='list_reply(${list.serial})'
 									value='등 록'> <input type='button'
 									onclick='list_reply_close(${list.serial})' value='닫 기'>
 							</p>
-						</div>
-						<c:choose>
-							<c:when test="${list.reply eq 2}">
-							
-						
+						</div>		
+						</c:if>
+						<c:if test = "${list.reply eq 3 }">
+						<div style = "background-color: #CCEEFF;">
+						답변 )
 							&emsp;<div>
-							&emsp;<strong>관리자</strong> <span class="bar">|</span> <span
-								class="date">날짜</span>
+							&emsp;<strong>${list.name }</strong> <span class="bar">|</span> <span
+								class="date">${list.bdate }</span>
 							&emsp;</div>
 							&emsp;<p style="width: 88%;">
 							
-							&emsp;답변내용
+							&emsp;${list.doc }
 							
 							&emsp;</p>
-			
-							</c:when>
-							<c:otherwise>
-							</c:otherwise>
-						</c:choose>
-						
+						</div>
+						</c:if>
+						</c:forEach>
 					<!-- 답변 끝 -->
 					</li>
 				</ul>
 
-			</c:forEach>
 			<form name='list_frm'>
-				<input type='hidden' name='hidden_serial' /> <input type='hidden'
-					name='hidden_prompt' /> <input type='hidden' name='hidden_reply' />
+				<input type='hidden' name='hidden_serial' /> 
+				<input type='hidden' name='hidden_prompt' /> 
+				<input type='hidden' name='hidden_reply_ta' />
 			</form>
 
 			<div id='buttons'>
@@ -697,7 +695,6 @@ div.paging strong, div.paging a:hover {
 					</select> <input type="text" size='35' class="text" name="findStr"
 						value="${param.findStr }" title="검색어 입력"
 						onkeydown="if(event.keyCode==13){return false;}" />
-					<!-- <input type="image" class="btn"	src="./images/list/btn_search.gif" alt="검색" style="border: 0px;" onclick="return submitForm(this,'list',1)" />-->
 					<input type="submit" class="qna_submit" name="findFind" value='검색' />
 				</fieldset>
 			</form>
@@ -748,10 +745,11 @@ div.paging strong, div.paging a:hover {
 		ff.action = 'delete.bo';
 		ff.submit();
 	}
+	
 	function list_reply(serial){
 		ff.hidden_serial.value = serial;
-		var text = $("textarea#reply_ta").val();
-		ff.hidden_reply.value = text;
+		var text = $("textarea#reply_ta"+serial).val();
+		ff.hidden_reply_ta.value = text;
 		
 		ff.action = 'reply.bo';
 		ff.submit();

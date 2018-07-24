@@ -9,6 +9,7 @@ String content = "./page/main.jsp";
 if(request.getParameter("content") !=null){
 	content = request.getParameter("content");  
 }
+
 %>
 
 <jsp:include page="<%=content %>"/>

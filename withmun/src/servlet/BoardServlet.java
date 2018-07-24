@@ -32,17 +32,8 @@ public class BoardServlet extends HttpServlet{
 			ListDao dao = new ListDao();
 			ListVo vo = setVo(req);
 			
-			String msg = "";
+			dao.insert(vo);
 			
-			
-			if (dao.insert(vo)) {
-				msg = "정상적으로 데이터가 저장되었습니다.";
-				System.out.println(msg);
-			}else {
-				msg ="dsdasd";
-				System.out.println(msg);
-				
-			}
 			RequestDispatcher disp = req.getRequestDispatcher("list.bo");
 			disp.forward(req,resp);
 			
@@ -74,9 +65,7 @@ public class BoardServlet extends HttpServlet{
 			
 			if(dao.delete(vo)) {
 				msg = "삭제 되었습니다.";
-				
 			}
-
 				RequestDispatcher disp = req.getRequestDispatcher("list.bo");
 				disp.forward(req,resp);
 		}
@@ -115,7 +104,7 @@ public class BoardServlet extends HttpServlet{
 		
 		ListVo vo = new ListVo();
 		vo.setSerial(Integer.parseInt(req.getParameter("hidden_serial")));
-		vo.setDoc(req.getParameter("hidden_reply"));
+		vo.setDoc(req.getParameter("hidden_reply_ta"));
 		return vo;	
 	}
 	
