@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="wrapper">
 	<div class="container">
 		<div class="top">
@@ -524,10 +524,11 @@ div.paging a, div.paging strong {
 	vertical-align: top;
 }
 
-#buttons {
-	text-align: center;
-	margin: 20px;
-	padding: 20px;
+#buttons{
+	text-align:center;
+	margin:20px;
+	padding:20px;
+	
 }
 
 #buttons .buttonP {
@@ -558,8 +559,7 @@ div.paging strong, div.paging a:hover {
 				<section class="subContents">
 					<section class="contents">
 						<section class="con">
-							<form id="frontBoardVo" name="frontBoardVo" action="insert.bo"
-								method="post">
+							<form id="frontBoardVo" name="frontBoardVo" action="insert.bo" method="post">
 
 								<!-- <input type='file' name='attachFile1' style="display: none"/> -->
 
@@ -571,10 +571,9 @@ div.paging strong, div.paging a:hover {
 									<input type='password' name='qna_pwd' size=10px />
 									<div class="remaining">
 										<!-- <label>comment: <textarea rows="3" cols="50" name="bbsc" id="bbsc"></textarea></label> -->
-										<textarea rows="3" cols="50" name="document" id="document"></textarea>
-										<input type='hidden' name='nowPage'
-											value='${empty param.nowPage ? 1 : param.nowPage }' /> <input
-											type="submit" value="작성" />
+									<textarea rows="3" cols="50" name="document" id="document"></textarea>
+									<input type='hidden' name='nowPage' value='${empty param.nowPage ? 1 : param.nowPage }'/>
+										<input type="submit" value="작성" />
 							</form>
 			</div>
 			<span>최대 <em class="count">0</em>/300자
@@ -585,122 +584,66 @@ div.paging strong, div.paging a:hover {
 				<span>ㆍ</span> <strong>588</strong>개의 게시물이 있습니다.
 			</p>
 
-			<c:forEach var="list" items="${list }">
-			<c:if test = "${list.reply eq 1 or list.reply eq 2 }">
+	<c:forEach var="list" items="${list }">
+			<ul class="simplecomment">
+				<li>
+					<div>
+						<strong>${list.name }</strong> <span class="bar">|</span> <span class="date">${list.bdate }</span>
+					</div>
+					
+					<p style="width: 88%;">
+						${list.doc }
+						<!-- </a> -->
+					</p>
 
-				<ul class="simplecomment">
-					<li>
-						<div>
+					<div class="btn">
+						<a href="#reply" class="reply" > 답변</a> 
+						<input type = 'text' value = '${list.pwd }'/>
+						<input type = 'button' class="delete" onclick='list_delete(${list.serial})' value = '삭제'>
+					</div>
+					<input type = 'text' name = 'hidden_serial' value = '${list.serial }'/>
 
-							<strong>${list.name }</strong> <span class="bar">|</span> <span
-								class="date">${list.bdate }</span>
-						</div>
-
-						<p style="width: 88%;">
-							${list.doc }
-							<!-- </a> -->
+					<div class="replyform" style="display: none;" id="7743148">
+						<textarea rows="2" cols="50" id="bbsconts7743148"
+							name="bbsconts7743148"></textarea>
+						<p>
+							<a href="reply.bo">등록</a>
+							|
 						</p>
+					</div>
+				</li>
+			</ul>
+	</c:forEach>
+	<form name = 'list_frm'>
+		
+		<input type = 'text' name = 'hidden_serial'/>
+		<input type = 'text' name = 'hidden_prompt'/>
+	</form>
 
-						<div class="btn">
-							<c:choose>
-								<c:when test="${empty id}">
-								</c:when>
-								<c:when test="${list.reply eq 2}">
-									<strong>답변 완료</strong>
-								</c:when>
-								<c:otherwise>
-									<input type='button' class="reply"
-										onclick='reply_show(${list.serial})' value='답변'>
-								</c:otherwise>
-							</c:choose>
-							<c:choose>
-								<c:when test="${list.reply eq 2}">
-								</c:when>
-								<c:otherwise>
-									<input type='button' class="delete"
-										onclick='list_delete(${list.serial})' value='삭제'>
-								</c:otherwise>
-							</c:choose>
-						</div> <input type='hidden' name='hidden_serial' value='${list.serial }' />
-						<input type='hidden' name='hidden_reply' value='${list.reply }' />
-						<!-- 답변 내용 -->
-						<div class="hidden_reply" id="hidden_reply${list.serial }" style="display: none;">
-							<textarea rows="2" cols="50" id="reply_ta${list.serial }" name="reply_ta${list.serial }"></textarea>
-							<p>
-								<input type='button' onclick='list_reply(${list.serial})'
-									value='등 록'> <input type='button'
-									onclick='list_reply_close(${list.serial})' value='닫 기'>
-							</p>
-						</div>		
-						</c:if>
-						<c:if test = "${list.reply eq 3 }">
-						<div style = "background-color: #CCEEFF;">
-						답변 )
-							&emsp;<div>
-							&emsp;<strong>${list.name }</strong> <span class="bar">|</span> <span
-								class="date">${list.bdate }</span>
-							&emsp;</div>
-							&emsp;<p style="width: 88%;">
-							
-							&emsp;${list.doc }
-							
-							&emsp;</p>
-						</div>
-						</c:if>
-						</c:forEach>
-					<!-- 답변 끝 -->
-					</li>
-				</ul>
-
-			<form name='list_frm'>
-				<input type='hidden' name='hidden_serial' /> 
-				<input type='hidden' name='hidden_prompt' /> 
-				<input type='hidden' name='hidden_reply_ta' />
-			</form>
-
-			<div id='buttons'>
-				<c:if test='${dao.nowBlock>1}'>
-					<input type='button' value='맨첨' onclick='movePage(1)' id='btnFirst'
-						class='buttonP' />
-					<input type='button' value='이전'
-						onclick='movePage(${dao.startPage-1 })' id='btnPrev'
-						class='buttonP' />
-				</c:if>
-
-				<c:forEach var='p' begin='${dao.startPage }' end='${dao.endPage}'>
-					<c:set var='here' value='' />
-					<c:if test='${p == dao.nowPage }'>
-						<c:set var='here' value="here" />
-					</c:if>
-					<input type='button' value='${p }' class='${here }'
-						onclick='movePage(${p})' class='buttonP' />
-				</c:forEach>
-
-				<c:if test='${dao.nowBlock < dao.totBlock}'>
-					<input type='button' value='다음'
-						onclick='movePage(${dao.endPage+1})' id='btnNext' class='buttonP' />
-					<input type='button' value='맨끝' onclick='movePage(${dao.totPage})'
-						id='btnLast' class='buttonP' />
-				</c:if>
-			</div>
-
-			<!--/paging-->
-			<form name='list_find'>
-				<div class="btn-r3"></div>
-				<fieldset class="search2">
-					<legend>검색</legend>
-					<select name="key" style="width: 88px;" title="검색 옵션 선택">
-						<option value='bbsconts'>내 용</option>
-						<option value='bbsusername'>작성자</option>
-					</select> <input type="text" size='35' class="text" name="findStr"
-						value="${param.findStr }" title="검색어 입력"
-						onkeydown="if(event.keyCode==13){return false;}" />
-					<input type="submit" class="qna_submit" name="findFind" value='검색' />
-				</fieldset>
-			</form>
-
-			<!-- 페이징 script -->
-			<script>
+	<div id='buttons'>
+		<c:if test='${dao.nowBlock>1}'>
+			<input type='button' value='맨첨' onclick ='movePage(1)' id='btnFirst' class = 'buttonP'/>
+			<input type='button' value='이전' 
+							onclick = 'movePage(${dao.startPage-1 })' id='btnPrev' class = 'buttonP'/>
+		</c:if>
+		
+		<c:forEach var='p' begin='${dao.startPage }' end='${dao.endPage}'>
+			<c:set var='here' value=''/>
+			<c:if test='${p == dao.nowPage }'>
+				<c:set var='here' value="here" />
+			</c:if>
+			<input type='button' value='${p }' class='${here }' onclick='movePage(${p})' class = 'buttonP'/>
+		</c:forEach>
+		
+		<c:if test = '${dao.nowBlock < dao.totBlock}'>
+			<input type='button' value='다음' 
+							onclick = 'movePage(${dao.endPage+1})' id='btnNext' class = 'buttonP'/>
+			<input type='button' value='맨끝' 
+							onclick = 'movePage(${dao.totPage})' id='btnLast' class = 'buttonP'/>
+		</c:if>
+	</div>
+	
+	<script>
 	document.frontBoardVo.onsubmit = function(){
 		var ff = document.frmList;
 		ff.nowPage.value = 1;
@@ -713,8 +656,7 @@ div.paging strong, div.paging a:hover {
 		ff.submit();
 	}
 	</script>
-			<!-- 삭제script -->
-			<script>
+	<script>
 	var ff = document.list_frm;
 	function list_delete(serial){
 		ff.hidden_serial.value = serial;
@@ -722,44 +664,23 @@ div.paging strong, div.paging a:hover {
 		ff.hidden_prompt.value = prom;
 		ff.action = 'delete.bo';
 		ff.submit();
-	}	
+	}
+	
 	</script>
 
-			<!-- 답글 script -->
-			<script>
-	var ff = document.list_frm;
-	function reply_show(serial){
-		document.getElementById("hidden_reply"+serial).style.display='block';
-	}
-	
-	function list_reply_close(serial){
-		document.getElementById("hidden_reply"+serial).style.display='none';
-	}
-	
-	
-	function list_delete(serial){
-		ff.hidden_serial.value = serial;
-		var prom = prompt('비밀번호를 입력해주세요.','PassWord');
-		ff.hidden_prompt.value = prom;
-		
-		ff.action = 'delete.bo';
-		ff.submit();
-	}
-	
-	function list_reply(serial){
-		ff.hidden_serial.value = serial;
-		var text = $("textarea#reply_ta"+serial).val();
-		ff.hidden_reply_ta.value = text;
-		
-		ff.action = 'reply.bo';
-		ff.submit();
-	}
-	
-	function find_list(){
-		ff.action = 'list.bo';
-		ff.submit();
-	}
-	</script>
+			<!--/paging-->
+			<div class="btn-r3"></div>
+			<fieldset class="search2">
+				<legend>검색</legend>
+				<select name="key" style="width: 88px;" title="검색 옵션 선택">
+					<option value='bbsconts'>내 용</option>
+					<option value='bbsusername'>작성자</option>
+				</select> 
+				<input type="text" size='35' class="text" name="findStr" value="" title="검색어 입력" onkeydown="if(event.keyCode==13){return false;}" />
+				<!-- <input type="image" class="btn"	src="./images/list/btn_search.gif" alt="검색" style="border: 0px;" onclick="return submitForm(this,'list',1)" />-->
+				<input type="submit" class="qna_submit" value='검색' />
+			</fieldset>
+
 
 			</section>
 			</section>

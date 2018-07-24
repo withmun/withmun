@@ -7,14 +7,8 @@ public class ListVo {
 	String doc;
 	String bdate;
 	int reply;
-	int grp;
 	
-	public int getGrp() {
-		return grp;
-	}
-	public void setGrp(int grp) {
-		this.grp = grp;
-	}
+	
 	public String getName() {
 		return name;
 	}

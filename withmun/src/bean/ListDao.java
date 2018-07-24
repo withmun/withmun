@@ -147,9 +147,9 @@ public class ListDao {
 				   + "   select rownum num, r.* from ( "
 				   + "     select * from board where "
 				   + "       name like ? "
-				   + "       or doc like ?"
+				   + "       or doc like ? "
 				   + "     )r "
-				   + ") where (num between ? and ?) ORDER BY grp desc, serial";
+				   + ") where num between ? and ? ";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, "%"+ findStr + "%");
@@ -165,8 +165,6 @@ public class ListDao {
 					vo.setPwd(rs.getString("pwd"));
 					vo.setDoc(rs.getString("doc"));
 					vo.setBdate(rs.getDate("bdate").toString());
-					vo.setGrp(Integer.parseInt(rs.getString("grp")));
-					vo.setReply(Integer.parseInt(rs.getString("reply")));
 					
 				list.add(vo);
 			}
@@ -185,10 +183,10 @@ public class ListDao {
 			return list;
 		}
 	}
-
+	
 	public boolean insert(ListVo vo) {
 		boolean b = true;
-		 String sql = "insert into board values(?,?,seq_serial.nextval,?,sysdate,1,seq_serial.nextval)";
+		String sql = "insert into board values(?,?,seq_serial.nextval,?,sysdate,1)";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, vo.getName());
@@ -205,43 +203,6 @@ public class ListDao {
 			return b;
 		}
 	}
-	public boolean rep(ListVo vo) { // 답글
-		boolean b = true;
-		String sql = "insert into board values('관리자','a',seq_serial.nextval,?,sysdate,3,?)";
-		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, vo.getDoc());
-			ps.setInt(2, vo.getSerial());
-
-			int cnt = ps.executeUpdate(); // insert, update, delete
-			if(cnt <= 0) b = false;
-			
-		}catch(Exception ex) {
-			ex.printStackTrace();
-			b=false;
-		}finally {
-		return b;
-		}
-	}
-	
-	public boolean repUpdate(ListVo vo) { // 답글
-		boolean b = true;
-		String sql = "update board set reply = 2 where serial = ?";
-		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, vo.getSerial());
-
-			int cnt = ps.executeUpdate(); // insert, update, delete
-			if(cnt <= 0) b = false;
-			
-		}catch(Exception ex) {
-			ex.printStackTrace();
-			b=false;
-		}finally {
-		return b;
-		}
-	}
-	
 	
 	   public boolean delete(ListVo vo) { // 삭제
 		      boolean b = true;

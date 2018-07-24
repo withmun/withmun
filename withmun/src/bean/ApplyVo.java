@@ -15,46 +15,40 @@ public class ApplyVo {
 	String pwd = "";;
 	String field = "";
 	String name = "";
-	String photoC = "";
-	String photoS = "";
 	String jumin1 = "";
 	String jumin2 = "";
 	String addr = "";
 	String zipCode = "";
 	
-	String tel1 = "";
-	String tel2 = "";
-	String tel3 = "";
-	String mobile1 = "";
-	String mobile2 = "";
-	String mobile3 = "";
+	String tel = "";
+	String mobile = "";
 	
 	// 학업사항
 	String highName = "";
 	String highStart = "";
 	String highFinish = "";
-	String highJolup = "";
+	String highJolUp = "";
 	
 	String colName = "";
 	String colStart = "";
 	String colFinish = "";
 	String colMajor = "";
 	String colGrade = "";
-	String colJolup = "";
+	String colJolUp = "";
 	
 	String univName = "";
 	String univStart = "";
 	String univFinish = "";
 	String univMajor = "";
 	String univGrade = "";
-	String univJolup = "";
+	String univJolUp = "";
 	
 	String gradName = "";
 	String gradStart = "";
 	String gradFinish = "";
 	String gradMajor = "";
 	String gradGrade = "";
-	String gradJolup = "";
+	String gradJolUp = "";
 	
 	// 병역사항
 	String gunByul = "";
@@ -140,6 +134,9 @@ public class ApplyVo {
 	String motive = "";
 	String future = "";
 	
+	// 사진
+	String photoC = "";
+	String photoS = "";
 	
 	/*
 	 * Getters and Setters
@@ -175,6 +172,21 @@ public class ApplyVo {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+	
+	
 	public String getPhotoC() {
 		return photoC;
 	}
@@ -211,42 +223,7 @@ public class ApplyVo {
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
-	public String getTel1() {
-		return tel1;
-	}
-	public void setTel1(String tel1) {
-		this.tel1 = tel1;
-	}
-	public String getTel2() {
-		return tel2;
-	}
-	public void setTel2(String tel2) {
-		this.tel2 = tel2;
-	}
-	public String getTel3() {
-		return tel3;
-	}
-	public void setTel3(String tel3) {
-		this.tel3 = tel3;
-	}
-	public String getMobile1() {
-		return mobile1;
-	}
-	public void setMobile1(String mobile1) {
-		this.mobile1 = mobile1;
-	}
-	public String getMobile2() {
-		return mobile2;
-	}
-	public void setMobile2(String mobile2) {
-		this.mobile2 = mobile2;
-	}
-	public String getMobile3() {
-		return mobile3;
-	}
-	public void setMobile3(String mobile3) {
-		this.mobile3 = mobile3;
-	}
+	
 	public String getHighName() {
 		return highName;
 	}
@@ -265,12 +242,7 @@ public class ApplyVo {
 	public void setHighFinish(String highFinish) {
 		this.highFinish = highFinish;
 	}
-	public String getHighJolup() {
-		return highJolup;
-	}
-	public void setHighJolup(String highJolup) {
-		this.highJolup = highJolup;
-	}
+
 	public String getColName() {
 		return colName;
 	}
@@ -301,12 +273,7 @@ public class ApplyVo {
 	public void setColGrade(String colGrade) {
 		this.colGrade = colGrade;
 	}
-	public String getColJolup() {
-		return colJolup;
-	}
-	public void setColJolup(String colJolup) {
-		this.colJolup = colJolup;
-	}
+
 	public String getUnivName() {
 		return univName;
 	}
@@ -337,12 +304,7 @@ public class ApplyVo {
 	public void setUnivGrade(String univGrade) {
 		this.univGrade = univGrade;
 	}
-	public String getUnivJolup() {
-		return univJolup;
-	}
-	public void setUnivJolup(String univJolup) {
-		this.univJolup = univJolup;
-	}
+	
 	public String getGradName() {
 		return gradName;
 	}
@@ -373,12 +335,8 @@ public class ApplyVo {
 	public void setGradGrade(String gradGrade) {
 		this.gradGrade = gradGrade;
 	}
-	public String getGradJolup() {
-		return gradJolup;
-	}
-	public void setGradJolup(String gradJolup) {
-		this.gradJolup = gradJolup;
-	}
+	
+	
 	public String getGunByul() {
 		return gunByul;
 	}
@@ -781,7 +739,30 @@ public class ApplyVo {
 	public void setFuture(String future) {
 		this.future = future;
 	}
-	
+	public String getHighJolUp() {
+		return highJolUp;
+	}
+	public void setHighJolUp(String highJolUp) {
+		this.highJolUp = highJolUp;
+	}
+	public String getColJolUp() {
+		return colJolUp;
+	}
+	public void setColJolUp(String colJolUp) {
+		this.colJolUp = colJolUp;
+	}
+	public String getUnivJolUp() {
+		return univJolUp;
+	}
+	public void setUnivJolUp(String univJolUp) {
+		this.univJolUp = univJolUp;
+	}
+	public String getGradJolUp() {
+		return gradJolUp;
+	}
+	public void setGradJolUp(String gradJolUp) {
+		this.gradJolUp = gradJolUp;
+	}
 
 	
 }

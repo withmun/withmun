@@ -1,81 +1,65 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<div id="wrapper">
+    pageEncoding="UTF-8"%>
+<div id="wrapper" >
 	<div class="container">
-		<div class="top">
-			<a href="/">HOME</a> > <a href="./service_procedure.do">Other</a> >
-			<a href="./apply_enter.ap">입사지원</a> > <a href="./apply_privacy.ap"
-				class='on'>개인정보 동의</a>
-
+		<div class ="top">
+			<a href="./index.jsp" >HOME</a>
+			> <a href="./service_procedure.do" >Other</a>
+			> <a href="./service_procedure.do" class="on">서비스절차(외국어번역행정)</a>
 		</div>
-
 		<div class="toptit">
-			<h2>
-				<a href="./apply_enter.ap">개인정보 동의</a>
-			</h2>
-			<p>능력있는 인재들의 지원을 기다립니다.</p>
+		    <h2><a href="./service_procedure.do">서비스절차(외국어번역행정)</a></h2>
+			<p>신뢰와 나눔속에 사랑받는 기업으로 기억되고자 합니다.</p>
 		</div>
 	</div>
 </div>
 <!------------------------------------------------------------------->
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 <script>
-	$(document).ready(function() {
-		$(".jtoggle_up").click(function() {
-			$(".toggle_menu").slideDown();
-			$(".jtoggle_down").css("display", "block");
-			$(".jtoggle_up").css("display", "none");
-		});
-		$(".jtoggle_down").click(function() {
-			$(".toggle_menu").slideUp();
-			$(".jtoggle_down").css("display", "none");
-			$(".jtoggle_up").css("display", "block");
-		});
-
-		$(".jtoggle_up2").click(function() {
-			$(".toggle_menu2").slideDown();
-			$(".jtoggle_down2").css("display", "block");
-			$(".jtoggle_up2").css("display", "none");
-		});
-		$(".jtoggle_down2").click(function() {
-			$(".toggle_menu2").slideUp();
-			$(".jtoggle_down2").css("display", "none");
-			$(".jtoggle_up2").css("display", "block");
-		});
+$(document).ready(function(){
+	$(".jtoggle_up").click(function(){
+		$(".toggle_menu").slideDown();
+		$(".jtoggle_down").css("display","block");
+		$(".jtoggle_up").css("display","none");
+		$(".line2").css("display","block");
+		
 	});
+	$(".jtoggle_down").click(function(){
+		$(".toggle_menu").slideUp();
+		$(".jtoggle_down").css("display","none");
+		$(".jtoggle_up").css("display","block");
+		$(".line2").css("display","none");
+	
+	});
+});
 
-	function check() {
-		var f = document.frm_privacy;
+//개인정보 동의 관련
+function check() {
+	var f = document.frm_privacy;
 
-		// [동의] 버튼 클릭시
-		f.btnAgree.onclick = function() {
-			if (!f.chk_item.checked) {
-				alert('[수집하는 개인정보 항목]에 동의해주세요');
-				return false;
+	// [동의] 버튼 클릭시
+	f.btnAgree.onclick = function() {
+		if (!f.chk_item.checked) {
+			alert('[수집하는 개인정보 항목]에 동의해주세요');
+			return false;
 
-			} else if (!f.chk_collect.checked) {
-				alert('[개인정보 수집 및 이용목적]에 동의해주세요');
-				return false;
-			} else if (!f.chk_save.checked) {
-				alert('[개전정보 보유, 정정, 삭제 및 반환]에 동의해주세요');
-				return false;
+		} else if (!f.chk_collect.checked) {
+			alert('[개인정보 수집 및 이용목적]에 동의해주세요');
+			return false;
+		} else if (!f.chk_save.checked) {
+			alert('[개전정보 보유, 정정, 삭제 및 반환]에 동의해주세요');
+			return false;
 
-			} else if (!f.chk_right.checked) {
-				alert('[개인정보 수집 시 동의 거부 권리]에 동의해주세요');
-				return false;
-			}
+		} else if (!f.chk_right.checked) {
+			alert('[개인정보 수집 시 동의 거부 권리]에 동의해주세요');
+			return false;
 		}
-
 	}
-</script>
-<!------------------------------------------------------------------->
-<style>
-
-.content   {
-	width: 100%;
 
 }
+
+</script>
+<style>
 
 #div_info {
 	margin-bottom: 20px;
@@ -118,14 +102,15 @@
 
 </style>
 
+<!------------------------------------------------------------------->
 
-
-<div class="main">
+<div class ="main">
 	<div class="main_wrap">
-		<div class="content">
-			<div class="content_second" style="width:100%;margin-top: 0; text-align: center">
+	<%@ include file = "../../include/left_other.jsp" %>
+		<div class = "content" style="margin-top:0;text-align:center">			
+			<div class ="content_second" style="margin-top:0;text-align:center">							
 				
-				<!-- 여기에 내용을 넣는다 -->
+				<!-- 내용 시작 -->
 				<div id='wrap_privacy'>
 						<form name='frm_privacy' method='post' action='./apply_profile.ap'>
 							<h3 id='title'>개인정보 수집 및 이용에 대한 동의 안내</h3>
@@ -180,16 +165,13 @@
 							</div>
 						</form>
 					</div>
-				<!-- 내용의 끝 -->
-				
-			</div>
+				<!-- 내용 시작 -->
+								
+			</div>	
 		</div>
 	</div>
 </div>
 
-
 <script>
-	check();
+check();
 </script>
-
-

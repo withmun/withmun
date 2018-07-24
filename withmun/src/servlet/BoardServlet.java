@@ -31,9 +31,17 @@ public class BoardServlet extends HttpServlet{
 		if(jobs.indexOf("insert.bo")>=0){
 			ListDao dao = new ListDao();
 			ListVo vo = setVo(req);
+			String msg = "";
 			
-			dao.insert(vo);
 			
+			if (dao.insert(vo)) {
+				msg = "정상적으로 데이터가 저장되었습니다.";
+				System.out.println(msg);
+			}else {
+				msg ="dsdasd";
+				System.out.println(msg);
+				
+			}
 			RequestDispatcher disp = req.getRequestDispatcher("list.bo");
 			disp.forward(req,resp);
 			
@@ -41,8 +49,8 @@ public class BoardServlet extends HttpServlet{
 		else if(jobs.indexOf("list.bo") >= 0) {
 			String findStr = "";
 			ListDao dao = new ListDao();
+			ListVo vo = setVo(req);
 			int nowPage = 1;
-			
 			if(req.getParameter("nowPage") != null) {
 				nowPage = Integer.parseInt(req.getParameter("nowPage"));
 			}
@@ -65,19 +73,17 @@ public class BoardServlet extends HttpServlet{
 			
 			if(dao.delete(vo)) {
 				msg = "삭제 되었습니다.";
+				
 			}
+
 				RequestDispatcher disp = req.getRequestDispatcher("list.bo");
 				disp.forward(req,resp);
 		}
 		else if(jobs.indexOf("reply.bo") >= 0) {
-			ListDao dao = new ListDao();
-			ListVo vo = setVo3(req);
-			dao.rep(vo);
-			dao.repUpdate(vo);
 			
-			RequestDispatcher disp = req.getRequestDispatcher("list.bo");
-			disp.forward(req,resp);
 		}
+
+
 	}
 
 	public ListVo setVo(HttpServletRequest req) {
@@ -100,12 +106,9 @@ public class BoardServlet extends HttpServlet{
 
 		return vo;	
 	}
-	public ListVo setVo3(HttpServletRequest req) {
-		
-		ListVo vo = new ListVo();
-		vo.setSerial(Integer.parseInt(req.getParameter("hidden_serial")));
-		vo.setDoc(req.getParameter("hidden_reply_ta"));
-		return vo;	
-	}
+	
+
+	
+	
 	
 }

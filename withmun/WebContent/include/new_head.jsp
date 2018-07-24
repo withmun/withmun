@@ -185,7 +185,7 @@ var ff = document.frmLogin;
 					<a href="./about.do" target="_self" class="gnb_1da" style="">About WithMUN</a>			
 				</li>
 				<li class="gnb_1dli">
-					<a href="./list.bo" target="_self" class="gnb_1da ">Q & A</a>
+					<a href="./list.do" target="_self" class="gnb_1da ">Q & A</a>
 				</li>				
 				<li class="gnb_1dli">
 					<a href="./location.do" target="_self" class="gnb_1da ">Contact Us (Location)</a>

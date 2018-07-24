@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>    
+    
+    
 <div id="wrapper">
 	<div class="container">
 		<div class ="top">
@@ -46,21 +48,30 @@ $(document).ready(function(){
 function pageLoad() {
 	var f = document.frm_profile;
 	
-	// [임시저장] 버튼 클릭시
-	f.btnSave.onclick = function() {
-		f.action = './profileSave.ap';
+	
+	// [input file]이 변경되면
+	f.file.onchange = function(event) {
+		var file = event.srcElement;	// 이벤트가 발생한 태그
+		var url = file.files[0];		// 선택된 이미지의 경로
+		
+		var reader = new FileReader();	// FileReader객체를 가져온다
+		
+		// 사진파일이 로딩되면
+		reader.onload = function(e) {	
+			f.photo.src = e.target.result;	// 로딩된 결과를 뿌려준다
+		}
+		reader.readAsDataURL(url);		
+	}
+	
+	
+	// [저장하고 다음으로] 버튼 클릭시
+	f.btnNext.onclick = function() {
 		f.submit();
-	}
-	
-	if ( !('{$requestScope.msg}' == null) && !('${requestScope.msg}' == '')) {
-		alert('${requestScope.msg}');
-	}
-	
+	}	
 	
 } // End of pageLoad()
 
 </script>
-<!------------------------------------------------------------------->
 <style>
 
 
@@ -71,11 +82,9 @@ function pageLoad() {
 	margin: 0 auto;
 	text-align: left;
 }
-#pic {
-	border: 1px solid black;
-	background-image: url('http://via.placeholder.com/120x90');
-	width: 120px;
-	height: 90px;
+
+#div_photo {
+	border: 1px solid olive;
 }
 
 .sectionTitle {
@@ -105,35 +114,41 @@ th, td {
 .content{width:100%;}
 
 </style>
-
+<!------------------------------------------------------------------->
 
 <div class="main">
 	<div class="main_wrap">
 		<div class="content">
 			<div class="content_second" style="width:100%;margin-top: 0; text-align: center">
 				
-				<!-- 여기에 내용을 넣는다 -->
+				<!-- 내용 시작 -->
 				<div id='wrap_profile'>
-	
 				<h1>입사지원서</h1>
-					<form name='frm_profile' method='post' encType='multipart/form-data'>
-							<div id='pic'>
-							사진
+					<form name='frm_profile' method='post' encType='multipart/form-data' action='./profileInsert.ap'>
+							<div id='div_photo'>
+							<img src='http://placehold.it/90x120' name='photo' width='90' height='120' />
+							<input type='file' name='file' id='file' />
 							</div>
 							
 							<h5 class='sectionTitle'>지원정보</h5>
 							<table>
 								<tr>
 									<th>지원분야</th>
-									<td><input type='text' name='field' /><br></td>
+									<td><input type='text' name='field'  value='번역' /><br></td>
 									<th>이름</th>
-									<td><input type='text' name='name' value='${requestScope.newVo.name }' /></td>	
+									<td><input type='text' name='name' value='${name }' /></td>	
 								</tr>	
 								<tr>
 									<th>주민등록번호</th>
-									<td><input type='text' name='jumin1' size='6'/> - <input type='text' name='jumin2' size='7'/></td>
+									<td><input type='text' name='jumin1' value='111111' size='6'/> - <input type='text' name='jumin2' value='1111111' size='7'/></td>
 									<th>E-Mail</th>
-									<td><input type='email' name='email' value='${requestScope.newVo.email }' /></td>
+									<td><input type='email' name='email' value='${email }' /></td>
+								</tr>
+								<tr>
+									<th>암호</th>
+									<td><input type='text' name='pwd' value='${pwd }' /></td>
+									<th>암호확인</th>
+									<td><input type='text' name='pwdCheck' value='${pwd }' /></td>
 								</tr>
 							</table>
 							
@@ -141,22 +156,22 @@ th, td {
 							<table id='tbl_contact'>
 								<tr>
 									<th>주소</th>
-									<td colspan='5'><input type='text' name='addr'  /></td>
+									<td colspan='5'><input type='text' name='addr' value='동작구' /></td>
 								</tr>
 								<tr>
 									<th>우편번호</th>
-									<td><input type='text' name='zipCode' /></td>
+									<td><input type='text' name='zipCode' value='11111'/></td>
 									<th>전화번호</th>
 									<td>
-										<input type='text' name='tel1' size='3' />-
-										<input type='text' name='tel2' size='4'/>-
-										<input type='text' name='tel3' size='4 '/>
+										<input type='text' name='tel1' size='3' value='02' />-
+										<input type='text' name='tel2' size='4' value='123'/>-
+										<input type='text' name='tel3' size='4' value='4567'/>
 									</td>
 									<th>휴대전화</th>
 									<td>
-										<input type='text' name='mobile1' size='3' />-
-										<input type='text' name='mobile2' size='4'/>-
-										<input type='text' name='mobile3' size='4 '/>
+										<input type='text' name='mobile1' size='3' value='010' />-
+										<input type='text' name='mobile2' size='4' value='1111'/>-
+										<input type='text' name='mobile3' size='4' value='2222'/>
 										
 									</td>
 								</tr>
@@ -169,45 +184,45 @@ th, td {
 								<th>기간</th><th>학교명		</th><th>전공</th><th>평점</th><th>졸업여부</th>
 								
 								<tr>
-									<td><input type='date' name='highStart'> -
-									<input type='date' name='highFinish'></td>
-									<td><input type='text' name='highName' size='6'/>고등학교</td>
+									<td><input type='date' name='highStart' value='2000-01-01'> -
+									<input type='date' name='highFinish' value='2000-01-01'></td>
+									<td><input type='text' name='highName' value='JHTA' size='6'/>고등학교</td>
 									<td>-</td><td>- </td>
-									<td><input type='radio' name='radioHighJolup'>졸업
-										<input type='radio' name='radioHighJolup'>졸업예정
+									<td><input type='radio' name='radioHighJolUp' value='1' checked />졸업
+										<input type='radio' name='radioHighJolUp' value='0' />졸업예정
 									</td>
 								</tr>
 								
 								<tr>
-									<td><input type='date' name='colStart'> -
-									<input type='date' name='colFinish'></td>
-									<td><input type='text' name='colName' size='6'/>대학</td>
-									<td><input type='text' name='colMajor' size='6'/></td>
-									<td><input type='text' name='colGrade' size='6'/></td>
-									<td><input type='radio' name='radioHighJolup'>졸업
-										<input type='radio' name='radioHighJolup'>졸업예정
+									<td><input type='date' name='colStart' value='2000-01-01'> -
+									<input type='date' name='colFinish' value='2000-01-01'></td>
+									<td><input type='text' name='colName' size='6' value='JHTA' />대학</td>
+									<td><input type='text' name='colMajor' size='6' value='Java'/></td>
+									<td><input type='text' name='colGrade' size='6' value='3.0' /></td>
+									<td><input type='radio' name='radioColJolUp' value='1' checked/>졸업
+										<input type='radio' name='radioColJolUp' value='0 '/>졸업예정
 									</td>
 								</tr>
 								
 								<tr>
-									<td><input type='date' name='univStart'> -
-									<input type='date' name='univFinish'></td>
-									<td><input type='text' name='univName' size='6'/>대학교</td>
-									<td><input type='text' name='univMajor' size='6'/></td>
-									<td><input type='text' name='univGrade' size='6'/></td>
-									<td><input type='radio' name='radioUnivJolup'>졸업
-										<input type='radio' name='radioUnivJolup'>졸업예정
+									<td><input type='date' name='univStart' value='2000-01-01'> -
+									<input type='date' name='univFinish' value='2000-01-01'></td>
+									<td><input type='text' name='univName' size='6' value='JHTA' />대학교</td>
+									<td><input type='text' name='univMajor' size='6' value='Java' /></td>
+									<td><input type='text' name='univGrade' size='6' value='3.0' /></td>
+									<td><input type='radio' name='radioUnivJolUp' value='1'  checked />졸업
+										<input type='radio' name='radioUnivJolUp' value='0' />졸업예정
 									</td>
 								</tr>
 								
 								<tr>
-									<td><input type='date' name='gradStart'> -
-									<input type='date' name='gradFinish'></td>
-									<td><input type='text' name='gradName' size='6'/>대학원</td>
-									<td><input type='text' name='gradMajor' size='6'/></td>
-									<td><input type='text' name='gradGrade' size='6'/></td>
-									<td><input type='radio' name='radioGradJolup'>졸업
-										<input type='radio' name='radioGradJolup'>졸업예정
+									<td><input type='date' name='gradStart' value='2000-01-01'> -
+									<input type='date' name='gradFinish' value='2000-01-01'></td>
+									<td><input type='text' name='gradName' size='6' value='JHTA' />대학원</td>
+									<td><input type='text' name='gradMajor' size='6' value='JSP' /></td>
+									<td><input type='text' name='gradGrade' size='6'value='3.0' /></td>
+									<td><input type='radio' name='radioGradJolUp' value='1' checked />졸업
+										<input type='radio' name='radioGradJolUp' value='0'  checked />졸업예정
 									</td>
 								</tr>
 							</table>
@@ -218,18 +233,18 @@ th, td {
 									<th>군별</th><th>병과</th><th>계급</th><th>복무기간</th><th>제대구분</th><th>미필사유</th>
 								</tr>
 								<tr>
-									<td><input type='text' name='gunByul' size='6' /></td>
-									<td><input type='text' name='gunByung' size='6' /></td>
-									<td><input type='text' name='gunGye' size='6'/></td>
+									<td><input type='text' name='gunByul' size='6' value='JHTA' /></td>
+									<td><input type='text' name='gunByung' size='6' value='L1' /></td>
+									<td><input type='text' name='gunGye' size='6' value='반장' /></td>
 									<td>
-										<input type='date' name='gunStart' /> ~
-										<input type='date' name='gunFinish' />
+										<input type='date' name='gunStart' value='2018-04-16' /> ~
+										<input type='date' name='gunFinish' value='2018-10-23' />
 									</td>
 									<td>
-										<input type='radio' name='radiogunPil' /> 필  
-										<input type='radio' name='radiogunPil' /> 미필
+										<input type='radio' name='radioGunPil' value='1' checked /> 필  
+										<input type='radio' name='radioGunPil' value='0' /> 미필
 									</td>
-									<td><input type='text' name='gunMiPilWhy' size='10'/></td>
+									<td><input type='text' name='gunMiPilWhy' size='10' value='ㅌㅌㅌ' /></td>
 								</tr>					
 							</table>
 							
@@ -239,15 +254,15 @@ th, td {
 									<th>외국어시험명</th><th>공인점수</th><th>시험일</th>
 								</tr>
 								<tr>
-									<td><input type='text' name='lang1Name' size='6'/></td>
-									<td><input type='text' size='3' name='lang1Score'/>점</td>
-									<td><input type='date' name='lang1Date' /></td>
+									<td><input type='text' name='lang1Name' size='6' value='TOEIC'/></td>
+									<td><input type='text' size='3' name='lang1Score' value='990'/>점</td>
+									<td><input type='date' name='lang1Date' value='2000-01-01' /></td>
 									
 								</tr>
 								<tr>
-									<td><input type='text' name='lang2Name' size='6'/></td>
-									<td><input type='text' size='3' name='lang2Score'/>점</td>
-									<td><input type='date' size='3' name='lang2Date'/></td>
+									<td><input type='text' name='lang2Name' size='6' value='IELTS'/></td>
+									<td><input type='text' size='3' name='lang2Score' value='6.5' />점</td>
+									<td><input type='date' size='3' name='lang2Date' value='2000-01-01'/></td>
 								</tr>
 							</table>		
 							
@@ -256,14 +271,14 @@ th, td {
 									<th>자격명</th><th>취득일</th><th>시행처</th>
 								</tr>
 								<tr>
-									<td><input type='text' name='license1Name' /></td>
-									<td><input type='date' name='license1Date' /></td>
-									<td><input type='text' name='license1Org' /></td>						
+									<td><input type='text' name='license1Name' value='OCJP'/></td>
+									<td><input type='date' name='license1Date' value='2000-01-01' /></td>
+									<td><input type='text' name='license1Org' value='Oracle' /></td>						
 								</tr>
 								<tr>
-									<td><input type='text' name='license2Name' /></td>
-									<td><input type='date' name='license2Date' /></td>
-									<td><input type='text' name='license2Org' /></td>	
+									<td><input type='text' name='license2Name' value='정보처리기사'/></td>
+									<td><input type='date' name='license2Date' value='2000-01-01' /></td>
+									<td><input type='text' name='license2Org' value='산업인력공단'/></td>	
 								</tr>
 							</table>	
 							
@@ -273,23 +288,23 @@ th, td {
 									<th>활동기관(단체)</th><th>활동기간</th><th>활동내용</th>
 								</tr>
 								<tr>
-									<td><input type='text' name='activity1Org' size='10'></td>
+									<td><input type='text' name='activity1Org' size='10' value='UN'></td>
 									<td>
-										<input type='date' name='activity1Start' /> ~
-										<input type='date' name='activity1Finish' />
+										<input type='date' name='activity1Start' value='2000-01-01' /> ~
+										<input type='date' name='activity1Finish' value='2000-01-01' />
 									</td>
 									<td>
-									<input type='text' name='activity1Content'/>
+									<input type='text' name='activity1Content' value='구호활동'/>
 									</td>
 								</tr>
 								<tr>
-									<td><input type='text' name='activity2Org' size='10'></td>
+									<td><input type='text' name='activity2Org' size='10' value='JHTA'></td>
 									<td>
-										<input type='date' name='activity2Start' /> ~
-										<input type='date' name='activity2Finish' />
+										<input type='date' name='activity2Start' value='2000-01-01' /> ~
+										<input type='date' name='activity2Finish' value='2000-01-01' />
 									</td>
 									<td>
-									<input type='text' name='activity2Content'/>
+									<input type='text' name='activity2Content' value='반장'/>
 									</td>
 								</tr>
 							</table>
@@ -301,55 +316,55 @@ th, td {
 									<th>관계</th><th>성명</th><th>생년월일</th><th>최종학력</th><th>직업</th><th>회사명</th><th>직위</th><th>동거여부</th>
 								</tr>
 								<tr>
-									<td><input type='text' name='family1Rel' size='4' /></td>
-									<td><input type='text' name='family1Name' size='4' /> </td>
-									<td><input type='date' name='family1Birth'/></td>
-									<td><input type='text' name='family1Academic' size='6' /></td>
-									<td><input type='text' name='family1Job'  size='6'></td>
-									<td><input type='text' name='family1Company'  size='6'></td>
-									<td><input type='text' name='family1Position'  size='6'></td>
+									<td><input type='text' name='family1Rel' 		value='아버지'	 	 	size='4' /></td>
+									<td><input type='text' name='family1Name' 		value='홍길동'	 		size='4' /> </td>
+									<td><input type='date' name='family1Birth' 		value='2000-01-01'				/>	</td>
+									<td><input type='text' name='family1Academic' 	value='대졸' 				size='6' /></td>
+									<td><input type='text' name='family1Job'  		value='공무원' 			size='6'></td>
+									<td><input type='text' name='family1Company' 	value='구청'				 size='6'></td>
+									<td><input type='text' name='family1Position'   value='과장'				 size='6'></td>
 									<td>
-									<input type='radio' name='radioFamily1Livewith' />Y
-									<input type='radio' name='radioFamily1Livewith' />N
+									<input type='radio' name='radioFamily1Livewith' value='1' checked/>Y
+									<input type='radio' name='radioFamily1Livewith' value='0' />N
 									</td>
 								</tr>
 								<tr>
-									<td><input type='text' name='family2Rel' size='4' /></td>
-									<td><input type='text' name='family2Name' size='4' /> </td>
-									<td><input type='date' name='family2Birth'></td>
-									<td><input type='text' name='family2Academic' size='6' /></td>
-									<td><input type='text' name='family2Job'  size='6'></td>
-									<td><input type='text' name='family2Company'  size='6'></td>
-									<td><input type='text' name='family2Position'  size='6'></td>
+									<td><input type='text' name='family2Rel' 		value='아버지'	 	 				size='4' /></td>
+									<td><input type='text' name='family2Name' 		value='홍길동'	 				size='4' /> </td>
+									<td><input type='date' name='family2Birth'		value='2000-01-01'			></td>
+									<td><input type='text' name='family2Academic' 	value='대졸' 				size='6' /></td>
+									<td><input type='text' name='family2Job'  		value='공무원' 			size='6'></td>
+									<td><input type='text' name='family2Company' 	value='구청'					 size='6'></td>
+									<td><input type='text' name='family2Position' 	value='과장'				 size='6'></td>
 									<td>
-									<input type='radio' name='radioFamily2Livewith' />Y
-									<input type='radio' name='radioFamily2Livewith' />N
+									<input type='radio' name='radioFamily2Livewith' value='1' checked />Y
+									<input type='radio' name='radioFamily2Livewith' value='0' />N
 									</td>
 								</tr>
 								<tr>
-									<td><input type='text' name='famly3Rel' size='4' /></td>
-									<td><input type='text' name='family3Name' size='4' /> </td>
-									<td><input type='date' name='family3Birth'></td>
-									<td><input type='text' name='family3Academic' size='6' /></td>
-									<td><input type='text' name='family3Job'  size='6'></td>
-									<td><input type='text' name='family3Company'  size='6'></td>
-									<td><input type='text' name='family3Position'  size='6'></td>
+									<td><input type='text' name='family3Rel'		value='아버지'	 	 				 size='4' /></td>
+									<td><input type='text' name='family3Name' 		value='홍길동'	 					size='4' /> </td>
+									<td><input type='date' name='family3Birth'		value='2000-01-01'			></td>
+									<td><input type='text' name='family3Academic'	value='대졸' 					 size='6' /></td>
+									<td><input type='text' name='family3Job' 		value='공무원' 			 size='6'></td>
+									<td><input type='text' name='family3Company' 	value='구청'					 size='6'></td>
+									<td><input type='text' name='family3Position' 	value='과장'				 size='6'></td>
 									<td>
-									<input type='radio' name='radioFamily3Livewith' />Y
-									<input type='radio' name='radioFamily3Livewith' />N
+									<input type='radio' name='radioFamily3Livewith' value='1' checked/>Y
+									<input type='radio' name='radioFamily3Livewith' value='0' />N
 									</td>
 								</tr>
 								<tr>
-									<td><input type='text' name='family4Rel' size='4' /></td>
-									<td><input type='text' name='family4Name' size='4' /> </td>
-									<td><input type='date' name='family4Birth'></td>
-									<td><input type='text' name='family4Academic' size='6' /></td>
-									<td><input type='text' name='family4Job'  size='6'></td>
-									<td><input type='text' name='family4Company'  size='6'></td>
-									<td><input type='text' name='family4Position'  size='6'></td>
+									<td><input type='text' name='family4Rel'		value='아버지'	 	 			 size='4' /></td>
+									<td><input type='text' name='family4Name'		value='홍길동'	 			 size='4' /> </td>
+									<td><input type='date' name='family4Birth'		value='2000-01-01'		></td>
+									<td><input type='text' name='family4Academic'	value='대졸' 					 size='6' /></td>
+									<td><input type='text' name='family4Job'  		value='공무원' 			size='6'></td>
+									<td><input type='text' name='family4Company' 	value='구청'				 size='6'></td>
+									<td><input type='text' name='family4Position' 	value='과장'				 size='6'></td>
 									<td>
-									<input type='radio' name='radioFamily4Livewith' />Y
-									<input type='radio' name='radioFamily4Livewith' />N
+									<input type='radio' name='radioFamily4Livewith' value='1' checked />Y
+									<input type='radio' name='radioFamily4Livewith' value='0' />N
 									</td>
 								</tr>
 							
@@ -363,17 +378,17 @@ th, td {
 								
 								<tr>	
 									<td>
-										<input type='text' name='hobby' />
+										<input type='text' name='hobby' value='롤' />
 									</td>
 									<td>
-										<input type='text' name='special' />
+										<input type='text' name='special' value='노래'/>
 									</td>
 									<td>
-										<input type='text' name='religion' />
+										<input type='text' name='religion' value='천주교' />
 									</td>
 									<td>
-										<input type='radio' name='radioBoHun' />Y
-										<input type='radio' name='radioBoHun' />N
+										<input type='radio' name='radioBoHun' value='1' />Y
+										<input type='radio' name='radioBoHun' value='0' checked />N
 									</td>
 								</tr>
 								
@@ -382,8 +397,7 @@ th, td {
 			
 						<div id='buttons'>
 							<input type='reset' name='btnReset' value='Reset' />
-							<a href='./apply_introduce.ap'><input type='button' name=
-							'btnNext' value='저장하고 다음으로' /></a>
+							<input type='button' name='btnNext' value='저장하고 다음으로' />
 						</div>			
 					</form>
 				</div>
@@ -393,15 +407,6 @@ th, td {
 		</div>
 	</div>
 </div>
-
-
-
-
-
-
-
-
-
 
 	
 <script>
