@@ -167,9 +167,12 @@
 	top: 20px;
 	right: 15px;
 	padding: 0;
+	
 }
 
-.contents ul.simplecomment li div.btn a {
+
+
+.contents ul.simplecomment li div.btn input {
 	display: block;
 	font-size: 11px;
 	border: 1px solid #c6c6c6;
@@ -385,6 +388,7 @@ fieldset.search2 select {
 	font-size: 12px;
 	line-height: 18px;
 	vertical-align: middle;
+	
 }
 
 fieldset.search2 input.text {
@@ -457,50 +461,18 @@ fieldset.search3 p {
 	line-height: 18px;
 }
 
-/* button */
-div.btn-l {
-	margin-top: 15px;
-}
-
-div.btn-r {
-	margin-top: 15px;
-	text-align: right;
-}
-
-div.btn-r2 {
-	margin-top: -15px;
-	text-align: right;
-}
-
-div.btn-r3 {
-	margin-top: -30px;
-	text-align: right;
-	font-size: 0;
-	line-height: 0;
-	vertical-align: top;
-}
-
-div.btn-c {
-	margin-top: 15px;
-	text-align: center;
-}
-
-div.btn-c a img {
-	font-size: 0;
-	line-height: 0;
-	vertical-align: top;
-}
-
-div.btn-c2 {
-	height: 50px;
-	padding-top: 14px;
-	border: 1px solid #e2e2e2;
-	background: #f3f3f3;
-	text-align: center;
-}
 
 /* paging */
-div.paging {
+/* div.paging {
+	width: 100%;
+	margin-top: 15px;
+	text-align: center;
+	font-size: 0;
+	line-height: 0;
+	vertical-align: top;
+} */
+
+#buttons{
 	width: 100%;
 	margin-top: 15px;
 	text-align: center;
@@ -509,42 +481,67 @@ div.paging {
 	vertical-align: top;
 }
 
-div.paging a, div.paging strong {
+#buttons input {
 	display: inline-block;
-	width: 27px;
-	height: 28px;
-	margin-left: 4px;
+	width: 37px;
+	height: 37px;
+	margin: 0px 4px;
 	padding-top: 3px;
-	border: 1px solid #e0e0e2;
-	border-right: 1px solid #e0e0e2;
-	border-bottom: 1px solid #e0e0e2;
+	border: 2px solid #e0e0e2;
+	border-right: 2px solid #e0e0e2;
+	border-bottom: 2px solid #e0e0e2;
 	font-family: NANUM;
 	font-size: 12px;
 	line-height: 18px;
 	vertical-align: top;
+	cursor:pointer;
+	text-decoration:none;
+	
 }
 
-#buttons {
-	text-align: center;
-	margin: 20px;
-	padding: 20px;
-}
-
-#buttons .buttonP {
-	width: 30px;
-	height: auto;
-	padding: 0;
-	border: 0;
-}
-
-div#button a.first {
-	margin: 0;
-}
-
-div.paging strong, div.paging a:hover {
+div#buttons input{
 	color: #000;
 	font-weight: bold;
+	background:#ffffff;
+	boarder
 }
+
+
+.wrap {
+    width: 300px;
+    height: auto;
+    position: relative;
+    resize: none;
+ 	border-radius: 0.5em;
+  	
+}
+.wrap input{
+	border:none; 
+	border-right:0px; 
+	border-top:0px; 
+	boder-left:0px; 
+	boder-bottom:0px;
+	text-align:right;
+}
+.hidden_reply input{
+	display: inline-block;
+	width: 37px;
+	height: 34px;
+	margin: 0px 4px;
+	padding-top: 3px;
+	border: 2px solid #e0e0e2;
+	border-right: 2px solid #e0e0e2;
+	border-bottom: 2px solid #e0e0e2;
+	font-family: NANUM;
+	font-size: 12px;
+	line-height: 18px;
+	vertical-align: top;
+	cursor:pointer;
+	text-decoration:none;
+	background:#ffffff;
+	
+}
+
 </style>
 
 
@@ -566,23 +563,28 @@ div.paging strong, div.paging a:hover {
 								<section class="simplecomment write">
 									<strong>궁금한 점 물어봐주세요.</strong>
 									<strong_qna_id>이름</strong_qna_id>
-									<input type='text' name='qna_name' size=10px />
+									<input type='text' name='qna_name' size=10px onkeyup="chkByte(this,6)"/>
 									<strong_qna_id>PW</strong_qna_id>
-									<input type='password' name='qna_pwd' size=10px />
+									<input type='password' name='qna_pwd' size=10px onkeyup="chkByte(this,10)"/>
 									<div class="remaining">
 										<!-- <label>comment: <textarea rows="3" cols="50" name="bbsc" id="bbsc"></textarea></label> -->
-										<textarea rows="3" cols="50" name="document" id="document"></textarea>
+										<textarea rows="3" cols="50" name="document" id="document" onkeyup="chkByte(this,300)"></textarea>
+										
 										<input type='hidden' name='nowPage'
-											value='${empty param.nowPage ? 1 : param.nowPage }' /> <input
+											value='${empty param.nowPage ? 1 : param.nowPage }' /> 
+										<input
 											type="submit" value="작성" />
 							</form>
-			</div>
-			<span>최대 <em class="count">0</em>/300자
-			</span>
+			</div>	
 			</section>
-
+			
+			<!-- 실시간 글자수 -->
+			<div class='wrap'>
+			<input type='text' id='write' size='1' value='0' readOnly/>/300자
+			</div>
+			
 			<p class="simplecomment state">
-				<span>ㆍ</span> <strong>588</strong>개의 게시물이 있습니다.
+				<span>ㆍ</span> <strong>${dao.totSize}</strong>개의 게시물이 있습니다.
 			</p>
 
 			<c:forEach var="list" items="${list }">
@@ -596,6 +598,7 @@ div.paging strong, div.paging a:hover {
 						</div>
 
 						<p style="width: 88%;">
+			
 							${list.doc }
 							<!-- </a> -->
 						</p>
@@ -620,14 +623,16 @@ div.paging strong, div.paging a:hover {
 										onclick='list_delete(${list.serial})' value='삭제'>
 								</c:otherwise>
 							</c:choose>
-						</div> <input type='hidden' name='hidden_serial' value='${list.serial }' />
+						</div> 
+						<input type='hidden' name='hidden_serial' value='${list.serial }' />
 						<input type='hidden' name='hidden_reply' value='${list.reply }' />
 						<!-- 답변 내용 -->
 						<div class="hidden_reply" id="hidden_reply${list.serial }" style="display: none">
-							<textarea rows="2" cols="50" id="reply_ta" name="reply_ta"></textarea>
+							<textarea rows="2" cols="50" id="reply_ta" name="reply_ta" style="resize: none;"></textarea>
 							<p>
 								<input type='button' onclick='list_reply(${list.serial})'
-									value='등 록'> <input type='button'
+									value='등 록'> 
+								<input type='button'
 									onclick='list_reply_close(${list.serial})' value='닫 기'>
 							</p>
 						</div>
@@ -691,17 +696,14 @@ div.paging strong, div.paging a:hover {
 				<div class="btn-r3"></div>
 				<fieldset class="search2">
 					<legend>검색</legend>
-					<select name="key" style="width: 88px;" title="검색 옵션 선택">
-						<option value='bbsconts'>내 용</option>
-						<option value='bbsusername'>작성자</option>
-					</select> <input type="text" size='35' class="text" name="findStr"
+					<input type="text" size='35' class="text" name="findStr"
 						value="${param.findStr }" title="검색어 입력"
 						onkeydown="if(event.keyCode==13){return false;}" />
 					<!-- <input type="image" class="btn"	src="./images/list/btn_search.gif" alt="검색" style="border: 0px;" onclick="return submitForm(this,'list',1)" />-->
 					<input type="submit" class="qna_submit" name="findFind" value='검색' />
 				</fieldset>
 			</form>
-
+			
 			<!-- 페이징 script -->
 			<script>
 	document.frontBoardVo.onsubmit = function(){
@@ -718,16 +720,53 @@ div.paging strong, div.paging a:hover {
 	</script>
 			<!-- 삭제script -->
 			<script>
-	var ff = document.list_frm;
-	function list_delete(serial){
-		ff.hidden_serial.value = serial;
-		var prom = prompt('비밀번호를 입력해주세요.','PassWord');
-		ff.hidden_prompt.value = prom;
-		ff.action = 'delete.bo';
-		ff.submit();
-	}	
-	</script>
+			var ff = document.list_frm;
+			function list_delete(serial){
+				ff.hidden_serial.value = serial;
+				var prom = prompt('비밀번호를 입력해주세요.','PassWord');
+				ff.hidden_prompt.value = prom;
+				ff.action = 'delete.bo';
+				ff.submit();
+			}	
+			</script>
 
+			<!-- 실시간 문자수 script -->
+			<script>
+			function chkByte(name, msgMax) {
+			    var msgList = name.value;  // 글자가 입력되는 이벤트가 발생되는 value 값
+			    var msgListLength = msgList.length;  // 입력 되는 글자의 전체 길이
+			    
+			    var limitSize = msgMax;  // 제한 할 글자 길이
+			    var charOne = "";  // 한 글자씩 검사하기 위한 변수
+			    var charByte = 0;  // 입력 되고 있는 문자의 길이(바이트) 를 저장할 변수
+			    var msgLen = 0;  // 입력 내용을 담아 subString 할 변수
+			    var msgLast = "";  // 글자수가 초과 할 경우, 제한 할 마지막 글자 까지 보여준다
+			    
+			    for(var i = 0; i < msgListLength; i++) {  // 입력 되고 있는 글자의 전체길이를 루프를 돈다.
+			     charOne = msgList.charAt(i);  // 한글자씩 읽음
+			    
+			     // 한글은 2byte 이므로, 한글이 입력 되고 있을 경우 2를 더한다.
+			     if(escape(charOne).length > 4) {
+			      charByte += 1;
+			     } else {
+			      charByte++;  // 그 외에 경우에는 1byte. 1을 더한다.
+			     }
+			     
+			     if(charByte <= limitSize) {  // 전체 크기가 제한 글자 길이를 넘지 않는다면..
+			      msgLen = i + 1;
+			     }
+			    }
+			    
+			    if(charByte > limitSize) {
+			     alert(limitSize + " 글자를 초과 입력 할 수 없습니다.");
+			     msgLast = msgList.substr(0, msgLen);
+			     name.value = msgLast;
+			     charByte = limitSize;
+			    }
+			    
+			    document.getElementById('write').value = charByte;
+			   }
+			</script>
 			<!-- 답글 script -->
 			<script>
 	var ff = document.list_frm;
