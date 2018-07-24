@@ -13,20 +13,14 @@ CREATE TABLE APPLY
 	ANO varchar2(4) NOT NULL,
 	EMAIL varchar2(40) NOT NULL UNIQUE,
 	PWD varchar2(20) NOT NULL,
-	FIELD varchar2(20),
 	NAME varchar2(20),
-	PHOTOC varchar2(100),
-	PHOTOS varchar2(100),
+	FIELD varchar2(20),
 	JUMIN1 varchar2(6),
 	JUMIN2 varchar2(7),
 	ADDR varchar2(100),
 	ZIPCODE varchar2(10),
-	TEL1 number,
-	TEL2 number,
-	TEL3 number,
-	MOBILE1 number,
-	MOBILE2 number,
-	MOBILE3 number,
+	TEL varchar2(20),
+	MOBILE varchar2(20),
 	HIGH_NAME varchar2(20),
 	HIGH_START date,
 	HIGH_FINISH date,
@@ -92,7 +86,7 @@ CREATE TABLE APPLY
 	FAMILY2_COMPANY varchar2(20),
 	FAMILY2_POSITION varchar2(10),
 	FAMILY2_LIVEWITH char(1),
-	FAMLY3_REL varchar2(10),
+	FAMILY3_REL varchar2(10),
 	FAMILY3_NAME varchar2(20),
 	FAMILY3_BIRTH date,
 	FAMILY3_ACADEMIC varchar2(10),
@@ -116,7 +110,8 @@ CREATE TABLE APPLY
 	CHARACT varchar2(4000),
 	MOTIVE varchar2(4000),
 	FUTURE varchar2(4000),
-	PRIMARY KEY (ANO)
+	PHOTOC varchar2(100),
+	PHOTOS varchar2(100)
 );
 
 

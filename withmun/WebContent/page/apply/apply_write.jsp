@@ -1,17 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div id="wrapper">
+<div id="wrapper" >
 	<div class="container">
 		<div class ="top">
-			<a href="/" ">HOME</a>
+			<a href="./index.jsp" >HOME</a>
 			> <a href="./service_procedure.do" >Other</a>
-			> <a href="./apply_enter.ap" >입사지원</a>
-			> <a href="./apply_new.ap" class="on">입사지원서 작성</a>
+			> <a href="./service_procedure.do" class="on">서비스절차(외국어번역행정)</a>
 		</div>
 		<div class="toptit">
-		    <h2><a href="./apply_enter.ap">입사지원서 작성</a></h2>
-			<p>능력있는 인재들의 많은 지원 바랍니다.</p>
-		</div>	
+		    <h2><a href="./service_procedure.do">서비스절차(외국어번역행정)</a></h2>
+			<p>신뢰와 나눔속에 사랑받는 기업으로 기억되고자 합니다.</p>
+		</div>
 	</div>
 </div>
 <!------------------------------------------------------------------->
@@ -33,7 +32,6 @@ $(document).ready(function(){
 	
 	});
 });
-
 
 
 function check() {
@@ -69,9 +67,6 @@ function check() {
 
 </script>
 <style>
-.content {
-	width: 100%;
-}
 
 #wrap_write {
 	border: 1px solid gray;
@@ -99,11 +94,11 @@ th, td {
 <!------------------------------------------------------------------->
 
 <div class ="main">
-<div class="main_wrap">
-		<div class = "content">			
-			<div class ="content_second" style="margin-top:0;text-align:center">
-			     <div class ="second">
-			     
+	<div class="main_wrap">
+	<%@ include file = "../../include/left_other.jsp" %>
+		<div class = "content" style="margin-top:0;text-align:center">			
+			<div class ="content_second" style="margin-top:0;text-align:center">							
+				
 			     	<!-- 본문 시작-->
 			     	<div id='wrap_write'>
 						<form name='frm_write' method='post' action='./apply_new.ap'>
@@ -136,9 +131,8 @@ th, td {
 							<input type='button' name='btnLogin' value='Login' />
 						</form>
 					</div>	
-					<!-- 본문 끝-->	
-						
-				</div>
+					<!-- 본문 끝-->
+								
 			</div>	
 		</div>
 	</div>
