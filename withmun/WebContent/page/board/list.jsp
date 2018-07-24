@@ -566,7 +566,7 @@ div.paging strong, div.paging a:hover {
 								<section class="simplecomment write">
 									<strong>궁금한 점 물어봐주세요.</strong>
 									<strong_qna_id>이름</strong_qna_id>
-									<input type='text' name='qna_name' size=10px />
+									<input type='text' name='qna_name' size=10px/>
 									<strong_qna_id>PW</strong_qna_id>
 									<input type='password' name='qna_pwd' size=10px />
 									<div class="remaining">
@@ -642,6 +642,23 @@ div.paging strong, div.paging a:hover {
 							onclick = 'movePage(${dao.totPage})' id='btnLast' class = 'buttonP'/>
 		</c:if>
 	</div>
+
+			<!--/paging-->
+		<form name = 'list_find'>
+			<div class="btn-r3"></div>
+			<fieldset class="search2">
+				<legend>검색</legend>
+				<select name="key" style="width: 88px;" title="검색 옵션 선택">
+					<option value='bbsconts'>내 용</option>
+					<option value='bbsusername'>작성자</option>
+				</select> 
+				<input type="text" size='35' class="text" name="findStr" value="${param.findStr }" 
+						title="검색어 입력" onkeydown="if(event.keyCode==13){return false;}"/>
+				<!-- <input type="image" class="btn"	src="./images/list/btn_search.gif" alt="검색" style="border: 0px;" onclick="return submitForm(this,'list',1)" />-->
+				<input type="submit" class="qna_submit" name="findFind" value='검색' />
+			</fieldset>
+		</form>
+			
 	<!-- 페이징 script -->
 	<script>
 	document.frontBoardVo.onsubmit = function(){
@@ -665,23 +682,8 @@ div.paging strong, div.paging a:hover {
 		ff.hidden_prompt.value = prom;
 		ff.action = 'delete.bo';
 		ff.submit();
-	}
-	
+	}	
 	</script>
-
-			<!--/paging-->
-			<div class="btn-r3"></div>
-			<fieldset class="search2">
-				<legend>검색</legend>
-				<select name="key" style="width: 88px;" title="검색 옵션 선택">
-					<option value='bbsconts'>내 용</option>
-					<option value='bbsusername'>작성자</option>
-				</select> 
-				<input type="text" size='35' class="text" name="findStr" value="" title="검색어 입력" onkeydown="if(event.keyCode==13){return false;}" />
-				<!-- <input type="image" class="btn"	src="./images/list/btn_search.gif" alt="검색" style="border: 0px;" onclick="return submitForm(this,'list',1)" />-->
-				<input type="button" class="qna_submit" value='검색' />
-			</fieldset>
-
 
 			</section>
 			</section>

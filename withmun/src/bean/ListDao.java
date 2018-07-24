@@ -186,7 +186,7 @@ public class ListDao {
 	
 	public boolean insert(ListVo vo) {
 		boolean b = true;
-		String sql = "insert into board values(?,?,seq_serial.nextval,?,sysdate,1)";
+		 String sql = "insert into board values(?,?,seq_serial.nextval,?,sysdate,1,seq_serial.nextval)";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, vo.getName());
