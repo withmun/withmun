@@ -51,4 +51,15 @@
 		<servlet-name>login</servlet-name>
 		<url-pattern>*.login</url-pattern>		
 	</servlet-mapping>
+	
+	<!-- 검색 관련 -->
+	<servlet>
+		<servlet-name>find</servlet-name>
+		<servlet-class>servlet.FindServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>find</servlet-name>
+		<url-pattern>*.fd</url-pattern>		
+	</servlet-mapping>
 </web-app>
