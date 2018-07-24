@@ -55,7 +55,7 @@
 <div id="wrapper">
    <div class="container">
       <div class ="top">
-         <a href="/" ">HOME</a>
+         <a href="./index.jsp" ">HOME</a>
          > <a href="./about.do" >About WithMUN</a>
          > <a href="./location.do" class="on">오시는길</a>
       </div>

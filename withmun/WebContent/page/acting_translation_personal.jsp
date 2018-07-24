@@ -3,7 +3,7 @@
 <div id="wrapper">
 	<div class="container">
 		<div class ="top">
-			<a href="/" >HOME</a>
+			<a href="./index.jsp" >HOME</a>
 			> <a href="">외국어번역행정</a>
 			> <a href="">개인</a>
 			> <a href="./acting_translation_personal.do" class="on">번역공증대행</a>

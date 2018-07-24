@@ -5,7 +5,7 @@
 <div id="wrapper">
 	<div class="container">
 		<div class ="top">
-			<a href="/" >HOME</a>
+			<a href="./index.jsp" >HOME</a>
 			> <a href="">외국어번역행정</a>
 			> <a href="">기업</a>
 			> <a href="./english_contract.do" class="on">영문계약서작성</a>

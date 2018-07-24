@@ -5,7 +5,7 @@
 <div id="wrapper">
 	<div class="container">
 		<div class ="top">
-			<a href="/" >HOME</a>
+			<a href="./index.jsp" >HOME</a>
 			> <a href="">외국어번역행정</a>
 			> <a href="">개인</a>
 			> <a href="./aposcertification_genenal.do" class="on">아포스티유 및 대사관인증</a>

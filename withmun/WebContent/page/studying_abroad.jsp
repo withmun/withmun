@@ -3,7 +3,7 @@
 <div id="wrapper">
 	<div class="container">
 		<div class ="top">
-			<a href="/" >HOME</a>
+			<a href="./index.jsp" >HOME</a>
 			> <a href="">외국어번역행정</a>
 			> <a href="">개인</a>
 			> <a href="./studying_abroad.do" class="on">유학 및 이민서류 관련</a>

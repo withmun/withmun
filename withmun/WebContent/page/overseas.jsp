@@ -3,7 +3,7 @@
 <div id="wrapper">
 	<div class="container">
 		<div class ="top">
-			<a href="">HOME</a>
+			<a href="./index.jsp">HOME</a>
 			> <a href="">외국어번역행정</a>
 			> <a href="">기업</a>
 			> <a href="./overseas.do" class="on">해외법인(지사/투자)설립</a>

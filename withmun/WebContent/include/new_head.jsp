@@ -185,7 +185,7 @@ var ff = document.frmLogin;
 					<a href="./about.do" target="_self" class="gnb_1da" style="">About WithMUN</a>			
 				</li>
 				<li class="gnb_1dli">
-					<a href="./list.bo" target="_self" class="gnb_1da ">Q & A</a>
+					<a href="./list.do" target="_self" class="gnb_1da ">Q & A</a>
 				</li>				
 				<li class="gnb_1dli">
 					<a href="./location.do" target="_self" class="gnb_1da ">Contact Us (Location)</a>
@@ -196,12 +196,14 @@ var ff = document.frmLogin;
 				<li class="gnb_1dli">
 					<a href="" target="_self" class="gnb_1da ">Language ▼</a>	
 				</li>
-				<li class="gnb_1dli form-inline">
-				<span>
-  				<input type="text" class="form-control header_input_text" id="exampleInputName2" placeholder="검색">
-  				</span>
-  				<span class="glyphicon glyphicon-search header_search"> </span>
-  
+				
+	  			<li class="gnb_1dli form-inline">
+				<form id='frmSearch'  method='post' action='./find.fd'>
+					<span>
+	  				<input type="text" class="form-control header_input_text" name="findStr" id="findStr" placeholder="검색">
+	  				</span>
+	  				<span class="glyphicon glyphicon-search header_search"> </span>
+				</form>
 				</li>
 			</ul>
 		</nav>
@@ -451,6 +453,13 @@ $(document).ready(function (e) {
 		alert("진행중입니다");
 	});
 });
+
+$(function(){
+	$( '.header_search' ).click(function() {
+		$( "#frmSearch" ).submit();
+	});
+});
+
 
 </script>
 <div id ="div_line"></div>

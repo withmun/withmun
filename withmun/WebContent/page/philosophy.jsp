@@ -4,7 +4,7 @@
 <div id="wrapper" >
 	<div class="container">
 		<div class ="top">
-			<a href="" >HOME</a>
+			<a href="./index.jsp" >HOME</a>
 			> <a href="" >About WithMUN</a>
 			> <a href="./philosophy.do" class="on">경영이념</a>
 		</div>

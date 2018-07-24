@@ -3,7 +3,7 @@
 <div id="wrapper">
 	<div class="container">
 		<div class ="top">
-			<a href="/" >HOME</a>
+			<a href="./index.jsp" >HOME</a>
 			> <a href="./incorporate.do">일반행정</a>
 			> <a href="./incorporate.do" class="on">법인설립</a>
 		</div>

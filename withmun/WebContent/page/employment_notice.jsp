@@ -3,7 +3,7 @@
 <div id="wrapper">
 	<div class="container">
 		<div class ="top">
-			<a href="/" ">HOME</a>
+			<a href="./index.jsp" ">HOME</a>
 			> <a href="./service_procedure.do" >Other</a>
 			> <a href="./employment_notice.do" class="on">채용공고</a>
 		</div>
