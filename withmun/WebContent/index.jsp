@@ -14,5 +14,3 @@ if(request.getParameter("content") !=null){
 <jsp:include page="<%=content %>"/>
 
 <%@ include file = "./include/new_tail.jsp" %>
-
-    

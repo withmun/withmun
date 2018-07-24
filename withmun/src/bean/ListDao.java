@@ -140,7 +140,7 @@ public class ListDao {
 		}
 	}
 	
-	public List<ListVo> select(String findStr){
+	public List<ListVo> select(String findStr){ // 검색
 		pageCompute(findStr);
 		List<ListVo> list = new ArrayList<>();
 		String sql = "select * from ("
@@ -149,7 +149,7 @@ public class ListDao {
 				   + "       name like ? "
 				   + "       or doc like ?"
 				   + "     )r "
-				   + ") where (num between ? and ?) and reply = 1 or reply = 2";
+				   + ") where (num between ? and ?) ORDER BY grp desc, serial";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, "%"+ findStr + "%");
