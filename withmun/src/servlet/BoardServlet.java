@@ -31,6 +31,7 @@ public class BoardServlet extends HttpServlet{
 		if(jobs.indexOf("insert.bo")>=0){
 			ListDao dao = new ListDao();
 			ListVo vo = setVo(req);
+			
 			String msg = "";
 			
 			
@@ -49,8 +50,8 @@ public class BoardServlet extends HttpServlet{
 		else if(jobs.indexOf("list.bo") >= 0) {
 			String findStr = "";
 			ListDao dao = new ListDao();
-			ListVo vo = setVo(req);
 			int nowPage = 1;
+			
 			if(req.getParameter("nowPage") != null) {
 				nowPage = Integer.parseInt(req.getParameter("nowPage"));
 			}
@@ -84,14 +85,10 @@ public class BoardServlet extends HttpServlet{
 			ListVo vo = setVo3(req);
 			dao.rep(vo);
 			dao.repUpdate(vo);
-			if(dao.repCheck(vo)) {
-			}
 			
 			RequestDispatcher disp = req.getRequestDispatcher("list.bo");
 			disp.forward(req,resp);
 		}
-
-
 	}
 
 	public ListVo setVo(HttpServletRequest req) {
@@ -121,10 +118,5 @@ public class BoardServlet extends HttpServlet{
 		vo.setDoc(req.getParameter("hidden_reply"));
 		return vo;	
 	}
-	
-	
-
-	
-	
 	
 }
