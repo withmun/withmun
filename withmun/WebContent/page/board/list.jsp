@@ -48,505 +48,501 @@
 <style>
 /* container_list */
 .container_list {
-	position: relative;
-	margin: 0 auto 0;
+   position: relative;
+   margin: 0 auto 0;
 }
 
 /* simplecomment write */
 .contents .simplecomment.write {
-	background: #f5f5f5;
-	border-top: 1px solid #636363;
-	padding: 5px 0;
+   background: #f5f5f5;
+   border-top: 1px solid #636363;
+   padding: 5px 0;
 }
 
 .contents .simplecomment.write div {
-	width: 100%;
-	height: 60px;
-	padding: 20px 2% 0 20px;;
+   width: 100%;
+   height: 60px;
+   padding: 20px 2% 0 20px;;
 }
 
 .contents .simplecomment.write strong {
-	font-size: 14px;
-	font-weight: 400;
-	color: #666666;
-	display: block;
-	padding: 15px 20px;
+   font-size: 14px;
+   font-weight: 400;
+   color: #666666;
+   display: block;
+   padding: 15px 20px;
 }
 
 .contents .simplecomment.write strong_qna_id {
-	font-size: 14px;
-	font-weight: 400;
-	color: #666666;
-	padding: 10px 20px;
+   font-size: 14px;
+   font-weight: 400;
+   color: #666666;
+   padding: 10px 20px;
 }
 
 .contents .simplecomment.write div textarea {
-	float: left;
-	height: 60px;
-	width: 87%;
-	border: 1px solid #c9c9c9;
-	background: #FFF;
-	resize: none;
-	padding: 5px 1%;
+   float: left;
+   height: 60px;
+   width: 87%;
+   border: 1px solid #c9c9c9;
+   background: #FFF;
+   resize: none;
+   padding: 5px 1%;
 }
 
 .contents .simplecomment.write div input {
-	margin-left: 18px;
-	height: 60px;
-	width: 10%;
-	border: 1px solid #636363;
-	background: #636363;
-	color: #FFF;
+   margin-left: 18px;
+   height: 60px;
+   width: 10%;
+   border: 1px solid #636363;
+   background: #636363;
+   color: #FFF;
 }
 
 .contents .simplecomment.write span {
-	display: block;
-	clear: both;
-	padding: 10px 15px;
-	color: #aaaaaa;
-	font-size: 11px;
+   display: block;
+   clear: both;
+   padding: 10px 15px;
+   color: #aaaaaa;
+   font-size: 11px;
 }
 
 /* simplecomment state */
 .contents .simplecomment.state {
-	margin-top: 30px;
-	border-bottom: 1px solid #e1e1e1;
-	color: #aaaaaa;
-	padding: 5px 0;
+   margin-top: 30px;
+   border-bottom: 1px solid #e1e1e1;
+   color: #aaaaaa;
+   padding: 5px 0;
 }
 
 .contents .simplecomment.state span {
-	font-size: 2px;
+   font-size: 2px;
 }
 
 .contents .simplecomment.state strong {
-	color: #0e3d9c;
-	font-weight: 400;
+   color: #0e3d9c;
+   font-weight: 400;
 }
 
 /* simplecomment */
 .contents ul.simplecomment li {
-	border-bottom: 1px solid #e1e1e1;
-	position: relative;
+   border-bottom: 1px solid #e1e1e1;
+   position: relative;
 }
 
 .contents ul.simplecomment li div {
-	padding: 20px;
-	padding-bottom: 5px;
+   padding: 20px;
+   padding-bottom: 5px;
 }
 
 .contents ul.simplecomment li div strong {
-	color: #0e3d9c;
-	font-weight: 400;
+   color: #0e3d9c;
+   font-weight: 400;
 }
 
 .contents ul.simplecomment li div .bar {
-	color: #cccccc;
-	display: inline-block;
-	padding: 0 10px;
+   color: #cccccc;
+   display: inline-block;
+   padding: 0 10px;
 }
 
 .contents ul.simplecomment li div .date {
-	color: #888888;
-	letter-spacing: -1px;
+   color: #888888;
+   letter-spacing: -1px;
 }
 
 .contents ul.simplecomment li div .reply {
-	color: #bdbdbd;
-	display: inline-block;
-	padding: 0 10px;
+   color: #bdbdbd;
+   display: inline-block;
+   padding: 0 10px;
 }
 
 .contents ul.simplecomment li p {
-	color: #444444;
-	padding: 5px 20px 20px;
+   color: #444444;
+   padding: 5px 20px 20px;
 }
 
 .contents ul.simplecomment li div.btn {
-	position: absolute;
-	top: 20px;
-	right: 15px;
-	padding: 0;
+   position: absolute;
+   top: 20px;
+   right: 15px;
+   padding: 0;
+   
 }
 
-.contents ul.simplecomment li div.btn a {
-	display: block;
-	font-size: 11px;
-	border: 1px solid #c6c6c6;
-	color: #858585;
-	padding: 5px 5px;
-	height: 25px;
-	line-height: 11px;
-	background: #FFF;
-	margin-bottom: 3px;
-	font-family: "NanumGothic";
+
+
+.contents ul.simplecomment li div.btn input {
+   display: block;
+   font-size: 11px;
+   border: 1px solid #c6c6c6;
+   color: #858585;
+   padding: 5px 5px;
+   height: 25px;
+   line-height: 11px;
+   background: #FFF;
+   margin-bottom: 3px;
+   font-family: "NanumGothic";
 }
 
 /* con */
 .con h2>strong, .contents h3>strong {
-	color: #ff5d13;
+   color: #ff5d13;
 }
 
 .con p {
-	line-height: 1.5;
-	padding-bottom: 10px;
-	text-align: justify;
+   line-height: 1.5;
+   padding-bottom: 10px;
+   text-align: justify;
 }
 
 .con p.padding0 {
-	padding: 0;
+   padding: 0;
 }
 
 .con .pdl0 {
-	padding-left: 0;
+   padding-left: 0;
 }
 
 .con p a {
-	color: #0e3d9c;
-	text-decoration: underline;
+   color: #0e3d9c;
+   text-decoration: underline;
 }
 
 .con .box01 {
-	background: #f1f1f1;
-	padding: 10px 20px;
-	overflow: hidden;
+   background: #f1f1f1;
+   padding: 10px 20px;
+   overflow: hidden;
 }
 
 .con .box01_left {
-	width: 50% background:#f1f1f1;
-	padding: 0px 0 0 20px;
-	overflow: hidden;
+   width: 50% background:#f1f1f1;
+   padding: 0px 0 0 20px;
+   overflow: hidden;
 }
 
 .con .box01_right {
-	background: #f1f1f1;
-	padding: 0px 20px;
-	overflow: hidden;
+   background: #f1f1f1;
+   padding: 0px 20px;
+   overflow: hidden;
 }
 
 .con {
-	width: 750px;
-	margin: 0 auto;
-	padding-bottom: 40px;
-	font-size: 13px;
+   width: 750px;
+   margin: 0 auto;
+   padding-bottom: 40px;
+   font-size: 13px;
 }
 
 .con section {
-	margin-bottom: 30px;
-	overflow: hidden;
+   margin-bottom: 30px;
+   overflow: hidden;
 }
 
 .con section section {
-	margin-bottom: 20px;
+   margin-bottom: 20px;
 }
 
 .con h2 {
-	position: relative;
-	color: #333333;
-	font-size: 22px;
-	font-family: "NanumGothicBD";
-	font-weight: 400;
-	line-height: 20px;
-	margin-bottom: 20px;
+   position: relative;
+   color: #333333;
+   font-size: 22px;
+   font-family: "NanumGothicBD";
+   font-weight: 400;
+   line-height: 20px;
+   margin-bottom: 20px;
 }
 
 .con h3 {
-	position: relative;
-	font-size: 16px;
-	font-family: "NanumGothicBD";
-	font-weight: 400;
-	line-height: 20px;
-	margin: 10px 0;
+   position: relative;
+   font-size: 16px;
+   font-family: "NanumGothicBD";
+   font-weight: 400;
+   line-height: 20px;
+   margin: 10px 0;
 }
 
 /* subContents */
 section.subContents {
-	background-color: #ffffff;
-	font-weight: 300;
-	font-size: 15px;
-	line-height: 24px;
+   background-color: #ffffff;
+   font-weight: 300;
+   font-size: 15px;
+   line-height: 24px;
 }
 
 section.subContents>.contents {
-	width: 798px;
-	padding: 20px;
-	color: #5c5c5c;
-	line-height: 18px;
+   width: 798px;
+   padding: 20px;
+   color: #5c5c5c;
+   line-height: 18px;
 }
 
 section.subContents>.contents.full {
-	padding-left: 20px;
+   padding-left: 20px;
 }
 
 section.subContents>.contents>nav {
-	width: 700px;
-	top: 0;
-	left: -40px;
-	padding: 20px 45px 19px;
-	position: relative;
-	height: 30px;
-	border-bottom: 1px #e6e6e6;
-	background: #FFF;
-	margin-bottom: 40px;
+   width: 700px;
+   top: 0;
+   left: -40px;
+   padding: 20px 45px 19px;
+   position: relative;
+   height: 30px;
+   border-bottom: 1px #e6e6e6;
+   background: #FFF;
+   margin-bottom: 40px;
 }
 
 section.subContents>.contents.full>nav {
-	width: 910px;
+   width: 910px;
 }
 
 section.subContents>.contents>nav>h1 {
-	color: #333333;
-	font-weight: 400;
-	font-family: "NanumGothicBD";
-	font-size: 30px;
-	line-height: 30px;
+   color: #333333;
+   font-weight: 400;
+   font-family: "NanumGothicBD";
+   font-size: 30px;
+   line-height: 30px;
 }
 
 section.subContents>.contents>nav>p {
-	position: absolute;
-	top: 30px;
-	right: 0px;
-	color: #999999;
-	font-size: 15px;
+   position: absolute;
+   top: 30px;
+   right: 0px;
+   color: #999999;
+   font-size: 15px;
 }
 
 section.subContents>.contents>nav>p>a {
-	color: #999999;
+   color: #999999;
 }
 
 section.subContents>.contents>nav>p>a.on {
-	color: #666666;
+   color: #666666;
 }
 
 /* replyform */
 .replyform {
-	height: 30px;
-	border-top: 1px dashed #e1e1e1;
-	position: relative;
-	padding: 10px 0 !important;
+   height: 30px;
+   border-top: 1px dashed #e1e1e1;
+   position: relative;
+   padding: 10px 0 !important;
 }
 
 .replyform textarea {
-	float: left;
-	height: 30px;
-	width: 82%;
-	border: 1px solid #e1e1e1;
-	background: #FFF;
-	resize: none;
-	margin-left: 5%;
+   float: left;
+   height: 30px;
+   width: 82%;
+   border: 1px solid #e1e1e1;
+   background: #FFF;
+   resize: none;
+   margin-left: 5%;
 }
 
 .replyform p {
-	float: right;
-	height: 30px;
-	width: 10%;
-	line-height: 30px;
-	text-align: center;
-	padding: 0 !important;
-	color: #858585;
-	font-size: 11px;
-	margin-right: 1%;
+   float: right;
+   height: 30px;
+   width: 10%;
+   line-height: 30px;
+   text-align: center;
+   padding: 0 !important;
+   color: #858585;
+   font-size: 11px;
+   margin-right: 1%;
 }
 
 .replyform p a {
-	color: #858585;
-	font-size: 11px;
-	font-family: "NanumGothic";
+   color: #858585;
+   font-size: 11px;
+   font-family: "NanumGothic";
 }
 
 /* reply */
 li.reply .replyform p {
-	padding: 0 !important;
+   padding: 0 !important;
 }
 
 li.reply {
-	
+   
 }
 
 li.reply {
-	border-bottom: 1px dashed #e1e1e1 !important;
+   border-bottom: 1px dashed #e1e1e1 !important;
 }
 
 li.reply p {
-	padding: 5px 50px 20px !important;
+   padding: 5px 50px 20px !important;
 }
 
 /* fieldset */
 fieldset.search2 {
-	display: block;
-	width: 723px;
-	height: 33px;
-	margin-top: 45px;
-	padding-top: 10px;
-	text-align: center;
+   display: block;
+   width: 723px;
+   height: 33px;
+   margin-top: 45px;
+   padding-top: 10px;
+   text-align: center;
 }
 
 fieldset.search2 select {
-	font-size: 12px;
-	line-height: 18px;
-	vertical-align: middle;
+   font-size: 12px;
+   line-height: 18px;
+   vertical-align: middle;
+   
 }
 
 fieldset.search2 input.text {
-	font-size: 12px;
-	line-height: 18px;
-	vertical-align: middle;
+   font-size: 12px;
+   line-height: 18px;
+   vertical-align: middle;
 }
 
 fieldset.search2 input.btn {
-	vertical-align: middle;
+   vertical-align: middle;
 }
 
 fieldset.search2 input.qna_submit {
-	height: 22px;
-	width: 7%;
-	margin-left: 5px;
-	border: 1px solid #1f497d;
-	background: #1f497d;
-	color: #FFF;
+   height: 22px;
+   width: 7%;
+   margin-left: 5px;
+   border: 1px solid #1f497d;
+   background: #1f497d;
+   color: #FFF;
 }
 
 fieldset.search3 {
-	display: block;
-	height: 57px;
-	padding-top: 5px;
-	border: 1px solid #424242;
-	background: #535353;
-	text-align: center;
+   display: block;
+   height: 57px;
+   padding-top: 5px;
+   border: 1px solid #424242;
+   background: #535353;
+   text-align: center;
 }
 
 fieldset.search3 select {
-	vertical-align: middle;
+   vertical-align: middle;
 }
 
 fieldset.search3 input.text {
-	border: 1px solid #3d3d3d;
-	vertical-align: middle;
+   border: 1px solid #3d3d3d;
+   vertical-align: middle;
 }
 
 fieldset.search3 input.img {
-	vertical-align: middle;
+   vertical-align: middle;
 }
 
 fieldset.search3 span {
-	margin-left: 7px;
+   margin-left: 7px;
 }
 
 fieldset.search3 input.check {
-	width: 13px;
-	height: 13px;
-	margin: 0;
-	padding: 0;
-	vertical-align: middle;
+   width: 13px;
+   height: 13px;
+   margin: 0;
+   padding: 0;
+   vertical-align: middle;
 }
 
 fieldset.search3 label {
-	display: inline-block;
-	color: #ffffff;
-	font-family: NANUM;
-	font-size: 12px;
-	line-height: 18px;
-	vertical-align: middle;
+   display: inline-block;
+   color: #ffffff;
+   font-family: NANUM;
+   font-size: 12px;
+   line-height: 18px;
+   vertical-align: middle;
 }
 
 fieldset.search3 p {
-	margin-top: 7px;
-	color: #dddddd;
-	font-family: NANUM;
-	font-size: 12px;
-	line-height: 18px;
+   margin-top: 7px;
+   color: #dddddd;
+   font-family: NANUM;
+   font-size: 12px;
+   line-height: 18px;
 }
 
-/* button */
-div.btn-l {
-	margin-top: 15px;
-}
-
-div.btn-r {
-	margin-top: 15px;
-	text-align: right;
-}
-
-div.btn-r2 {
-	margin-top: -15px;
-	text-align: right;
-}
-
-div.btn-r3 {
-	margin-top: -30px;
-	text-align: right;
-	font-size: 0;
-	line-height: 0;
-	vertical-align: top;
-}
-
-div.btn-c {
-	margin-top: 15px;
-	text-align: center;
-}
-
-div.btn-c a img {
-	font-size: 0;
-	line-height: 0;
-	vertical-align: top;
-}
-
-div.btn-c2 {
-	height: 50px;
-	padding-top: 14px;
-	border: 1px solid #e2e2e2;
-	background: #f3f3f3;
-	text-align: center;
-}
 
 /* paging */
-div.paging {
-	width: 100%;
-	margin-top: 15px;
-	text-align: center;
-	font-size: 0;
-	line-height: 0;
-	vertical-align: top;
+/* div.paging {
+   width: 100%;
+   margin-top: 15px;
+   text-align: center;
+   font-size: 0;
+   line-height: 0;
+   vertical-align: top;
+} */
+
+#buttons{
+   width: 100%;
+   margin-top: 15px;
+   text-align: center;
+   font-size: 0;
+   line-height: 0;
+   vertical-align: top;
 }
 
-div.paging a, div.paging strong {
-	display: inline-block;
-	width: 27px;
-	height: 28px;
-	margin-left: 4px;
-	padding-top: 3px;
-	border: 1px solid #e0e0e2;
-	border-right: 1px solid #e0e0e2;
-	border-bottom: 1px solid #e0e0e2;
-	font-family: NANUM;
-	font-size: 12px;
-	line-height: 18px;
-	vertical-align: top;
+#buttons input {
+   display: inline-block;
+   width: 37px;
+   height: 37px;
+   margin: 0px 4px;
+   padding-top: 3px;
+   border: 2px solid #e0e0e2;
+   border-right: 2px solid #e0e0e2;
+   border-bottom: 2px solid #e0e0e2;
+   font-family: NANUM;
+   font-size: 12px;
+   line-height: 18px;
+   vertical-align: top;
+   cursor:pointer;
+   text-decoration:none;
+   
 }
 
-#buttons {
-	text-align: center;
-	margin: 20px;
-	padding: 20px;
+div#buttons input{
+   color: #000;
+   font-weight: bold;
+   background:#ffffff;
+   boarder
 }
 
-#buttons .buttonP {
-	width: 30px;
-	height: auto;
-	padding: 0;
-	border: 0;
+
+.wrap {
+    width: 300px;
+    height: auto;
+    position: relative;
+    resize: none;
+    border-radius: 0.5em;
+     
+}
+.wrap input{
+   border:none; 
+   border-right:0px; 
+   border-top:0px; 
+   boder-left:0px; 
+   boder-bottom:0px;
+   text-align:right;
+}
+.hidden_reply input{
+   display: inline-block;
+   width: 37px;
+   height: 34px;
+   margin: 0px 4px;
+   padding-top: 3px;
+   border: 2px solid #e0e0e2;
+   border-right: 2px solid #e0e0e2;
+   border-bottom: 2px solid #e0e0e2;
+   font-family: NANUM;
+   font-size: 12px;
+   line-height: 18px;
+   vertical-align: top;
+   cursor:pointer;
+   text-decoration:none;
+   background:#ffffff;
+   
 }
 
-div#button a.first {
-	margin: 0;
-}
-
-div.paging strong, div.paging a:hover {
-	color: #000;
-	font-weight: bold;
-}
 </style>
-
 
 <div class="main">
 	<div class="main_wrap">
@@ -565,13 +561,13 @@ div.paging strong, div.paging a:hover {
 
 								<section class="simplecomment write">
 									<strong>궁금한 점 물어봐주세요.</strong>
-									<strong_qna_id>이름</strong_qna_id>
-									<input type='text' name='qna_name' size=10px />
-									<strong_qna_id>PW</strong_qna_id>
-									<input type='password' name='qna_pwd' size=10px />
-									<div class="remaining">
-										<!-- <label>comment: <textarea rows="3" cols="50" name="bbsc" id="bbsc"></textarea></label> -->
-										<textarea rows="3" cols="50" name="document" id="document"></textarea>
+									   <strong_qna_id>이름</strong_qna_id>
+                           <input type='text' name='qna_name' size=10px onkeyup="chkByte(this,6)"/>
+                           <strong_qna_id>PW</strong_qna_id>
+                           <input type='password' name='qna_pwd' size=10px onkeyup="chkByte(this,10)"/>
+                           <div class="remaining">
+                              <!-- <label>comment: <textarea rows="3" cols="50" name="bbsc" id="bbsc"></textarea></label> -->
+                              <textarea rows="3" cols="50" name="document" id="document" onkeyup="chkByte(this,300)"></textarea>
 										<input type='hidden' name='nowPage'
 											value='${empty param.nowPage ? 1 : param.nowPage }' /> <input
 											type="submit" value="작성" />
@@ -580,10 +576,13 @@ div.paging strong, div.paging a:hover {
 			<span>최대 <em class="count">0</em>/300자
 			</span>
 			</section>
-
-			<p class="simplecomment state">
-				<span>ㆍ</span> <strong>588</strong>개의 게시물이 있습니다.
-			</p>
+<!-- 실시간 글자수 -->
+         <div class='wrap'>
+         <input type='text' id='write' size='1' value='0' readOnly/>/300자
+         </div>
+		<p class="simplecomment state">
+            <span>ㆍ</span> <strong>${dao.totSize}</strong>개의 게시물이 있습니다.
+         </p>
 
 			<c:forEach var="list" items="${list }">
 			<c:if test = "${list.reply eq 1 or list.reply eq 2 }">
@@ -762,7 +761,46 @@ div.paging strong, div.paging a:hover {
 		ff.action = 'list.bo';
 		ff.submit();
 	}
+	
+	
 	</script>
+	<!-- 실시간 문자수 script -->
+         <script>
+         function chkByte(name, msgMax) {
+             var msgList = name.value;  // 글자가 입력되는 이벤트가 발생되는 value 값
+             var msgListLength = msgList.length;  // 입력 되는 글자의 전체 길이
+             
+             var limitSize = msgMax;  // 제한 할 글자 길이
+             var charOne = "";  // 한 글자씩 검사하기 위한 변수
+             var charByte = 0;  // 입력 되고 있는 문자의 길이(바이트) 를 저장할 변수
+             var msgLen = 0;  // 입력 내용을 담아 subString 할 변수
+             var msgLast = "";  // 글자수가 초과 할 경우, 제한 할 마지막 글자 까지 보여준다
+             
+             for(var i = 0; i < msgListLength; i++) {  // 입력 되고 있는 글자의 전체길이를 루프를 돈다.
+              charOne = msgList.charAt(i);  // 한글자씩 읽음
+             
+              // 한글은 2byte 이므로, 한글이 입력 되고 있을 경우 2를 더한다.
+              if(escape(charOne).length > 4) {
+               charByte += 1;
+              } else {
+               charByte++;  // 그 외에 경우에는 1byte. 1을 더한다.
+              }
+              
+              if(charByte <= limitSize) {  // 전체 크기가 제한 글자 길이를 넘지 않는다면..
+               msgLen = i + 1;
+              }
+             }
+             
+             if(charByte > limitSize) {
+              alert(limitSize + " 글자를 초과 입력 할 수 없습니다.");
+              msgLast = msgList.substr(0, msgLen);
+              name.value = msgLast;
+              charByte = limitSize;
+             }
+             
+             document.getElementById('write').value = charByte;
+            }
+         </script>
 
 			</section>
 			</section>
