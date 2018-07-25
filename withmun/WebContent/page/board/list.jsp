@@ -4,7 +4,7 @@
 <div id="wrapper">
 	<div class="container">
 		<div class="top">
-			<a href="/">HOME</a> > <a href="./about.do">About WithMUN</a> > <a
+			<a href="/">HOME</a> > <a href="./service_procedure.do">Other</a> > <a
 				href="./list.do">Q & A</a>
 		</div>
 
@@ -51,7 +51,7 @@
 <div class="main">
 	<div class="main_wrap">
 
-		<%@ include file="../../include/left_about.jsp"%>
+		<%@ include file="../../include/left_other.jsp"%>
 
 		<div class="content">
 			<div class="container_list">
@@ -72,9 +72,8 @@
                            <div class="remaining">
                               <!-- <label>comment: <textarea rows="3" cols="50" name="bbsc" id="bbsc"></textarea></label> -->
                               <textarea rows="3" cols="50" name="document" id="document" onkeyup="chkByte(this,300)"></textarea>
-										<input type='hidden' name='nowPage'
-											value='${empty param.nowPage ? 1 : param.nowPage }' /> <input
-											type="submit" value="작성" />
+										<input type='hidden' name='nowPage' value='${empty param.nowPage ? 1 : param.nowPage }' /> 
+										<input type="submit" value="작성" />
 							</form>
 			</div>
 			<span>최대 <em class="count">0</em>/300자
