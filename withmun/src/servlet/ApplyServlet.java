@@ -89,8 +89,13 @@ public class ApplyServlet extends HttpServlet {
 			String pwd = req.getParameter("pwd");
 			
 			// apply_profile.jsp로 넘긴다
+			HttpSession session = req.getSession();
+			
+			// email은 session 영억으로 보낸다
+			session.setAttribute("email", email);
+			
+			// name, pwd는 requestScope로 보낸다 
 			req.setAttribute("name", name);
-			req.setAttribute("email", email);
 			req.setAttribute("pwd", pwd);
 			
 			
@@ -109,9 +114,6 @@ public class ApplyServlet extends HttpServlet {
 				piVo = piSetVo(multi);
 				piDao = new ApplyDao();
 				
-				System.out.println("piVo.getPhotoC" + piVo.getPhotoC());
-				System.out.println("piVo.getPHotoS" + piVo.getPhotoS());
-			
 			}catch(Exception ex) {
 				ex.printStackTrace();
 			}
@@ -126,6 +128,25 @@ public class ApplyServlet extends HttpServlet {
 			req.setAttribute("piVo", piVo);
 			
 		}
+		else if (jobs.indexOf("introduceUpdate.ap") >= 0) {
+			content="./page/apply/apply_preview.jsp";
+			
+			System.out.println("세션 email 뿌려보기");
+			System.out.println(req.getSession().getAttribute("email"));
+			
+			
+			ApplyVo iuVo = iuSetVo(req);
+			ApplyDao iuDao = new ApplyDao();
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+		
 		
 		RequestDispatcher disp = req.getRequestDispatcher("index.jsp?content="+content);
 		disp.forward(req, resp);
@@ -303,10 +324,29 @@ public class ApplyServlet extends HttpServlet {
 			piVo.setPhotoS(multi.getFilesystemName(tag));
 		}
 		
-		
 		return piVo;
 		
 	} // End of psSetVo()
+	
+	
+	
+	// introduceUpdate.ap
+	public ApplyVo iuSetVo(HttpServletRequest req) {
+		
+		
+		ApplyVo iuVo = new ApplyVo();
+		
+		
+		
+		
+		iuVo.setSungJang(req.getParameter("sungJang"));
+		iuVo.setCharact(req.getParameter("charact"));
+		iuVo.setMotive(req.getParameter("motive"));
+		iuVo.setFuture(req.getParameter("future"));
+		//iuVo.setEmail((String)req.getSession().getAttribute("email"));
+		
+		return iuVo;
+	}
 	
 	
 

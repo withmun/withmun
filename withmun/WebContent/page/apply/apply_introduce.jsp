@@ -44,17 +44,17 @@ $(document).ready(function(){
 
 // 페이지가 로딩되면 실행됨
 function pageLoad() {
-	var f = document.frm_profile;
+	var f = document.frm_introduce;
 	
-	// [임시저장] 버튼 클릭시
+	// [Save and Next Page] 버튼 클릭시
 	f.btnSave.onclick = function() {
-		f.action = './profileSave.ap';
 		f.submit();
 	}
 	
-	if ( !('{$requestScope.msg}' == null) && !('${requestScope.msg}' == '')) {
+	
+	/* if ( !('{$requestScope.msg}' == null) && !('${requestScope.msg}' == '')) {
 		alert('${requestScope.msg}');
-	}
+	} */
 	
 	
 } // End of pageLoad()
@@ -105,15 +105,15 @@ textarea {
 				<div id='wrap_introduce'>
 				
 					<h1>자기소개</h1>
-					<form name='frm_introduce'>
+					<form name='frm_introduce' method='post' action='./introduceUpdate.ap'>
 						
 							
 						<h5 class='taTitle'>성장과정(1,000자 이내)</h5>
-						<textarea name='growing' rows='8' cols='137'>
+						<textarea name='sungJang' rows='8' cols='137'>
 						</textarea>
 							
 						<h5 class='taTitle'>성격 및 장단점(1,000자 이내)</h5>				
-						<textarea name='character' rows='8' cols='137'>
+						<textarea name='charact' rows='8' cols='137'>
 						</textarea>
 						
 						<h5 class='taTitle'>지원동기(1,000자 이내)</h5>
@@ -124,9 +124,13 @@ textarea {
 						<textarea name='future' rows='8' cols='137'>
 						</textarea>
 						
+						<!-- 세션(email) 유지를 위함 -->
+						<%-- sessionScope.email						
+						<input type='text' name='email' value= '${sessionScope.email }'/> --%>
+						
 						<div id='buttons'>
 							<a href='./apply_profile.ap'><input type='button' name='btnPrev' value='&lt;&lt; Previous Page' /></a>
-							<a href='./apply_preview.ap'><input type='button' name='btnNext' value='Save and Next Page &gt;&gt;' /></a>
+							<input type='button' name='btnNext' value='Save and Next Page &gt;&gt;' />
 						</div>
 					</form>
 					

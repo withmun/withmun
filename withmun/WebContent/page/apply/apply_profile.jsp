@@ -136,19 +136,19 @@ th, td {
 									<th>지원분야</th>
 									<td><input type='text' name='field'  value='번역' /><br></td>
 									<th>이름</th>
-									<td><input type='text' name='name' value='${name }' /></td>	
+									<td><input type='text' name='name' value='${requestScope.name }' /></td>	
 								</tr>	
 								<tr>
 									<th>주민등록번호</th>
 									<td><input type='text' name='jumin1' value='111111' size='6'/> - <input type='text' name='jumin2' value='1111111' size='7'/></td>
 									<th>E-Mail</th>
-									<td><input type='email' name='email' value='${email }' /></td>
+									<td><input type='email' name='email' value='${sessionScope.email }' /></td>
 								</tr>
 								<tr>
 									<th>암호</th>
-									<td><input type='text' name='pwd' value='${pwd }' /></td>
+									<td><input type='text' name='pwd' value='${requestScope.pwd }' /></td>
 									<th>암호확인</th>
-									<td><input type='text' name='pwdCheck' value='${pwd }' /></td>
+									<td><input type='text' name='pwdCheck' value='${requestScope.pwd }' /></td>
 								</tr>
 							</table>
 							
