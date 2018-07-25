@@ -3,22 +3,20 @@
 
 
 <!------------------------------------------------------------------->
-<div id ="mask">
-<div id="conMain" style="display:none;" class='conMain'>
-   <div id = 'conHead'>
-      <h2 id = 'title' style ="text-align:center;">Contact Us</h2>
-
-   </div>
-   
-
-
-   
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog" >
+    <div class="modal-content" style="">
    <form name="conFrm" id="conFrm" method="post">
+         <div class="modal-header" style = "background-color:#1f497d;">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h2 id = 'title' style ="text-align:center; font-size: 36px; color: white;">Contact Us</h2>
+   </div>
+    <div class="modal-body" style="background-color:#E9F0F2">
       <table class="table" id = 'table'>
       <tr>
-         <th>받는 이메일</th>
+         <th style="line-height: 25px;">받는 이메일</th>
          <td>
-         <select name="conSelect">
+         <select name="conSelect" style="width:50%;height:25px;">
 	      <option value = 'nks0817@nate.com'>nks0817@nate.com</option>
 	      <option value = 'ckh0103@naver.com'>ckh0103@naver.com</option>
 	      <option value = 'iyabong@naver.com'>iyabong@naver.com</option>
@@ -26,28 +24,30 @@
         </td>
       </tr>
       <tr>
-         <th>성명</th>
-         <td><input type="text" id="conName" name="conName" size = '25px' value=""></td>
+         <th style="line-height: 25px;">성명</th>
+         <td><input type="text" id="conName" name="conName" style="width:60%;height:25px;" value=""></td>
       </tr>
       <tr>
-         <th>E Mail</th>
-         <td><input type="text" id="conEmail" name="conEmail" size = '25px' value=""></td>
+         <th style="line-height: 25px;">E Mail</th>
+         <td><input type="text" id="conEmail" name="conEmail" style="width:60%;height:25px;" value=""></td>
       </tr>
       <tr>
-         <th>제목</th>
-         <td><input type="text" id="conSubject" name="conSubject"  size = '30px' value=""></td>
+         <th style="line-height: 25px;">제목</th>
+         <td><input type="text" id="conSubject" name="conSubject" style="width:80%;height:25px;"value=""></td>
       </tr>
       <tr>
-         <th>내용</th>
-         <td><textarea id="conDoc" name="conDoc" rows = '5px' cols ='57px'></textarea></td>
+         <th style="line-height: 25px;">내용</th>
+         <td><textarea id="conDoc" name="conDoc" rows = '5px' style="resize:vertical;width:90%;height:40%;"></textarea></td>
       </tr>
       </table>
-      <hr/>
-      <div class="under">
-            <input type="button" id = 'btnClose' value="닫 기"/>
-            <input type="button" id = 'btnSubmit' value="전 송"/>
+       </div>
+      <div class="modal-footer">
+            <input type="button" id = 'btnClose' class="btn btn-default" data-dismiss="modal" value="닫 기"/>
+            <input type="button" id = 'btnSubmit' class="btn btn-primary" style = "" value="전 송"/>
       </div>
    </form>
+      </div>
+      
 </div>
 </div>
 <!------------------------------------------------------------------>
@@ -115,7 +115,7 @@ $(document).ready(function(){
                <div id="lo_first_foot">
                   <span>
                      <img src="./images/email3.png" style="" alt=""">
-                     <a href='#' style="" onclick = "go_email(1)">withmun@withmun.com</a>
+                     <a href='#' style="" data-toggle="modal" data-target="#myModal">withmun@withmun.com</a>
                   </span>
                </div>
             </div>
@@ -132,17 +132,17 @@ $(document).ready(function(){
             <div id="lo_third_content" style="">
             
                <div id="lo_third_content_left" style="">
-                      <h3>일반행정사업부</h3>               
-                     Tel.  02-525-6201<br>               
-                     Fax. 02-525-6202   <br>               
-                     <a href='#' style="" onclick = "go_email(2)">didi_attorney@withmun.com</a>            
+                  <h3>일반행정사업부</h3>               
+                  Tel.  02-525-6201<br>               
+                  Fax. 02-525-6202   <br>               
+                     <a href='#' data-toggle="modal" data-target="#myModal">didi_attorney@withmun.com</a>            
                </div>
                
                <div id="lo_third_content_right" style="">
                   <h3>외국어번역행정사업부</h3>
                   Tel.  02-525-6209<br>
                   fax.  02-525-6202<br>
-                  <a href='#' style="" onclick = "go_email(3)">jbk521@withmun.com</a>
+                  <a href='#' style="" data-toggle="modal" data-target="#myModal">jbk521@withmun.com</a>
                </div>
                
             </div>

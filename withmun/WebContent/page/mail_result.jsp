@@ -52,8 +52,8 @@ try{
  	last_content = "<h3>보낸이메일 : " + conEmail + "</h3>"
 				+ "<h3>보낸 사람  : " + conName + "</h3><br/>"
 				+ "<h3>내용</h3> : <br/>" + conDoc;
-		
-	
+				
+				
 	
 	// 기본 메시지 설정
 	Session mailSession = Session.getInstance(prop, new MyAuthenticator());
@@ -80,5 +80,4 @@ try{
 }finally{
 	// 임시파일을 삭제
 }
-
 %>

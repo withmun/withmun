@@ -575,7 +575,11 @@ div#buttons input{
 			</div>
 			<span>최대 <em class="count">0</em>/300자
 			</span>
+			
 			</section>
+			
+
+  
 <!-- 실시간 글자수 -->
          <div class='wrap'>
          <input type='text' id='write' size='1' value='0' readOnly/>/300자
