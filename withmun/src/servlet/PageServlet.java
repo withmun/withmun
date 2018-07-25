@@ -94,6 +94,8 @@ public class PageServlet extends HttpServlet{
 		else if (jobs.indexOf("mail_result.do") >= 0) {
 
 			content ="./page/mail_result.jsp";
+		}else if(jobs.indexOf("faq.do")>=0) {
+			content = "./page/board/faq.jsp";
 		}
 		
 		RequestDispatcher disp = req.getRequestDispatcher("index.jsp?content="+content);

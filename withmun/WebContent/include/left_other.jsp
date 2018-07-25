@@ -13,7 +13,8 @@
 				</a>
 				<div class="line2"></div>
 			</div>
-	
+			
+			<!-- 채용공고  -->
 			<div  style="margin-top:20px;">
 				<a style="color:#404040;" href="./employment_notice.do">
 				채용공고
@@ -33,7 +34,26 @@
 				</c:choose>
 				<div class="line2"></div>
 			</div>
-	
+			
+			<!-- Q & A -->
+			
+			<div  style="margin-top:20px;">
+				<a style="color:#404040;" href="./list.bo">
+				Q & A
+				</a>
+				<div class="line2"></div>
+			</div>
+			
+			<!-- F A Q -->
+			
+			<div  style="margin-top:20px;">
+				<a style="color:#404040;" href="./faq.do">
+				F A Q
+				</a>
+				<div class="line2"></div>
+			</div>
+			
+			<!-- 사이트맵 -->
 			<div  style="margin-top:20px;">
 				<a style="color:#404040;" href="./site_map.do">
 				사이트맵

@@ -5,10 +5,10 @@
 		<div class ="top">
 			<a href="./index.jsp" ">HOME</a>
 			> <a href="./service_procedure.do" >Other</a>
-			> <a href="./employment_notice.do" class="on">채용공고</a>
+			> <a href="./faq.do" class="on">F A Q</a>
 		</div>
 		<div class="toptit">
-		    <h2><a href="./employment_notice.do">채용공고</a></h2>
+		    <h2><a href="./faq.do">F A Q</a></h2>
 			<p>신뢰와 나눔속에 사랑받는 기업으로 기억되고자 합니다.</p>
 		</div>	
 	</div>
@@ -34,6 +34,18 @@ $(document).ready(function(){
 });
 </script>
 <!------------------------------------------------------------------->
+<!-- style---------------------------------------------------------->
+<style>
+.content{
+	background:#ffffff;
+	padding:20px;
+	
+}
+.panel-group{
+	margin:-4px;
+}
+</style>
+<!------------------------------------------------------------------>
 			<div class ="main">
 				<div class="main_wrap">
 					<%@ include file = "../../include/left_other.jsp" %>
@@ -144,7 +156,7 @@ $(document).ready(function(){
 				  <div class="panel panel-default">
 				    <div class="panel-heading" role="tab" id="headingEight">
 				      <h4 class="panel-title">
-				        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+				        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseE">
 							외국어번역 행정사 사무소와 일반 번역회사는 어떻게 다른거죠?        
 						</a>
 				      </h4>
@@ -157,6 +169,6 @@ $(document).ready(function(){
 				    </div>
 				  </div>
 				</div>
-				</div>
 			</div>
 		</div>
+	</div>
