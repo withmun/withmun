@@ -4,8 +4,8 @@
 
 <!------------------------------------------------------------------->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<div class="modal-dialog" >
-    <div class="modal-content" style="">
+<div class="modal-dialog" id="conMain" >
+    <div class="modal-content" id = 'conHead' style="">
    <form name="conFrm" id="conFrm" method="post">
          <div class="modal-header" style = "background-color:#1f497d;">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -17,9 +17,9 @@
          <th style="line-height: 25px;">받는 이메일</th>
          <td>
          <select name="conSelect" style="width:50%;height:25px;">
-	      <option value = 'nks0817@nate.com'>nks0817@nate.com</option>
-	      <option value = 'ckh0103@naver.com'>ckh0103@naver.com</option>
-	      <option value = 'iyabong@naver.com'>iyabong@naver.com</option>
+         <option value = 'nks0817@nate.com'>nks0817@nate.com</option>
+         <option value = 'ckh0103@naver.com'>ckh0103@naver.com</option>
+         <option value = 'iyabong@naver.com'>iyabong@naver.com</option>
         </select>
         </td>
       </tr>
@@ -101,21 +101,21 @@ $(document).ready(function(){
 
                <div id ="lo_first_kor" >
                   <h1 style="">사무소주소</h1>
-			                  서울시 서초구 서초중앙로 26길 8,  <br>
-			                  건복빌딩 501호(서초동 1694-34)<br>
-			                  (우편번호 06605)
+                           서울시 서초구 서초중앙로 26길 8,  <br>
+                           건복빌딩 501호(서초동 1694-34)<br>
+                           (우편번호 06605)
 
                </div>
 
                <div id="lo_first_eng" style="">
                   <h1 style="">Office address</h1>
                   #501, 8, Seochojungang-ro, 26-gil, Seocho-gu, Seoul, Republic of Korea (Zip code 06605)
-		      </div>
+            </div>
 
                <div id="lo_first_foot">
                   <span>
                      <img src="./images/email3.png" style="" alt=""">
-                     <a href='#' style="" data-toggle="modal" data-target="#myModal">withmun@withmun.com</a>
+                     <a href='#' style="" data-toggle="modal" onclick = "go_email(1)" data-target="#myModal">withmun@withmun.com</a>
                   </span>
                </div>
             </div>
@@ -135,14 +135,14 @@ $(document).ready(function(){
                   <h3>일반행정사업부</h3>               
                   Tel.  02-525-6201<br>               
                   Fax. 02-525-6202   <br>               
-                     <a href='#' data-toggle="modal" data-target="#myModal">didi_attorney@withmun.com</a>            
+                     <a href='#' data-toggle="modal" onclick = "go_email(2)" data-target="#myModal">didi_attorney@withmun.com</a>            
                </div>
                
                <div id="lo_third_content_right" style="">
                   <h3>외국어번역행정사업부</h3>
                   Tel.  02-525-6209<br>
                   fax.  02-525-6202<br>
-                  <a href='#' style="" data-toggle="modal" data-target="#myModal">jbk521@withmun.com</a>
+                  <a href='#' style="" data-toggle="modal" onclick = "go_email(3)" data-target="#myModal">jbk521@withmun.com</a>
                </div>
                
             </div>
@@ -179,64 +179,31 @@ $(document).ready(function(){
                var ff = document.conFrm;
                
             }
-            
-               var ff = document.conFrm;
-               ff.btnSubmit.onclick = function() {
-                  var msg = confirm("입력한 내용으로 제출 하시겠습니까?");
-                  if (msg) {
-                     alert("제출 되었습니다.");
-                     var con = document.getElementById("conMain");
-                     con.style.display = 'none';
-                     ff.action = 'mail_result.do';
-                     ff.submit();
-                  }
-               }
-               
-                ff.btnClose.onclick = function() {
-                  var con = document.getElementById("conMain");
-                  con.style.display = 'none';
-               }
-                
-                  $('#btnClose').click(function () {  
-                   //링크 기본동작은 작동하지 않도록 한다.
-                      $('#mask').hide(); 
-                  });
-                      
-               function go_email(email_value) {
-             	
-            	  
-            	  
-            	  var con = document.getElementById("conMain");
-                  var maskHeight = $(document).height();
-                  var maskWidth = $(window).width();
-                  var ff = document.conFrm;
-
-
-                  if(email_value == '1'){
-                	  ff.conSelect.value = 1;
-                  }
-                  else if(email_value == '2'){
-                	  ff.conSelect.value = 2;
-                  }
-                  else if(email_value == '3'){
-                	  ff.conSelect.value = 3;
-                  }
-                  
-                  
-                  con.style.display = 'block';
-                  
-                  if (con.style.display == 'block') {
-                     $('#mask').css({
-                        'width' : maskWidth,
-                        'height' : maskHeight
-                     });
-                     
-                     //애니메이션 효과
-                     $('#mask').fadeTo("fast", 1.0);
-                  } else {
-
-                  }
-               }      
+         var ff = document.conFrm;
+         ff.btnSubmit.onclick = function() {
+            var msg = confirm("입력한 내용으로 제출 하시겠습니까?");
+            if (msg) {
+               alert("제출 되었습니다.");
+               ff.action = 'mail_result.do';
+               ff.submit();
+            }
+         }   
+         
+         function go_email(email_value) {
+         var con = document.getElementById("conMain");
+            var ff = document.conFrm;
+         
+            if(email_value == '1'){
+               ff.conSelect.value = 1;
+            }
+            else if(email_value == '2'){
+               ff.conSelect.value = 2;
+            }
+            else if(email_value == '3'){
+               ff.conSelect.value = 3;
+            }
+         
+         }      
             
                   
             </script>
