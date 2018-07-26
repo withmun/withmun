@@ -47,7 +47,7 @@ function pageLoad() {
 	var f = document.frm_introduce;
 	
 	// [Save and Next Page] 버튼 클릭시
-	f.btnSave.onclick = function() {
+	f.btnNext.onclick = function() {
 		f.submit();
 	}
 	

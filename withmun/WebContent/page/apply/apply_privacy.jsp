@@ -125,7 +125,7 @@ function check() {
 								<p class='content_privacy'>위드문은 아래와 같은 개인정보 항목을 수집합니다. 주소, 이름,
 									주민등록번호, 사진, 전화번호, 휴대전화번호, E-mail, 학력사항, 병역사항, 외국어 및 자격면허, 동아리 및
 									사회봉사활동, 가족사항, 기타사항</p>
-								<p class='agree'><input type='checkbox' name='chk_item' /> 수집하는 개인정보 항목에 동의합니다.</p>
+								<p class='agree'><input type='checkbox' name='chk_item' checked /> 수집하는 개인정보 항목에 동의합니다.</p>
 							</div>
 
 							<div id='div_collect'>
@@ -133,7 +133,7 @@ function check() {
 								<p class='content_privacy'>위드문 채용사이트에서는 다음과 같은 목적을 위하여 지원자의 개인정보를
 									수집합니다. - 채용절차를 위한 개인별 식별 - 입사지원자의 서비스제공(본인확인 및 전형결과 통보, 채용관련 최신
 									정보안내 등)</p>
-								<p class='agree'><input type='checkbox' name='chk_collect' /> 개인정보 수집 및 이용목적에 동의합니다.</p>
+								<p class='agree'><input type='checkbox' name='chk_collect' checked /> 개인정보 수집 및 이용목적에 동의합니다.</p>
 							</div>
 
 							<div id='div_save'>
@@ -144,7 +144,7 @@ function check() {
 									추후 지원자가 개인정보의 오류에 대한 정정을 요청하신 경우에는 회사가 정정을 완료하기 전까지 당해 개인정보를
 									이용하지 않습니다. 채용과정에서 직접 제출하신 서류 및 자료 일체는 최종 합격자 발표 이후 180일 이내 반환
 									가능합니다. (채용절차의 공정화에 관한 법률 시행규칙. 고용노동부령 제 119호)</p>
-								<p class='agree'><input type='checkbox' name='chk_save' /> 개인정보 보유, 정정 및 삭제내용에 대해 동의합니다.</p>
+								<p class='agree'><input type='checkbox' name='chk_save' checked /> 개인정보 보유, 정정 및 삭제내용에 대해 동의합니다.</p>
 							</div>
 
 							<div id='div_dis'>
@@ -155,7 +155,7 @@ function check() {
 									추후 지원자가 개인정보의 오류에 대한 정정을 요청하신 경우에는 회사가 정정을 완료하기 전까지 당해 개인정보를
 									이용하지 않습니다. 채용과정에서 직접 제출하신 서류 및 자료 일체는 최종 합격자 발표 이후 180일 이내 반환
 									가능합니다. (채용절차의 공정화에 관한 법률 시행규칙. 고용노동부령 제 119호)</p>
-								<p class='agree'><input type='checkbox' name='chk_right' /> 해당내용에 대해 충분히 이해하였으며, 이에 동의합니다.</p>
+								<p class='agree'><input type='checkbox' name='chk_right' checked /> 해당내용에 대해 충분히 이해하였으며, 이에 동의합니다.</p>
 							</div>
 
 

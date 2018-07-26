@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,7 +28,8 @@ public class ApplyServlet extends HttpServlet {
 	
 	// 파일 업로드 처리
 	MultipartRequest multi = null;
-	String uploadDir = "D:/withmun_upload";
+//	String uploadDir = "D:/withmun_upload"; 	// 경로 수정 전
+	String uploadDir = "C:/Users/JHTA/git/withmun/withmun/WebContent/upload/"; 	// 경로 수정 후
 	String encType="UTF-8";
 	int fileSize = 1024*1024*10;				// 용량제한 10MB
 	
@@ -70,8 +72,31 @@ public class ApplyServlet extends HttpServlet {
 			content="./page/apply/apply_manage.jsp";
 		}
 		else if (jobs.indexOf("apply_pool.ap") >= 0) {
-			content="./page/apply/apply_pool.jsp";
-		}
+	         
+	         String findStr = "";
+	         ApplyDao dao = new ApplyDao();
+	         int nowPage = 1;
+	         
+	         if(req.getParameter("nowPage") != null) {
+	            nowPage = Integer.parseInt(req.getParameter("nowPage"));
+	         }
+	         
+	         if (req.getParameter("findStr") != null) {
+	               findStr = req.getParameter("findStr");
+	         }
+	            dao.pageCompute(findStr);
+	            req.setAttribute("findStr", findStr);
+	            
+	            req.setAttribute("all", dao);
+	            
+	            dao.setNowPage(nowPage);
+	            req.setAttribute("nowPage", nowPage);
+	            
+	            List<ApplyVo> list = dao.selectList(findStr);
+	            req.setAttribute("list", list);
+	         
+	         content="./page/apply_pool.jsp";
+	      }
 		else if (jobs.indexOf("apply_review.ap") >= 0) {
 			content="./page/apply/apply_review.jsp";
 		}
@@ -128,23 +153,61 @@ public class ApplyServlet extends HttpServlet {
 			req.setAttribute("piVo", piVo);
 			
 		}
+		
+		// 자기소개서 update 후에 => 프리뷰 페이지로
 		else if (jobs.indexOf("introduceUpdate.ap") >= 0) {
 			content="./page/apply/apply_preview.jsp";
 			
-			System.out.println("세션 email 뿌려보기");
-			System.out.println(req.getSession().getAttribute("email"));
 			
-			
+			// 자기소개서 Update
 			ApplyVo iuVo = iuSetVo(req);
 			ApplyDao iuDao = new ApplyDao();
 			
+			if (iuDao.introduceUpdate(iuVo)) {
+				msg = "정상적으로 자기소개페이지 update 완료";
+			}else {
+				msg = "자기소개페이지 update 중 에러 발생";
+			}
+			
+			req.setAttribute("msg", msg);
+			req.setAttribute("iuVo", iuVo);
 			
 			
+			/*
+			 *  '입사지원서 미리보기(apply_preview.jsp)'에 뿌릴 데이터 가져오기
+			 */
+
+			// 어떤 email에 해당하는 이력서를 가져올지 받아야 하잖아
+			String email = (String)req.getSession().getAttribute("email");
+			ApplyDao prvDao = new ApplyDao();
 			
+			// 해당 email에 해당하는 상세정보를 받아와서 prvVo에 담음
+			ApplyVo prvVo = prvDao.selectOne(email);
+			req.setAttribute("prvVo", prvVo);
+			
+			// 사진정보(photoS) 뿌리기
+			String photoS = "/withmun/upload/" + prvVo.getPhotoS();
+			req.setAttribute("photoS", photoS);
 			
 		}
 		
-		
+		// '이력서 미리보기'페이지에서 '최종지원' 할 때
+		else if (jobs.indexOf("submit.ap") >= 0) {
+/*			content="./page/apply/apply_enter.ap";
+			
+			// 자기소개서 최종제출 처리
+			ApplyVo submitVo  = submitSetVo(req);
+			ApplyDao submitDao = new ApplyDao();
+			
+			if (submitDao.isSubmit(submitVo)) {
+				msg = "입사지원서 정상적으로최종제출 완료!";
+			}else {
+				msg = "입사지원서 최종제출 중 오류 발생";
+			}
+			
+			req.setAttribute("ms", msg);
+			req.setAttribute("submitVo", submitVo);*/
+		}
 		
 		
 		
@@ -157,29 +220,10 @@ public class ApplyServlet extends HttpServlet {
 	
 	
 	
-	
-	
-	
-	
 	/*
 	 * 사용자 정의 메소드
 	 */
 	
-	
-	
-	// 일반 setVo()
-	public ApplyVo setVo(HttpServletRequest req) {
-		ApplyVo reqVo = new ApplyVo();
-		/*reqVo.setId(req.getParameter("id"));
-		reqVo.setName(req.getParameter("name"));
-		reqVo.setAddress(req.getParameter("address"));
-		reqVo.setEmail(req.getParameter("email"));
-		reqVo.setPhone(req.getParameter("phone"));
-		reqVo.setPost(req.getParameter("post"));
-		reqVo.setPwd(req.getParameter("pwd"));*/
-		
-		return reqVo;
-	}
 	
 	// <form enctype='multipart/form-data'> 를 위한 setVo 오버로딩
 	//request.getParameter() 기능을 multi가 대신 처리
@@ -333,23 +377,16 @@ public class ApplyServlet extends HttpServlet {
 	// introduceUpdate.ap
 	public ApplyVo iuSetVo(HttpServletRequest req) {
 		
-		
 		ApplyVo iuVo = new ApplyVo();
-		
-		
-		
 		
 		iuVo.setSungJang(req.getParameter("sungJang"));
 		iuVo.setCharact(req.getParameter("charact"));
 		iuVo.setMotive(req.getParameter("motive"));
 		iuVo.setFuture(req.getParameter("future"));
-		//iuVo.setEmail((String)req.getSession().getAttribute("email"));
+		iuVo.setEmail((String)req.getSession().getAttribute("email"));
 		
 		return iuVo;
 	}
-	
-	
-
 	
 	
 	
