@@ -105,12 +105,21 @@ var ff = document.frmLogin;
 				<span class="glyphicon glyphicon-search"></span>
 			</div>
 			
+			<form id='frmSearch'  method='post' action='./find.fd'>
+			<div class = "mini_search_text" style='display:none;'>
+				<span>
+					<input type="text" class="form-control" name="findStr" id="findStr" placeholder="검색어를 입력하세요">
+				</span>
+			</div>
+			</form>
+			
 			<div id = "mini_generl">			
 				<div class ="col-xs-10 mini_menu_general">
 					일반행정
 				</div>
 				<div class ="col-xs-2 mini_menu_icon1">
-					<span class="glyphicon glyphicon-chevron-down btn_general"></span>
+					<span id="btn_generl_down" class="glyphicon glyphicon-chevron-down btn_generl"></span>
+					<span id="btn_generl_up" style="display:none" class="glyphicon glyphicon-chevron-up btn_generl"></span>
 				</div>	
 			</div>
 
@@ -128,43 +137,40 @@ var ff = document.frmLogin;
 					외국어번역행정
 				</div>
 				<div class ="col-xs-2 mini_menu_icon2">
-					<span class="glyphicon glyphicon-chevron-down btn_foreign"></span>	
+					<span id="btn_foreign_up" class="glyphicon glyphicon-chevron-down btn_foreign"></span>
+					<span id="btn_foreign_down" style="display:none;" class="glyphicon glyphicon glyphicon-chevron-up btn_foreign"></span>
 				</div>
 			</div>
 			
 			<div id = "mini_foreign_menu" style="display:none;">
-				<div id = "mini_foreign_1">
-					<div class ="col-xs-10 mini_foreign_1_text">
-						기업
+				<div class="mini_foreign_menu_div" id="accordion" role="tablist" aria-multiselectable="true">
+					<!-- ---------아코디언------------------- -->
+					<div id ="mini_foreign_menu_enterprise"  class="panel">
+						<div id ="mini_foreign_menu_enterprise_title" data-toggle="collapse" data-parent="#accordion" href="#enterprise" aria-expanded="true" aria-controls="collapseOne">
+						 	기업
+						</div>
+						<div id="enterprise" class="panel-collapse collapse in mini_foreign_menu_enterprise_li" role="tabpanel" aria-labelledby="headingOne">
+							<a href="./english_contract.do"><li>영문계약서 작성</li></a>
+							<a href="./professional_translation.do"><li>전문번역</li></a>
+							<a href="./acting_translation.do"><li>번역공증대행</li></a>
+							<a href="./aposcertification.do"><li>아스티유 및 대사관 인증</li></a>
+							<a href="./overseas.do"><li>해외법인(지사/투자)설립</li></a>
+						</div>
 					</div>
-					<div class ="col-xs-2 mini_foreign_1_icon">
-						<span class="glyphicon glyphicon-chevron-down btn_foreign_1"></span>	
+					
+					<div id="mini_foreign_menu_personal" class="panel">
+						<div id="mini_foreign_menu_enterprise_title" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#personal" aria-expanded="false" aria-controls="collapseTwo">	
+						 	개인
+						</div>
+						<div id="personal" class="panel-collapse collapse mini_foreign_menu_personal_li" role="tabpanel" aria-labelledby="headingTwo">
+							<a href="./certificate.do"><li>번역확인증명서</li></a>
+							<a href="./general_translation.do"><li>일반번역</li></a>
+							<a href="./acting_translation_personal.do"><li>번역공증대행</li></a>
+							<a href="./aposcertification_genenal.do"><li>아스티유 및 대사관 인증</li></a>
+							<a href="./studying_abroad.do"><li>유학 & 이민서류 관련</li></a>
+						</div>
 					</div>
-				</div>
-							
-				<div id = "mini_foreign_menu1" style="display:none;">			
-					<a href="./english_contract.do"><li>영문계약서 작성</li></a>
-					<a href="./professional_translation.do"><li>전문번역</li></a>
-					<a href="./acting_translation.do"><li>번역공증대행</li></a>
-					<a href="./aposcertification.do"><li>아스티유 및 대사관 인증</li></a>
-					<a href="./overseas.do"><li>해외법인(지사/투자)설립</li></a>
-				</div>
-				
-				<div id = "mini_foreign_2">
-					<div class ="col-xs-10 mini_foreign_2_text">
-						개인
-					</div>
-					<div class ="col-xs-2 mini_foreign_2_icon">
-						<span class="glyphicon glyphicon-chevron-down btn_foreign_2"></span>	
-					</div>
-				</div>
-							
-				<div id = "mini_foreign_menu2" style="display:none;";>			
-					<a href="./certificate.do"><li>번역확인증명서</li></a>
-					<a href="./general_translation.do"><li>일반번역</li></a>
-					<a href="./acting_translation_personal.do"><li>번역공증대행</li></a>
-					<a href="./aposcertification_genenal.do"><li>아스티유 및 대사관 인증</li></a>
-					<a href="./studying_abroad.do"><li>유학 & 이민서류 관련</li></a>
+					<!-- ---------아코디언------------------- -->
 				</div>
 			</div>
 		</div>
@@ -361,45 +367,45 @@ $(function(){
 	$( '.btn_menu' ).click(function() {
 		if($("#mini_menu_div").css("display") == "none"){
 			 $("#mini_menu_div").slideToggle("slow");
+			 
 		} else {
 		    $("#mini_menu_div").slideToggle("slow");
 		}
 	});
 	
 	
-	$('.mini_menu_icon1' ).click(function() {
+	$('#mini_generl' ).click(function() {
 		if($("#mini_generl_menu").css("display") == "none"){
 			 $("#mini_generl_menu").slideToggle("slow");
+			 $("#btn_generl_up").css("display", "block");
+			 $("#btn_generl_down").css("display", "none");
 		} else {
 		    $("#mini_generl_menu").slideToggle("slow");
+			 $("#btn_generl_up").css("display", "none");
+			 $("#btn_generl_down").css("display", "block");
 		}
 	});
 	
-	$('.mini_menu_icon2' ).click(function() {
+	$('#mini_foreign' ).click(function() {
 		if($("#mini_foreign_menu").css("display") == "none"){
 			 $("#mini_foreign_menu").slideToggle("slow");
+			 $("#btn_foreign_up").css("display", "none");
+			 $("#btn_foreign_down").css("display", "block");
 		} else {
 		    $("#mini_foreign_menu").slideToggle("slow");
+			 $("#btn_foreign_up").css("display", "block");
+			 $("#btn_foreign_down").css("display", "none");
 		}
 	});
 	
-	$('.mini_foreign_1_icon' ).click(function() {
-		if($("#mini_foreign_menu1").css("display") == "none"){
-			 $("#mini_foreign_menu1").slideToggle("slow");
+	
+	$('.mini_search' ).click(function() {
+		if($(".mini_search_text").css("display") == "none"){
+			 $(".mini_search_text").slideToggle("slow");
 		} else {
-		    $("#mini_foreign_menu1").slideToggle("slow");
+		    $(".mini_search_text").slideToggle("slow");
 		}
-	});
-	
-	
-	$('.mini_foreign_2_icon' ).click(function() {
-		if($("#mini_foreign_menu2").css("display") == "none"){
-			 $("#mini_foreign_menu2").slideToggle("slow");
-		} else {
-		    $("#mini_foreign_menu2").slideToggle("slow");
-		}
-	});
-	
+	});	
 });
 
 

@@ -111,11 +111,11 @@ a:hover, a:focus, a:active {color:#000;text-decoration:none}
 #main_bn .dots li.active{background:#3d96d6}
 
 /****************header***************/
-#hd {width:100%;}
-#hd #logo {display:inline-block;width:50%;}
+#hd {width:100%; height:}
+#hd #logo {display:inline-block;width:50%;padding:20px 0;}
 #hd .logo2 {display:none;}
 #mini_menu_btn {display:inline-block;width:49%;text-align:right;}
-#mini_menu_btn >span{font-size: 25px;top:15px;right: 15px;color:#3e4079;}
+#mini_menu_btn >span{font-size:30px;top:15px;right: 15px;color:#3e4079;}
 #mini_menu_div{width:100%;height:100%;display:none;}
 #mini_menu_1{}
 #mini_menu_2{}
@@ -125,6 +125,8 @@ a:hover, a:focus, a:active {color:#000;text-decoration:none}
 .left_all{display:none;}
 
 .mini_search{text-align:center;color:#f1f1f1;padding-top: 8px;width:100%; height:60px; font-size:30px; border:5px solid #f1f1f1;}
+.mini_search_text{text-align:center;color:#f1f1f1;width:100%; height:60px; font-size:30px; border:5px solid #f1f1f1;border-top:0px;}
+#findStr{height:100%;border:0;}
 #mini_generl{width:100%;height:60px;font-size:18px;border-right:5px solid #f1f1f1;border-left:5px solid #f1f1f1;}
 #mini_foreign{width:100%;height:60px;font-size:18px;border:5px solid #f1f1f1;}
 
@@ -139,17 +141,14 @@ a:hover, a:focus, a:active {color:#000;text-decoration:none}
 #mini_generl_menu li{background-color:#e5eff7;color:#666666;padding-left:55px;padding-top:19px;height:60px;border-bottom:5px solid #f1f1f1;font-size:16px;}
 
 
-#mini_foreign_1{border-right:5px solid #f1f1f1;border-left:5px solid #f1f1f1;color:#666666;height:60px;border-bottom:5px solid #f1f1f1;font-size:16px;}
-.mini_foreign_1_text{color:#3e4079;height:100%;padding-top: 19px;}
-.mini_foreign_1_icon{color:#3e4079;font-size:22px;padding-top: 19px;text-align:center;border-left:1px solid #f1f1f1;height:100%;}
-#mini_foreign_menu1 li{background-color:#e5eff7;color:#666666;padding-left:55px;padding-top:19px;height:60px;border-bottom:5px solid #f1f1f1;font-size:16px;}
+.panel{border:0;}
+.mini_foreign_menu_div{font-size:19px;line-height: 48px;}
+#mini_foreign_menu_enterprise_title{color:#3e4079;height:60px;border:5px solid #f1f1f1;padding-left:15px;}
+.mini_foreign_menu_enterprise_li li{font-size:16px;background-color:#e5eff7;color:#666666;height:60px;border:5px solid #f1f1f1;border-right:0;border-left:0;padding-left:30px;}
 
-
-
-#mini_foreign_2{border-right:5px solid #f1f1f1;border-left:5px solid #f1f1f1;color:#666666;height:60px;border-bottom:5px solid #f1f1f1;font-size:16px;}
-.mini_foreign_2_text{color:#3e4079;height:100%;padding-top: 19px;}
-.mini_foreign_2_icon{color:#3e4079;font-size:22px;padding-top: 19px;text-align:center;border-left:1px solid #f1f1f1;height:100%;}
-#mini_foreign_menu2 li{background-color:#e5eff7;color:#666666;padding-left:55px;padding-top:19px;height:60px;border-bottom:5px solid #f1f1f1;font-size:16px;}
+#mini_foreign_menu_personal{margin-top: -23px;}
+#mini_foreign_menu_personal_title{color:#3e4079;height:60px;border:5px solid #f1f1f1;padding-left:15px;}
+.mini_foreign_menu_personal_li li{font-size:16px;background-color:#e5eff7;color:#666666;height:60px;border:5px solid #f1f1f1;border-right:0;border-left:0;padding-left:30px;}
 
 			
 
@@ -412,18 +411,19 @@ div#buttons input{color: #000;font-weight: bold;background:#ffffff;boarder}
 
 
 /*서브_중간레이아웃 */
-#wrapper {width:100%; height:120px; background-color:#fff; margin-top: -10x; margin-bottom: 5px;}
-#wrapper .container{margin:0 auto; width:100%;}
+#wrapper {width:100%; height:120px; background-color:#fff; margin-top: -10x; }
+#wrapper .container{margin:0 auto; width:100%;border-bottom:3px solid #e8e8e8;}
+.container .top {margin-top:10px;}
 .container .top a{font-weight:400;color:#666;margin:0 15px;}
 .container .top a:first-child {margin-left:0;}
 .container .top a.on{color:#0076bf;}
-.container .top .toptit{margin-top:20px;}
-.container  .toptit h2{margin-top:25px;}
+.container .top .toptit{margin-top:15px;}
+.container  .toptit h2{margin-top:17px;}
 .container  .toptit h2 a{color:#1f497d;font-size:35px; font-weight:400; }
-.container  .toptit p{font-weight:300;padding-top:20px;font-size:15px;}
+.container  .toptit p{font-weight:300;padding-top:20px;font-size:15px;margin-bottom: 10px;}
 .main .main_wrap{margin:0 auto; width:100%;}
 
-.content{width:100%;margin-top:20px;}
+.content{width:100%;margin-top:35px;}
 .content_first{height:285px;margin-right:18px;background-color:#FFFFFF; width:100%; padding:10px}
 .content_first >img{width:100%;height:100%;}
 .content_second{padding:20px;margin-top:20px;background-color:#FFFFFF;width:100%; font-weight:300;  font-size:15px; line-height:24px;}
