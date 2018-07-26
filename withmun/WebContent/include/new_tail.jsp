@@ -34,7 +34,7 @@
     </div>
    
     <div>
-	    <a href="list.do"><div class ="ft_qa col-xs-6">Q&A</div></a>
+	    <a href="./list.bo"><div class ="ft_qa col-xs-6">Q&A</div></a>
 	    <a href="./location.do"><div class ="ft_contact  col-xs-6">ContactUs</div></a>
     </div>
    
