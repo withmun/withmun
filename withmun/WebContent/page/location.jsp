@@ -14,30 +14,30 @@
     <div class="modal-body" style="background-color:#E9F0F2">
       <table class="table" id = 'table'>
       <tr>
-         <th style="line-height: 25px;">받는 이메일</th>
+         <th >받는 이메일</th>
          <td>
-         <select name="conSelect" style="width:50%;height:25px;">
-         <option value = 'nks0817@nate.com'>nks0817@nate.com</option>
-         <option value = 'ckh0103@naver.com'>ckh0103@naver.com</option>
-         <option value = 'iyabong@naver.com'>iyabong@naver.com</option>
+         <select name="conSelect" class="form-control">
+	         <option value = 'nks0817@nate.com'>nks0817@nate.com</option>
+	         <option value = 'ckh0103@naver.com'>ckh0103@naver.com</option>
+        	 <option value = 'iyabong@naver.com'>iyabong@naver.com</option>
         </select>
         </td>
       </tr>
       <tr>
-         <th style="line-height: 25px;">성명</th>
-         <td><input type="text" id="conName" name="conName" style="width:60%;height:25px;" value=""></td>
+         <th style="">성명</th>
+         <td><input type="text" placeholder="명을 입력하세요"  class="form-control" id="conName" name="conName"></td>
       </tr>
       <tr>
-         <th style="line-height: 25px;">E Mail</th>
-         <td><input type="text" id="conEmail" name="conEmail" style="width:60%;height:25px;" value=""></td>
+         <th style="">E Mail</th>
+         <td><input type="email" placeholder="이메일을 입력하세요"  class="form-control" id="conEmail" name="conEmail"></td>
       </tr>
       <tr>
-         <th style="line-height: 25px;">제목</th>
-         <td><input type="text" id="conSubject" name="conSubject" style="width:80%;height:25px;"value=""></td>
+         <th>제목</th>
+         <td><input type="text" placeholder="성명을 입력하세요"  class="form-control" id="conSubject" name="conSubject" ></td>
       </tr>
       <tr>
-         <th style="line-height: 25px;">내용</th>
-         <td><textarea id="conDoc" name="conDoc" rows = '5px' style="resize:vertical;width:90%;height:40%;"></textarea></td>
+         <th>내용</th>
+         <td><textarea id="conDoc" placeholder="제목을 입력하세요" class="form-control" name="conDoc" rows = '5px'></textarea></td>
       </tr>
       </table>
        </div>
@@ -135,14 +135,20 @@ $(document).ready(function(){
                   <h3>일반행정사업부</h3>               
                   Tel.  02-525-6201<br>               
                   Fax. 02-525-6202   <br>               
-                     <a href='#' data-toggle="modal" onclick = "go_email(2)" data-target="#myModal">didi_attorney@withmun.com</a>            
+                     <a href='#' data-toggle="modal" onclick = "go_email(2)" data-target="#myModal">
+                     <img id ="mail_icon_img" src="./images/email3.png" style="" alt=""">
+                     didi_attorney@withmun.com
+                     </a>            
                </div>
                
                <div id="lo_third_content_right" style="">
                   <h3>외국어번역행정사업부</h3>
                   Tel.  02-525-6209<br>
                   fax.  02-525-6202<br>
-                  <a href='#' style="" data-toggle="modal" onclick = "go_email(3)" data-target="#myModal">jbk521@withmun.com</a>
+                  <a href='#' data-toggle="modal"  onclick = "go_email(3)" data-target="#myModal">
+                  <img id ="mail_icon_img" src="./images/email3.png">
+                  
+                  jbk521@withmun.com</a>
                </div>
                
             </div>

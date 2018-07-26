@@ -116,6 +116,9 @@ $(document).ready(function(){
 								<ul>
 									<li><a href="./service_procedure.do">서비스절차</a></li>
 									<li><a href="./employment_notice.do">채용공고</a></li>
+									<li><a href="./apply_enter.ap">입사지원</a></li>
+									<li><a href="./list.bo">Q & A</a></li>
+									<li><a href="./faq.do">F A Q</a></li>
 									<li><a href="./site_map.do">사이트맵</a></li>
 								</ul>
 							</div>
