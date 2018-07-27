@@ -7,17 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<%
-
-String nowPage = request.getParameter("nowPage");
 
 
-%>
 <script>
 $( document ).ready(function() {
-	
-	location.href='list.bo?nowPage=<%=nowPage %>';
-  	alert('${msg}');
+   
+   location.href="list.bo?nowPage=${nowPage }";
+     alert('${msg}');
+     
 });
 
 </script>
