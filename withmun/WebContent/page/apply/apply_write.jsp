@@ -101,7 +101,7 @@ th, td {
 				
 			     	<!-- 본문 시작-->
 			     	<div id='wrap_write'>
-						<form name='frm_write' method='post' action='./apply_new.ap'>
+						<form name='frm_write' method='post' action='./apply_profile.ap'>
 						
 							<p>
 							입사지원서 작성을 시작 합니다.

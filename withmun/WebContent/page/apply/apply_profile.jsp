@@ -124,7 +124,7 @@ th, td {
 				<!-- 내용 시작 -->
 				<div id='wrap_profile'>
 				<h1>입사지원서</h1>
-					<form name='frm_profile' method='post' encType='multipart/form-data' action='./profileInsert.ap'>
+					<form name='frm_profile' method='post' encType='multipart/form-data' action='./apply_introduce.ap'>
 							<div id='div_photo'>
 							<img src='http://placehold.it/90x120' name='photo' width='90' height='120' />
 							<input type='file' name='file' id='file' />

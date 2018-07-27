@@ -48,6 +48,22 @@ $(document).ready(function(){
 function pageLoad() {
 	var f = document.frm_preview;
 	
+	// [input file]이 변경되면
+	f.file.onchange = function(event) {
+		var file = event.srcElement;	// 이벤트가 발생한 태그
+		var url = file.files[0];		// 선택된 이미지의 경로
+		
+		var reader = new FileReader();	// FileReader객체를 가져온다
+		
+		// 사진파일이 로딩되면
+		reader.onload = function(e) {	
+			f.photo.src = e.target.result;	// 로딩된 결과를 뿌려준다
+		}
+		reader.readAsDataURL(url);		
+	}
+	
+	
+	
 	// 자기소개 => 미리보기로 넘어올 때 메시지 뿌려줌
 	if ( !('{$requestScope.msg}' == null) && !('${requestScope.msg}' == '')) {
 		alert('${requestScope.msg}');
@@ -59,7 +75,7 @@ function pageLoad() {
 	// [Modify] 버튼 클릭시
 	f.btnModify.onclick = function() {
 		alert('Modify 버튼을 클릭하셨군!');
-		f.action = './previewModify.ap';
+		f.action = './apply_modify.ap';
 		f.submit();
 	}
 	
@@ -67,7 +83,7 @@ function pageLoad() {
 	// [Submit]버튼 클릭시 (이력서 검토완료 후 최종지원)	
 	f.btnSubmit.onclick = function() {
 		alert("[Submit]버튼을 클릭하셨군!");
-		f.action = './submit.ap';
+		f.action = './apply_submit.ap';
 		f.submit();
 	}	
 		
@@ -144,14 +160,6 @@ th, td {
 								<form name='frm_preview' method='post' encType='multipart/form-data' >
 									
 																
-									<%--
-									out.print("request.getContextPath: " + request.getContextPath() + "<br/>");
-									out.print("request.getRequestURI(): " + request.getRequestURI() + "<br/>");
-									out.print("request.getHeader(\"REFERER\")" + request.getHeader("REFERER") + "<br/>");
-									out.print("request.getRealPath(\"/\")" + request.getRealPath("/"));
-									--%>
-									
-									
 									<div id='div_photo'>
 									<img name='photo' id='photo' src='${photoS}' name='photo' width='90' height='120' />
 									<input type='file' name='file' id='file' />

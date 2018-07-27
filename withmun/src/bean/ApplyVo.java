@@ -146,8 +146,11 @@ public class ApplyVo {
 	String photoC = "";
 	String photoS = "";
 	
-	// 지원날짜관련
+	// 지원날짜
 	String applyDate = "";
+	
+	// 검토여부
+	int review = 0;
 	
 	/*
 	 * Getters and Setters
@@ -1024,8 +1027,17 @@ public class ApplyVo {
 	public void setApplyDate(String applyDate) {
 		this.applyDate = applyDate;
 	}
-	
 
+	public int getReview() {
+		return review;
+	}
+
+	public void setReview(int review) {
+		this.review = review;
+	}
+
+
+	
 	
 	
 	

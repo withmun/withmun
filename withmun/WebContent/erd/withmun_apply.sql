@@ -10,7 +10,7 @@ DROP TABLE APPLY CASCADE CONSTRAINTS;
 
 CREATE TABLE APPLY
 (
-	ANO varchar2(4) NOT NULL,
+	ANO varchar2(4) NOT NULL UNIQUE,
 	EMAIL varchar2(40) NOT NULL UNIQUE,
 	PWD varchar2(20) NOT NULL,
 	NAME varchar2(20),
@@ -111,7 +111,8 @@ CREATE TABLE APPLY
 	MOTIVE varchar2(4000),
 	FUTURE varchar2(4000),
 	PHOTOC varchar2(100),
-	PHOTOS varchar2(100)
+	PHOTOS varchar2(100),
+	REVIEW char(1)
 );
 
 

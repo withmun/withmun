@@ -105,7 +105,7 @@ textarea {
 				<div id='wrap_introduce'>
 				
 					<h1>자기소개</h1>
-					<form name='frm_introduce' method='post' action='./introduceUpdate.ap'>
+					<form name='frm_introduce' method='post' action='./apply_preview.ap'>
 						
 							
 						<h5 class='taTitle'>성장과정(1,000자 이내)</h5>
@@ -123,10 +123,6 @@ textarea {
 						<h5 class='taTitle'>입사 후 포부(1,000자 이내)</h5>
 						<textarea name='future' rows='8' cols='137'>
 						</textarea>
-						
-						<!-- 세션(email) 유지를 위함 -->
-						<%-- sessionScope.email						
-						<input type='text' name='email' value= '${sessionScope.email }'/> --%>
 						
 						<div id='buttons'>
 							<a href='./apply_profile.ap'><input type='button' name='btnPrev' value='&lt;&lt; Previous Page' /></a>

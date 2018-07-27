@@ -19,6 +19,8 @@
 
 <script>
 $(document).ready(function(){
+
+   
    $(".jtoggle_up").click(function(){
       $(".toggle_menu").slideDown();
       $(".jtoggle_down").css("display","block");
@@ -33,7 +35,29 @@ $(document).ready(function(){
       $(".line2").css("display","none");
    
    });
+   
+   
 });
+function go_review(aNo){
+	   var ff = document.apply_frm;
+	   ff.aNo_review.value = aNo;
+	   
+	   ff.action = 'apply_review.ap';
+	   ff.submit();
+	}
+
+function delEmail(email){   
+   var ff = document.apply_frm;
+   
+   if(confirm('정말 삭제 하시겠습니까?') == true){ 
+      alert('삭제되었습니다.'); 
+      ff.email_del.value = email;
+      }
+   
+   ff.action = 'delete.ap';
+   ff.submit();
+   
+}
 
 </script>
 <style>
@@ -68,12 +92,13 @@ th, td {
 
 <div class ="main">
    <div class="main_wrap">
-   <%@ include file = "../include/left_other.jsp" %>
+   <%@ include file = "../../include/left_other.jsp" %>
       <div class = "content" style="margin-top:0;text-align:center">         
          <div class ="content_second" style="margin-top:0;text-align:center">                     
             <!-- 여기에 내용을 넣는다 -->
             <div id='wrap_pool'>
                <div id='pool_list'>
+               
 <form name = 'apply_frm' method = 'post' id = 'apply_frm'>
 
                   <p>입사지원서 Pool(관리자용 목록)</p>
@@ -90,17 +115,26 @@ th, td {
                      </tr>
                <c:forEach var="list" items='${list }'>
                      <tr>
-                        <td>0</td>
+                        <td><a href = "apply_review.ap" onclick = "go_review(${list.aNo})">${list.aNo }</a></td>
                         <td>${list.field }</td>
                         <td>${list.applyDate }</td>
                         <td>${list.name }</td>
                         <td>${list.email }</td>
-                        <td>검토여부</td>
-                        <td><a href = "#" onclick = "if(confirm('정말 삭제 하시겠습니까?') == true){alert('삭제되었습니다.') }else{alert('취소되었습니다.')}">삭제</a></td>
+                        <c:choose>
+                           <c:when test="${list.review eq 1}">
+                        <td>확인</td>
+                           </c:when>
+                           <c:otherwise>
+                        <td>대기중</td>
+                           </c:otherwise>
+                        </c:choose>
+                        <td><a href = "#" onclick = "delEmail('${list.email}')">삭제</a></td>
                      </tr>
                </c:forEach>
                   </table>
 
+         <input type = 'hidden' name = 'email_del'/>
+                  <input type = 'hidden' name = 'aNo_review'/>
          <input type = 'hidden' name = 'nowPage' value = '${all.getNowPage() }'/>
          <input type = 'text' name = 'findStr' value = "${param.findStr }"/>
          <input type = 'submit' name = 'btn' id = 'btn' value = '검색'/><br/>
@@ -131,6 +165,8 @@ th, td {
 
 <script>
 
+
+
 document.apply_frm.onsubmit = function(){
    var ff = document.apply_frm;
    ff.nowPage.value = 1;
@@ -141,4 +177,5 @@ function movePage(nowPage){
    var ff = document.apply_frm;
    ff.nowPage.value = nowPage;
    ff.submit();
+}
 </script>
