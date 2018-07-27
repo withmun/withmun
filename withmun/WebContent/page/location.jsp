@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
 
+
+
+
+</script>
 <!------------------------------------------------------------------->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <div class="modal-dialog" id="conMain" >
@@ -145,7 +151,7 @@ $(document).ready(function(){
                   <h3>외국어번역행정사업부</h3>
                   Tel.  02-525-6209<br>
                   fax.  02-525-6202<br>
-                  <a href='#' data-toggle="modal"  onclick = "go_email(3)" data-target="#myModal">
+                  <a href='#' id="jbk521" data-toggle="modal" onclick = "go_email(3)" data-target="#myModal">
                   <img id ="mail_icon_img" src="./images/email3.png">
                   
                   jbk521@withmun.com</a>
@@ -154,7 +160,11 @@ $(document).ready(function(){
             </div>
          
          </div>
+		
+		<script>
 
+		</script>
+		
          <div class ="lo_fourth">
             <div id ="lo_fourth_head" style="">
                <span>Location</span>

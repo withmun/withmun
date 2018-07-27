@@ -27,8 +27,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="description" content="비영리사단/재단설립, 토지보상, 행정심판, 번역공증대행전문, 아포스티유/각국대사관인증" />
 <!--부트스트렙-->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -54,7 +55,7 @@ body{margin:0;}
 			media="screen and (min-width:631px)" />
 <link rel='stylesheet' type='text/css' href='./css/new_default_min.css?ver=1'
 			media="screen and (max-width:630px)" />
-<script src="./js/jquery-1.8.3.min.js"></script>
+
 <!--{{ 메뉴 및 롤오버 버튼 }}-->
 <script src="./js/jquery.menu.js"></script>
 <script src="./js/unslider.min.js"></script>
@@ -75,17 +76,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <c:when test = "${empty id}">
       </c:when>
       <c:otherwise>
-         <input type='button' value='로그아웃' id='btnlogout' />
+         <input type='button' value='로그아웃' id='btnlogout' onclick="logout()" />
       </c:otherwise>
       </c:choose>
   
 </form>
 <script>
+function logout(){
 var ff = document.frmLogin;
-   ff.btnlogout.onclick = function(){
-      ff.action = 'logoutR.login';
-      ff.submit();
-}
+    ff.action = 'logoutR.login';
+    ff.submit();
+}   
 </script>
 <!-- 로그인 끝 ---------------------------------------------------------------------------------------------------------------->
 <!-- 상단 시작 { -->
@@ -241,8 +242,6 @@ var ff = document.frmLogin;
 			</div>
 		
 	</div>
-<script type="text/javascript" src="/pc_html/js/jquery.lettering.js"></script>
-<script type="text/javascript" src="/pc_html/js/jquery.textillate.js"></script>
 
 
 
