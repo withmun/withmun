@@ -267,6 +267,25 @@ public class ListDao {
 		         return b;
 		      }
 		   }
+	   public boolean deleteAdm(ListVo vo) { // 삭제
+		      boolean b = true;
+		      String sql = "delete from board where grp = ? and reply = 3";
+		      try {
+		         PreparedStatement ps = conn.prepareStatement(sql);
+		         ps.setInt(1, vo.getSerial());		         
+		         
+		         int cnt = ps.executeUpdate();
+		         if(cnt <= 0) {
+		        
+		            b = false;
+		         }
+		      }catch(Exception ex) {
+		         ex.printStackTrace();
+		         b = false;
+		      }finally {
+		         return b;
+		      }
+		   }
 	  
 	
 }

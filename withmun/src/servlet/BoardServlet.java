@@ -79,6 +79,7 @@ public class BoardServlet extends HttpServlet{
          
             
          if(dao.delete(vo)) {
+        	 dao.deleteAdm(vo);
             msg = "삭제 되었습니다.";
          }else {
             msg = "삭제에 실패하였습니다.";
