@@ -396,6 +396,9 @@ public class ApplyServlet extends HttpServlet {
 	         content="./page/apply/apply_pool.jsp";
 	      }
 		else if (jobs.indexOf("apply_review.ap") >= 0) {
+			
+			System.out.println("aNo_review: " + req.getParameter("aNo_review").trim());
+			
 			int aNo = Integer.parseInt(req.getParameter("aNo_review"));
 	         ApplyDao dao = new ApplyDao();
 	          ApplyVo vo = dao.viewApply(aNo);

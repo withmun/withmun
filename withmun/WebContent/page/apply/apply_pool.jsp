@@ -42,6 +42,8 @@ function go_review(aNo){
 	   var ff = document.apply_frm;
 	   ff.aNo_review.value = aNo;
 	   
+	   alert('aNo_review.value: ' + aNo);
+	   
 	   ff.action = 'apply_review.ap';
 	   ff.submit();
 	}
@@ -99,7 +101,7 @@ th, td {
             <div id='wrap_pool'>
                <div id='pool_list'>
                
-<form name = 'apply_frm' method = 'post' id = 'apply_frm'>
+			<form name = 'apply_frm' method = 'post' id = 'apply_frm'>
 
                   <p>입사지원서 Pool(관리자용 목록)</p>
 
