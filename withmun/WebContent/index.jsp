@@ -10,6 +10,6 @@ if(request.getParameter("content") !=null){
 	content = request.getParameter("content");  
 }
 %>
-
+  
 <jsp:include page="<%=content %>"/>
 <%@ include file = "./include/new_tail.jsp" %>
