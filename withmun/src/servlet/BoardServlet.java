@@ -27,18 +27,7 @@ public class BoardServlet extends HttpServlet{
 		String jobs = req.getRequestURI();
 		
 		
-		
-		if(jobs.indexOf("insert.bo")>=0){ 
-			ListDao dao = new ListDao();
-			ListVo vo = setVo(req);
-			
-			dao.insert(vo);
-			
-			RequestDispatcher disp = req.getRequestDispatcher("list.bo");
-			disp.forward(req,resp);
-			
-		}
-		else if(jobs.indexOf("list.bo") >= 0) {
+		if(jobs.indexOf("list.bo") >= 0) {
 			String findStr = "";
 			ListDao dao = new ListDao();
 			int nowPage = 1;
@@ -54,21 +43,48 @@ public class BoardServlet extends HttpServlet{
 				List<ListVo> list = dao.select(findStr);
 				req.setAttribute("list", list);
 				req.setAttribute("dao", dao);
+				
 				RequestDispatcher disp = req.getRequestDispatcher("index.jsp?content=./page/board/list.jsp");
 				disp.forward(req,resp);
 				
 		}
+		else if(jobs.indexOf("insert.bo")>=0){ 
+			ListDao dao = new ListDao();
+			ListVo vo = setVo(req);
+			
+		
+			String msg="";
+			if(	dao.insert(vo)) {
+				msg = "등록하였습니다.";
+			}else {
+				msg = "등록에 실패하셧습니다..";
+			}
+			
+			req.setAttribute("msg", msg);
+			RequestDispatcher disp = req.getRequestDispatcher("./page/gongPage.jsp");
+			disp.forward(req,resp);
+			
+		}
 		else if(jobs.indexOf("delete.bo")>=0) {
 			String msg = "";
+
 			ListDao dao = new ListDao();
 			ListVo vo = setVo2(req);
 			
 			if(dao.delete(vo)) {
 				msg = "삭제 되었습니다.";
+			}else {
+				msg = "삭제에 실패하였습니다.";
 			}
-				RequestDispatcher disp = req.getRequestDispatcher("list.bo");
-				disp.forward(req,resp);
+			
+			System.out.println(msg);
+			req.setAttribute("msg", msg);
+			RequestDispatcher disp = req.getRequestDispatcher("./list.bo");
+			disp.forward(req,resp);
 		}
+		
+		
+		
 		else if(jobs.indexOf("reply.bo") >= 0) {
 			ListDao dao = new ListDao();
 			ListVo vo = setVo3(req);
@@ -94,6 +110,7 @@ public class BoardServlet extends HttpServlet{
 	public ListVo setVo2(HttpServletRequest req) {
 		
 		ListVo vo = new ListVo();
+
 		
 		vo.setSerial(Integer.parseInt(req.getParameter("hidden_serial")));
 		vo.setPwd(req.getParameter("hidden_prompt"));

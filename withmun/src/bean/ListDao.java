@@ -16,7 +16,7 @@ public class ListDao {
 		conn = new DBConnection().getConn();
 	}
 	
-	int listSize = 10;
+	int listSize = 7;
 	int blockSize = 3;
 	int nowPage = 1; //getter/setter
 	int totSize = 0;
@@ -165,8 +165,8 @@ public class ListDao {
 					vo.setPwd(rs.getString("pwd"));
 					vo.setDoc(rs.getString("doc"));
 					vo.setBdate(rs.getDate("bdate").toString());
-					vo.setGrp(Integer.parseInt(rs.getString("grp")));
 					vo.setReply(Integer.parseInt(rs.getString("reply")));
+					vo.setGrp(Integer.parseInt(rs.getString("grp")));
 					
 				list.add(vo);
 			}
@@ -246,14 +246,18 @@ public class ListDao {
 	   public boolean delete(ListVo vo) { // 삭제
 		      boolean b = true;
 		      String sql = "delete from board where serial = ? and pwd = ?";
-		      
 		      try {
 		         PreparedStatement ps = conn.prepareStatement(sql);
 		         ps.setInt(1, vo.getSerial());
 		         ps.setString(2, vo.getPwd());
-		         int cnt = ps.executeUpdate();
 		         
+		         
+		         int cnt = ps.executeUpdate();
+		         System.out.println(vo.getSerial()+"aaa");
+		         System.out.println(vo.getPwd()+"bbb");
+		         System.out.println(cnt);
 		         if(cnt <= 0) {
+		        
 		            b = false;
 		         }
 		      }catch(Exception ex) {

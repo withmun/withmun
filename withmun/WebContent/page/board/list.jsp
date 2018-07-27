@@ -46,8 +46,15 @@
 </script>
 <!------------------------------------------------------------------->
 <style>
-</style>
 
+#btnPage:hover,#btnPage:focus{
+	   
+    border:1px solid #0e3e7d;  
+    background-color:#0e3e7d; 
+    color:#fff;
+}
+
+</style>
 <div class="main">
 	<div class="main_wrap">
 
@@ -58,31 +65,38 @@
 				<section class="subContents">
 					<section class="contents">
 						<section class="con">
-							<form id="frontBoardVo" name="frontBoardVo" action="insert.bo"
-								method="post">
+							<form id="frontBoardVo" name="frontBoardVo" method="post">
 
 								<!-- <input type='file' name='attachFile1' style="display: none"/> -->
 
-								<section class="simplecomment write">
-									<strong>궁금한 점 물어봐주세요.</strong>
-									   <strong_qna_id>이름</strong_qna_id>
-                           <input type='text' name='qna_name' size=10px onkeyup="chkByte(this,6)"/>
-                           <strong_qna_id>PW</strong_qna_id>
-                           <input type='password' name='qna_pwd' size=10px onkeyup="chkByte(this,10)"/>
+						<section class="simplecomment write">
+						 <strong>궁금한 점 물어봐주세요.</strong>
+						<strong_qna_id>이름</strong_qna_id>
+                         		  <input type='text' name='qna_name' size=10px />
+                         		  
+                          
+                           <strong_qna_id>PW</strong_qna_id>                
+                          		 <input type='password' name='qna_pwd' size=10px />
                            <div class="remaining">
-                              <!-- <label>comment: <textarea rows="3" cols="50" name="bbsc" id="bbsc"></textarea></label> -->
-                              <textarea rows="3" cols="50" name="document" id="document" onkeyup="chkByte(this,300)"></textarea>
-										<input type='hidden' name='nowPage' value='${empty param.nowPage ? 1 : param.nowPage }' /> 
-										<input type="submit" value="작성" />
+                              <!-- <label>comment: <textarea rows="3" cols="50" name="bbsc" id="bbsc"></textarea></label> -->                          
+                            <textarea rows="3" cols="50" name="document" id="document" onkeyup="chkByte(this,300)"></textarea>
+										
+							<input type="button" value="작성" onclick="writeBox()"/>
+							<input type='hidden' name='nowPage' value='${empty param.nowPage ? 1 : param.nowPage }' /> 
+							
 							</form>
-			</div>
-			<span>최대 <em class="count">0</em>/300자
-			</span>
-			</section>
-<!-- 실시간 글자수 -->
+						</div>
+						</span>
+				</section>
+				<body>
+  	<input type="text" id="writeNow" size ="1" value="0" readOnly style="border: 0; text-align: right; height: 17px;" /> / 300자
+ </body>
+
         <p class="simplecomment state">
             <span>ㆍ</span> <strong>${dao.totSize}</strong>개의 게시물이 있습니다.
          </p>
+         
+         <!-- 작성글 and 답변 -->
 			<c:forEach var="list" items="${list }">
 			<c:if test = "${list.reply eq 1 or list.reply eq 2 }">
 				<ul class="simplecomment">
@@ -104,29 +118,21 @@
 										<strong>답변 완료</strong>
 									</c:when>
 									<c:otherwise>
-										<input type='button' class="reply"
-											onclick='reply_show(${list.serial})' value='답변'>
+										<input type='button' class="reply" onclick='reply_show(${list.serial})' value='답변'>
 									</c:otherwise>
 								</c:choose>
-								<c:choose>
-									<c:when test="${list.reply eq 2}">
-									</c:when>
-									<c:otherwise>
-										<input type='button' class="delete"
-											onclick='list_delete(${list.serial})' value='삭제'>
-									</c:otherwise>
-								</c:choose>
+										<input type='button' class="delete" onclick='list_delete(${list.serial} , ${dao.nowPage })' value='삭제'>
 							</div> 
 							<input type='hidden' name='hidden_serial' value='${list.serial }' />
 							<input type='hidden' name='hidden_reply' value='${list.reply }' />
-							<!-- 답변 내용 -->
+							
+					<!-- 답변 내용 -->
 							<div class="hidden_reply" id="hidden_reply${list.serial }" style="display: none;">
 								<textarea rows="2" cols="50" id="reply_ta${list.serial }" name="reply_ta${list.serial }"></textarea>
 								
 								<p>
-									<input type='button' onclick='list_reply(${list.serial})'
-										value='등 록'> <input type='button'
-										onclick='list_reply_close(${list.serial})' value='닫 To The 기'>
+									<input type='button' onclick='list_reply(${list.serial})' value='등 록'> 
+									<input type='button' onclick='list_reply_close(${list.serial})' value='닫  기'>
 								</p>
 								
 							</div>		
@@ -148,79 +154,135 @@
 						</div>
 						</c:if>
 						</c:forEach>
-					<!-- 답변 끝 -->
+		<!-- 답변 끝 -->
 					</li>
 				</ul>
 
 			<form name='list_frm'>
+				<input type='hidden' name ='${dao.nowPage }'/>
 				<input type='hidden' name='hidden_serial' /> 
 				<input type='hidden' name='hidden_prompt' /> 
 				<input type='hidden' name='hidden_reply_ta' />
 			</form>
 
-			<div id='buttons'>
+	<!-- 페이징 -->
+			<div id='buttons' >
 				<c:if test='${dao.nowPage>1}'>
-					<input type='button' value='맨첨' onclick='movePage(1)' id='btnFirst'
-						class='buttonP' />
-					<input type='button' value='이전' onclick='movePage(${dao.startPage-1 })' id='btnPrev'
-						class='buttonP' />
+					<input type='button' value='맨첨' onclick='movePage(1)' id='btnPage' class='buttonP' />
+					<input type='button' value='이전' onclick='movePage(${dao.nowPage-1 })' id='btnPage' class='buttonP' />
 				</c:if>
-
+				
 				<c:forEach var='p' begin='${dao.startPage }' end='${dao.endPage}'>
 					<c:set var='here' value='' />
 					<c:if test='${p == dao.nowPage }'>
 						<c:set var='here' value="here" />
 					</c:if>
-					<input type='button' value='${p }' class='${here }'
-						onclick='movePage(${p})' class='buttonP' />
+					<input type='button' value='${p }' class='${here }' onclick='movePage(${p})' id='btnPage' />
 				</c:forEach>
 
 				<c:if test='${dao.nowBlock < dao.totBlock}'>
 					<input type='button' value='다음'
-						onclick='movePage(${dao.endPage+1})' id='btnNext' class='buttonP' />
-					<input type='button' value='맨끝' onclick='movePage(${dao.totPage})'
-						id='btnLast' class='buttonP' />
+						onclick='movePage(${dao.endPage+1})' id='btnPage' class='buttonP' />
+					<input type='button' value='맨끝' onclick='movePage(${dao.totPage})' id='btnPage' class='buttonP' />
 				</c:if>
 			</div>
-
-			<!--/paging-->
+		
+		
 			<form name='list_find'>
 				
 				<fieldset class="search2">
 
-						<input type="text" size='35' class="text" name="findStr" value="${param.findStr }" title="검색어 입력"
+				<input type="text" size='35' class="text" name="findStr" value="${param.findStr }" title="검색어 입력"
 						onkeydown="if(event.keyCode==13){return false;}" />
 					<input type="submit" class="qna_submit" name="findFind" value='검색' />
 				</fieldset>
 			</form>
-
-			<!-- 페이징 script -->
-<script>
-	document.frontBoardVo.onsubmit = function(){
-		var ff = document.frmList;
-		ff.nowPage.value = 1;
-		ff.submit();
-	}
+			
 	
-	function movePage(nowPage){
-		var ff = document.frontBoardVo;
-		ff.nowPage.value = nowPage;
-		ff.submit();
-	}
 
-			<!-- 삭제script -->
+	
+	<!-- 작성 알림 script -->
+	<script>
 
-	var ff = document.list_frm;
-	function list_delete(serial){
-		ff.hidden_serial.value = serial;
-		var prom = prompt('비밀번호를 입력해주세요.','PassWord');
-		ff.hidden_prompt.value = prom;
-		ff.action = 'delete.bo';
-		ff.submit();
-	}	
+	 function writeBox(){
+		
+		 ff = document.frontBoardVo;
+		/*  if(ff.qna_name.value == ""){
+			 alert('이름을 입력하세요');
+		 }else{
+			 if (!val(/^[A-z가-힣]{2,10}$/, ff.qna_name)){
+	 			return;
+	 		}
+		 }
+		 
+ 		if(ff.qna_pwd.value == ""){
+			alert('패스워드를 입력하세요.');
+		 }
+		 else{
+			 if (!val(/^[A-z가-힣]{2,10}$/, ff.qna_pwd)){
+		 			return;
+		 		} 
+			 
+		 }  */
+		 
+		 ff.action = "insert.bo";
+		 ff.submit(); 
+		  
+		 
+	 }
+		 
+		 
+		 
+	 /* 	if(!ff.qna_name.value)
+	 	{
+	 			if (!val(/^[가-힣]{2,10}$/, ff.qna_name)){
+	 				return;
+	 			}
+	 				
+	 	} else	if(!ff.qna_pwd.value) {
+	 			if (!val(/^[0-9].{4,12}$/, ff.qna_pwd)){  return;	}
+	 	}
+	 	ff.action = "list.bo";
+	 	ff.submit(); 
+	 	
+	 }*/
+
+/* 	 function val(re, e){
+		 if (re.test(e.value)){
+		    return true;
+		} else {   
+			e.focus();
+			e.value = "";
+			if (e == ff.qna_name){
+			 alert("2자 이상의 한글과 영문자만 입력해주세요.");
+			}
+			else if (e == ff.qna_pwd){
+			 alert("8-24자   의 영숫자, 특수문자를 혼합하여 입력해주세요.");
+			}
+			return false;
+		 }
+	 } */
+
+		</script> 
+		
+	<!-- 페이징 script -->
+	<script>
+		document.frontBoardVo.onsubmit = function(){
+			var ff = document.frmList;
+			
+			ff.submit();
+		}
+		
+		function movePage(nowPage){
+			var ff = document.frontBoardVo;
+			ff.nowPage.value = nowPage;
+			ff.action='list.bo?nowPage='+nowPage;
+			ff.submit();
+		}
 
 
-			<!-- 답글 script -->
+
+	/*  답글 script  */
 
 	var ff = document.list_frm;
 	function reply_show(serial){
@@ -229,16 +291,6 @@
 	
 	function list_reply_close(serial){
 		document.getElementById("hidden_reply"+serial).style.display='none';
-	}
-	
-	
-	function list_delete(serial){
-		ff.hidden_serial.value = serial;
-		var prom = prompt('비밀번호를 입력해주세요.','PassWord');
-		ff.hidden_prompt.value = prom;
-		
-		ff.action = 'delete.bo';
-		ff.submit();
 	}
 	
 	function list_reply(serial){
@@ -250,11 +302,16 @@
 		ff.submit();
 	}
 	
-	function find_list(){
-		ff.action = 'list.bo';
+	/* 삭제script */
+	function list_delete(serial){
+		var ff = document.list_frm;
+		ff.hidden_serial.value = serial;
+		var prom = prompt('비밀번호를 입력해주세요.','PassWord');
+		ff.hidden_prompt.value = prom;
+		
+		ff.action = 'delete.bo';
 		ff.submit();
-	}
-	
+	}	
 	
 </script>
 	<!-- 실시간 문자수 script -->
@@ -275,9 +332,9 @@
               // 한글은 2byte 이므로, 한글이 입력 되고 있을 경우 2를 더한다.
               if(escape(charOne).length > 4) {
                charByte += 1;
-              } else {
-               charByte++;  // 그 외에 경우에는 1byte. 1을 더한다.
-              }
+              }  else {
+               charByte +=1 ;  // 그 외에 경우에는 1byte. 1을 더한다.
+              } 
               
               if(charByte <= limitSize) {  // 전체 크기가 제한 글자 길이를 넘지 않는다면..
                msgLen = i + 1;
@@ -291,17 +348,13 @@
               charByte = limitSize;
              }
              
-             document.getElementById('write').value = charByte;
+             document.getElementById('writeNow').value = charByte;
             }
          </script>
-
+					</section>
+				</section>
 			</section>
-			</section>
-			</section>
-
 		</div>
-
-
 	</div>
 </div>
 </div>
