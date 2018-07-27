@@ -125,7 +125,10 @@ $(document).ready(function(){
                   </span>
                </div>
             </div>
+            
          </div>
+
+
 
          <div class ="lo_second">
             <img src="./images/location_topimg.jpg" alt="" style="">
