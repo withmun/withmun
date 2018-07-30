@@ -92,28 +92,25 @@ $(document).ready(function(){
 				</div>
 				</c:otherwise>
 			</c:choose>
-
-		
-		
-		
 		</div>
 	
 	
 		<div class = "content">			
-			
 			<c:forEach var = "i" items="${list }">
-			<div class ="content_find">
-				<div class="col-xs-12" id="content_find_div">
-					<div class="col-xs-5" id = "content_find_img">
-						<img src="${i.img}">
-					</div>
-					<div class="col-xs-7" id="content_find_text">
-						<p class="content_find_text_pagename">${i.pagename }</p>
-						<p class="content_find_text_group">${i.grp }</p>
-						<p class="content_find_text_oneline">${i.oneline }</p>
+			<a href="./${i.page }.do">
+				<div class ="content_find">
+					<div class="col-xs-12" id="content_find_div">
+						<div class="col-xs-5" id = "content_find_img">
+							<img src="${i.img}">
+						</div>
+						<div class="col-xs-7" id="content_find_text">
+							<p class="content_find_text_pagename">${i.pagename }</p>
+							<p class="content_find_text_group">${i.grp }</p>
+							<p class="content_find_text_oneline">${i.oneline }</p>
+						</div>
 					</div>
 				</div>
-			</div>
+			</a>
 			</c:forEach>
 
 		</div>
